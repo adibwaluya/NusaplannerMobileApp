@@ -1,0 +1,31 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+Color blueWhaleColor = Color(0xff4361EE);
+Color lightBlueColor = Color(0xffCAE6FF);
+Color lightPurpleColor = Color(0xff98AAFF);
+Color darkPurpleColor = Color(0xff2E157C);
+Color greyColor = Color(0xffEAEAEA);
+Color greyBorderColor = Color(0xffC4C4C4);
+Color whiteColor = Color(0xffFFFFFF);
+Color blackColor = Color(0xff000000);
+
+TextStyle blackSemiBoldTextStyle = GoogleFonts.poppins(
+  fontWeight: FontWeight.w600,
+  color: blackColor,
+);
+
+TextStyle blackRegularTextStyle = GoogleFonts.poppins(
+  fontWeight: FontWeight.w400,
+  color: blackColor,
+);
+
+TextStyle greyTextStyle = GoogleFonts.poppins(
+  fontWeight: FontWeight.w300,
+  color: blackColor,
+);
+
+TextStyle whiteTextStyle = GoogleFonts.poppins(
+  fontWeight: FontWeight.w400,
+  color: whiteColor,
+);
