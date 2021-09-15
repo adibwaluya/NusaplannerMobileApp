@@ -10,6 +10,8 @@ Color greyBorderColor = Color(0xffC4C4C4);
 Color whiteColor = Color(0xffFFFFFF);
 Color blackColor = Color(0xff000000);
 
+double edge = 28;
+
 TextStyle blackSemiBoldTextStyle = GoogleFonts.poppins(
   fontWeight: FontWeight.w600,
   color: blackColor,
