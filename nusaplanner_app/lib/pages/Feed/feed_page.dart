@@ -57,96 +57,102 @@ class FeedPage extends StatelessWidget {
           SizedBox(
             height: spaceToHeader,
           ),
-          Container(
-            color: greyColor,
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(left: edge),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        'assets/icons/Document_icon.png',
-                        width: 30,
-                        height: 30,
+          Padding(
+            padding: EdgeInsets.only(left: edge, right: edge),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(18),
+              child: Container(
+                color: greyColor,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: spaceListBox),
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            'assets/icons/Document_icon.png',
+                            width: 30,
+                            height: 30,
+                          ),
+                          SizedBox(
+                            width: spaceIconText,
+                          ),
+                          Text(
+                            'Terjemah Ijazah dan beglaubigen',
+                            style: blackMediumTextStyle.copyWith(fontSize: 12),
+                          ),
+                        ],
                       ),
-                      SizedBox(
-                        width: spaceIconText,
+                    ),
+                    SizedBox(
+                      height: 6,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: spaceListBox),
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            'assets/icons/Document_icon.png',
+                            width: 30,
+                            height: 30,
+                          ),
+                          SizedBox(
+                            width: spaceIconText,
+                          ),
+                          Text(
+                            'Terjemah Rapor Kelas XII semester akhir',
+                            style: blackMediumTextStyle.copyWith(fontSize: 12),
+                          ),
+                        ],
                       ),
-                      Text(
-                        'Terjemah Ijazah dan beglaubigen',
-                        style: blackMediumTextStyle.copyWith(fontSize: 12),
+                    ),
+                    SizedBox(
+                      height: 6,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: spaceListBox),
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            'assets/icons/Translate_icon.png',
+                            width: 30,
+                            height: 30,
+                          ),
+                          SizedBox(
+                            width: spaceIconText,
+                          ),
+                          Text(
+                            'Tambah Kosakata',
+                            style: blackMediumTextStyle.copyWith(fontSize: 12),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(
+                      height: 6,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: spaceListBox),
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            'assets/icons/Translate_icon.png',
+                            width: 30,
+                            height: 30,
+                          ),
+                          SizedBox(
+                            width: spaceIconText,
+                          ),
+                          Text(
+                            'Ujian Sertifikat A1',
+                            style: blackMediumTextStyle.copyWith(fontSize: 12),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  height: 6,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: edge),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        'assets/icons/Document_icon.png',
-                        width: 30,
-                        height: 30,
-                      ),
-                      SizedBox(
-                        width: spaceIconText,
-                      ),
-                      Text(
-                        'Terjemah Rapor Kelas XII semester akhir',
-                        style: blackMediumTextStyle.copyWith(fontSize: 12),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 6,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: edge),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        'assets/icons/Translate_icon.png',
-                        width: 30,
-                        height: 30,
-                      ),
-                      SizedBox(
-                        width: spaceIconText,
-                      ),
-                      Text(
-                        'Tambah Kosakata',
-                        style: blackMediumTextStyle.copyWith(fontSize: 12),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 6,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: edge),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        'assets/icons/Translate_icon.png',
-                        width: 30,
-                        height: 30,
-                      ),
-                      SizedBox(
-                        width: spaceIconText,
-                      ),
-                      Text(
-                        'Ujian Sertifikat A1',
-                        style: blackMediumTextStyle.copyWith(fontSize: 12),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ],

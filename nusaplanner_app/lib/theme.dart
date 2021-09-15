@@ -14,6 +14,7 @@ double edge = 28;
 double spaceToHeader = 25;
 double spaceBetweenSection = 35;
 double spaceIconText = 21;
+double spaceListBox = 10;
 
 TextStyle blackSemiBoldTextStyle = GoogleFonts.poppins(
   fontWeight: FontWeight.w600,
