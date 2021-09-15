@@ -12,9 +12,10 @@ Color blackColor = Color(0xff000000);
 
 double edge = 28;
 double spaceToHeader = 25;
-double spaceBetweenSection = 35;
 double spaceIconText = 21;
-double spaceListBox = 10;
+double spaceListBoxLeft = 10;
+double spaceListBoxVertical = 18;
+double spaceTextIconOverview = 16;
 
 TextStyle blackSemiBoldTextStyle = GoogleFonts.poppins(
   fontWeight: FontWeight.w600,
