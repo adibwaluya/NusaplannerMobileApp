@@ -11,6 +11,9 @@ Color whiteColor = Color(0xffFFFFFF);
 Color blackColor = Color(0xff000000);
 
 double edge = 28;
+double spaceToHeader = 25;
+double spaceBetweenSection = 35;
+double spaceIconText = 21;
 
 TextStyle blackSemiBoldTextStyle = GoogleFonts.poppins(
   fontWeight: FontWeight.w600,
@@ -19,6 +22,11 @@ TextStyle blackSemiBoldTextStyle = GoogleFonts.poppins(
 
 TextStyle blackRegularTextStyle = GoogleFonts.poppins(
   fontWeight: FontWeight.w400,
+  color: blackColor,
+);
+
+TextStyle blackMediumTextStyle = GoogleFonts.poppins(
+  fontWeight: FontWeight.w500,
   color: blackColor,
 );
 
