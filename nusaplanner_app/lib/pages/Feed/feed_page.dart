@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nusaplanner_app/classes/overview.dart';
+import 'package:nusaplanner_app/classes/tool.dart';
 import 'package:nusaplanner_app/models/carousel_model.dart';
 import 'package:nusaplanner_app/theme.dart';
 import 'package:nusaplanner_app/widgets/overview_card.dart';
+import 'package:nusaplanner_app/widgets/tool_card.dart';
 
 class FeedPage extends StatelessWidget {
   const FeedPage({Key? key}) : super(key: key);
@@ -185,7 +187,7 @@ class FeedPage extends StatelessWidget {
               height: spaceToHeader,
             ),
             Container(
-              height: 190,
+              height: 150,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
@@ -212,6 +214,47 @@ class FeedPage extends StatelessWidget {
                   ),
                   OverviewCard(
                     Overview('Dokumen', 'assets/icons/Document_icon.png'),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: edge, top: edge),
+              child: Text(
+                'Tools',
+                style: blackSemiBoldTextStyle.copyWith(
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: edge),
+              child: Text(
+                'Instrumen yang dapat membantu\npersiapan studimu',
+                style: greyTextStyle.copyWith(
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: spaceToHeader,
+            ),
+            Container(
+              height: 120,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  SizedBox(
+                    width: edge,
+                  ),
+                  ToolCard(
+                    Tool('Jadwal', 'assets/icons/Jadwal_icon.png'),
+                  ),
+                  SizedBox(
+                    width: 50,
+                  ),
+                  ToolCard(
+                    Tool('Kalendar', 'assets/icons/Kalendar_icon.png'),
                   ),
                 ],
               ),
