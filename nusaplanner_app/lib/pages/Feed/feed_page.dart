@@ -3,6 +3,7 @@ import 'package:nusaplanner_app/classes/overview.dart';
 import 'package:nusaplanner_app/classes/tool.dart';
 import 'package:nusaplanner_app/models/carousel_model.dart';
 import 'package:nusaplanner_app/theme.dart';
+import 'package:nusaplanner_app/widgets/article_card.dart';
 import 'package:nusaplanner_app/widgets/course_card.dart';
 import 'package:nusaplanner_app/widgets/overview_card.dart';
 import 'package:nusaplanner_app/widgets/tool_card.dart';
@@ -294,6 +295,43 @@ class FeedPage extends StatelessWidget {
                     width: 10,
                   ),
                   CourseCard(),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: edge, top: edge),
+              child: Text(
+                'Artikel',
+                style: blackSemiBoldTextStyle.copyWith(
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: edge),
+              child: Text(
+                'Beberapa tulisan singkat mengenai jerih\npayah studi di luar negeri',
+                style: greyTextStyle.copyWith(
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: spaceToHeader,
+            ),
+            Container(
+              height: 360,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  SizedBox(
+                    width: edge,
+                  ),
+                  ArticleCard(),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  ArticleCard(),
                 ],
               ),
             ),
