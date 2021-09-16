@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class InboxPage extends StatelessWidget {
-  const InboxPage({Key? key}) : super(key: key);
+class PlanPage extends StatelessWidget {
+  const PlanPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text('Inbox Page'),
+      child: Text('Plan Page'),
     );
   }
 }

@@ -15,329 +15,332 @@ class FeedPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
+          bottom: false,
           child: Padding(
-        padding: EdgeInsets.symmetric(vertical: edge),
-        child: ListView(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: edge),
-              child: Text(
-                'Dashboard Kamu',
-                style: blackSemiBoldTextStyle.copyWith(
-                  fontSize: 24,
+            padding: EdgeInsets.symmetric(vertical: edge),
+            child: ListView(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: edge),
+                  child: Text(
+                    'Dashboard Kamu',
+                    style: blackSemiBoldTextStyle.copyWith(
+                      fontSize: 24,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: edge),
-              child: Text(
-                'Persiapkan Studi Kamu dengan Matang',
-                style: greyTextStyle.copyWith(
-                  fontSize: 16,
+                Padding(
+                  padding: EdgeInsets.only(left: edge),
+                  child: Text(
+                    'Persiapkan Studi Kamu dengan Matang',
+                    style: greyTextStyle.copyWith(
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: spaceToHeader,
-            ),
-            CarouselModel(),
-            Padding(
-              padding: EdgeInsets.only(left: edge, top: edge),
-              child: Text(
-                'Tugas Minggu Ini',
-                style: blackSemiBoldTextStyle.copyWith(
-                  fontSize: 24,
+                SizedBox(
+                  height: spaceToHeader,
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: edge),
-              child: Text(
-                'Selalu Update To Do List Kamu!',
-                style: greyTextStyle.copyWith(
-                  fontSize: 16,
+                CarouselModel(),
+                Padding(
+                  padding: EdgeInsets.only(left: edge, top: edge),
+                  child: Text(
+                    'Tugas Minggu Ini',
+                    style: blackSemiBoldTextStyle.copyWith(
+                      fontSize: 24,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: spaceToHeader,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: edge, right: edge),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(18),
-                child: Container(
-                  color: greyColor,
-                  child: Column(
+                Padding(
+                  padding: EdgeInsets.only(left: edge),
+                  child: Text(
+                    'Selalu Update To Do List Kamu!',
+                    style: greyTextStyle.copyWith(
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: spaceToHeader,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: edge, right: edge),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(18),
+                    child: Container(
+                      color: greyColor,
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(
+                                left: spaceListBoxLeft,
+                                top: spaceListBoxVertical),
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  'assets/icons/Document_icon.png',
+                                  width: 30,
+                                  height: 30,
+                                ),
+                                SizedBox(
+                                  width: spaceIconText,
+                                ),
+                                Text(
+                                  'Terjemah Ijazah dan beglaubigen',
+                                  style: blackMediumTextStyle.copyWith(
+                                      fontSize: 12),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 6,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: spaceListBoxLeft),
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  'assets/icons/Document_icon.png',
+                                  width: 30,
+                                  height: 30,
+                                ),
+                                SizedBox(
+                                  width: spaceIconText,
+                                ),
+                                Text(
+                                  'Terjemah Rapor Kelas XII semester akhir',
+                                  style: blackMediumTextStyle.copyWith(
+                                      fontSize: 12),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 6,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: spaceListBoxLeft),
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  'assets/icons/Translate_icon.png',
+                                  width: 30,
+                                  height: 30,
+                                ),
+                                SizedBox(
+                                  width: spaceIconText,
+                                ),
+                                Text(
+                                  'Tambah Kosakata',
+                                  style: blackMediumTextStyle.copyWith(
+                                      fontSize: 12),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 6,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                                left: spaceListBoxLeft,
+                                bottom: spaceListBoxVertical),
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  'assets/icons/Translate_icon.png',
+                                  width: 30,
+                                  height: 30,
+                                ),
+                                SizedBox(
+                                  width: spaceIconText,
+                                ),
+                                Text(
+                                  'Ujian Sertifikat A1',
+                                  style: blackMediumTextStyle.copyWith(
+                                      fontSize: 12),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: edge, top: edge),
+                  child: Text(
+                    'Gambaran Umum',
+                    style: blackSemiBoldTextStyle.copyWith(
+                      fontSize: 24,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: edge),
+                  child: Text(
+                    'Kuliah S1 ke Jerman',
+                    style: greyTextStyle.copyWith(
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: spaceToHeader,
+                ),
+                Container(
+                  height: 150,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
                     children: [
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: spaceListBoxLeft, top: spaceListBoxVertical),
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              'assets/icons/Document_icon.png',
-                              width: 30,
-                              height: 30,
-                            ),
-                            SizedBox(
-                              width: spaceIconText,
-                            ),
-                            Text(
-                              'Terjemah Ijazah dan beglaubigen',
-                              style:
-                                  blackMediumTextStyle.copyWith(fontSize: 12),
-                            ),
-                          ],
-                        ),
+                      SizedBox(
+                        width: edge,
+                      ),
+                      OverviewCard(
+                        Overview('Dokumen', 'assets/icons/Document_icon.png'),
                       ),
                       SizedBox(
-                        height: 6,
+                        width: edge,
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(left: spaceListBoxLeft),
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              'assets/icons/Document_icon.png',
-                              width: 30,
-                              height: 30,
-                            ),
-                            SizedBox(
-                              width: spaceIconText,
-                            ),
-                            Text(
-                              'Terjemah Rapor Kelas XII semester akhir',
-                              style:
-                                  blackMediumTextStyle.copyWith(fontSize: 12),
-                            ),
-                          ],
-                        ),
+                      OverviewCard(
+                        Overview('Bahasa', 'assets/icons/Translate_icon.png'),
                       ),
                       SizedBox(
-                        height: 6,
+                        width: edge,
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(left: spaceListBoxLeft),
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              'assets/icons/Translate_icon.png',
-                              width: 30,
-                              height: 30,
-                            ),
-                            SizedBox(
-                              width: spaceIconText,
-                            ),
-                            Text(
-                              'Tambah Kosakata',
-                              style:
-                                  blackMediumTextStyle.copyWith(fontSize: 12),
-                            ),
-                          ],
-                        ),
+                      OverviewCard(
+                        Overview(
+                            'Akomodasi', 'assets/icons/Accomodation_icon.png'),
                       ),
                       SizedBox(
-                        height: 6,
+                        width: edge,
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: spaceListBoxLeft,
-                            bottom: spaceListBoxVertical),
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              'assets/icons/Translate_icon.png',
-                              width: 30,
-                              height: 30,
-                            ),
-                            SizedBox(
-                              width: spaceIconText,
-                            ),
-                            Text(
-                              'Ujian Sertifikat A1',
-                              style:
-                                  blackMediumTextStyle.copyWith(fontSize: 12),
-                            ),
-                          ],
-                        ),
+                      OverviewCard(
+                        Overview('Dokumen', 'assets/icons/Document_icon.png'),
                       ),
                     ],
                   ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: edge, top: edge),
-              child: Text(
-                'Gambaran Umum',
-                style: blackSemiBoldTextStyle.copyWith(
-                  fontSize: 24,
+                Padding(
+                  padding: EdgeInsets.only(left: edge, top: edge),
+                  child: Text(
+                    'Tools',
+                    style: blackSemiBoldTextStyle.copyWith(
+                      fontSize: 24,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: edge),
-              child: Text(
-                'Kuliah S1 ke Jerman',
-                style: greyTextStyle.copyWith(
-                  fontSize: 16,
+                Padding(
+                  padding: EdgeInsets.only(left: edge),
+                  child: Text(
+                    'Instrumen yang dapat membantu\npersiapan studimu',
+                    style: greyTextStyle.copyWith(
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: spaceToHeader,
-            ),
-            Container(
-              height: 150,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  SizedBox(
-                    width: edge,
-                  ),
-                  OverviewCard(
-                    Overview('Dokumen', 'assets/icons/Document_icon.png'),
-                  ),
-                  SizedBox(
-                    width: edge,
-                  ),
-                  OverviewCard(
-                    Overview('Bahasa', 'assets/icons/Translate_icon.png'),
-                  ),
-                  SizedBox(
-                    width: edge,
-                  ),
-                  OverviewCard(
-                    Overview('Akomodasi', 'assets/icons/Accomodation_icon.png'),
-                  ),
-                  SizedBox(
-                    width: edge,
-                  ),
-                  OverviewCard(
-                    Overview('Dokumen', 'assets/icons/Document_icon.png'),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: edge, top: edge),
-              child: Text(
-                'Tools',
-                style: blackSemiBoldTextStyle.copyWith(
-                  fontSize: 24,
+                SizedBox(
+                  height: spaceToHeader,
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: edge),
-              child: Text(
-                'Instrumen yang dapat membantu\npersiapan studimu',
-                style: greyTextStyle.copyWith(
-                  fontSize: 16,
+                Container(
+                  height: 120,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      SizedBox(
+                        width: edge,
+                      ),
+                      ToolCard(
+                        Tool('Jadwal', 'assets/icons/Jadwal_icon.png'),
+                      ),
+                      SizedBox(
+                        width: 50,
+                      ),
+                      ToolCard(
+                        Tool('Kalendar', 'assets/icons/Kalendar_icon.png'),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: spaceToHeader,
-            ),
-            Container(
-              height: 120,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  SizedBox(
-                    width: edge,
+                Padding(
+                  padding: EdgeInsets.only(left: edge, top: edge),
+                  child: Text(
+                    'Kursus',
+                    style: blackSemiBoldTextStyle.copyWith(
+                      fontSize: 24,
+                    ),
                   ),
-                  ToolCard(
-                    Tool('Jadwal', 'assets/icons/Jadwal_icon.png'),
-                  ),
-                  SizedBox(
-                    width: 50,
-                  ),
-                  ToolCard(
-                    Tool('Kalendar', 'assets/icons/Kalendar_icon.png'),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: edge, top: edge),
-              child: Text(
-                'Kursus',
-                style: blackSemiBoldTextStyle.copyWith(
-                  fontSize: 24,
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: edge),
-              child: Text(
-                'Ikuti kursus-kursus menarik yang langsung\ndiajarkan oleh tutor-tutor kompeten!',
-                style: greyTextStyle.copyWith(
-                  fontSize: 16,
+                Padding(
+                  padding: EdgeInsets.only(left: edge),
+                  child: Text(
+                    'Ikuti kursus-kursus menarik yang langsung\ndiajarkan oleh tutor-tutor kompeten!',
+                    style: greyTextStyle.copyWith(
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: spaceToHeader,
-            ),
-            Container(
-              height: 360,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  SizedBox(
-                    width: edge,
-                  ),
-                  CourseCard(),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  CourseCard(),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: edge, top: edge),
-              child: Text(
-                'Artikel',
-                style: blackSemiBoldTextStyle.copyWith(
-                  fontSize: 24,
+                SizedBox(
+                  height: spaceToHeader,
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: edge),
-              child: Text(
-                'Beberapa tulisan singkat mengenai jerih\npayah studi di luar negeri',
-                style: greyTextStyle.copyWith(
-                  fontSize: 16,
+                Container(
+                  height: 360,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      SizedBox(
+                        width: edge,
+                      ),
+                      CourseCard(),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      CourseCard(),
+                    ],
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: spaceToHeader,
-            ),
-            Container(
-              height: 360,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  SizedBox(
-                    width: edge,
+                Padding(
+                  padding: EdgeInsets.only(left: edge, top: edge),
+                  child: Text(
+                    'Artikel',
+                    style: blackSemiBoldTextStyle.copyWith(
+                      fontSize: 24,
+                    ),
                   ),
-                  ArticleCard(),
-                  SizedBox(
-                    width: 10,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: edge),
+                  child: Text(
+                    'Beberapa tulisan singkat mengenai jerih\npayah studi di luar negeri',
+                    style: greyTextStyle.copyWith(
+                      fontSize: 16,
+                    ),
                   ),
-                  ArticleCard(),
-                ],
-              ),
+                ),
+                SizedBox(
+                  height: spaceToHeader,
+                ),
+                Container(
+                  height: 360,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      SizedBox(
+                        width: edge,
+                      ),
+                      ArticleCard(),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      ArticleCard(),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      )),
+          )),
     );
   }
 }
