@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 class LoginBackground extends StatelessWidget {
   final Widget child;
-  const LoginBackground({Key? key, required this.child}) : super(key: key);
+  const LoginBackground({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +34,7 @@ class LoginBackground extends StatelessWidget {
             child: Image.asset("assets/shapes/lightPurple_rectangle_login.png",
                 width: size.width * 0.15),
           ),
+          child,
         ],
       ),
     );
