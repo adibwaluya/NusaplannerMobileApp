@@ -17,7 +17,7 @@ class FeedPage extends StatelessWidget {
       body: SafeArea(
           bottom: false,
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: edge),
+            padding: EdgeInsets.only(top: edge),
             child: ListView(
               children: [
                 Padding(

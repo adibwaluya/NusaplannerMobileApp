@@ -29,31 +29,33 @@ class _BottomNavigationState extends State<BottomNavigation> {
         index: _currentIndex,
         children: screens,
       ),
-      bottomNavigationBar: Material(
-        elevation: 10,
-        borderRadius: BorderRadius.circular(20),
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.circular(30),
         child: BottomNavigationBar(
-          unselectedItemColor: darkPurpleColor,
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: darkPurpleColor,
+          unselectedItemColor: whiteColor,
+          selectedFontSize: 0,
           currentIndex: _currentIndex,
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              label: "Feed",
+              label: '',
               backgroundColor: lightPurpleColor,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.checklist),
-              label: "Plan",
+              label: '',
               backgroundColor: lightPurpleColor,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.chat),
-              label: "Inbox",
+              label: '',
               backgroundColor: lightPurpleColor,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
-              label: "Profile",
+              label: '',
               backgroundColor: lightPurpleColor,
             ),
           ],

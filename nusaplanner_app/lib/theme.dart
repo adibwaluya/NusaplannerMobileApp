@@ -41,3 +41,13 @@ TextStyle whiteTextStyle = GoogleFonts.poppins(
   fontWeight: FontWeight.w400,
   color: whiteColor,
 );
+
+TextStyle hintTextStyle = GoogleFonts.poppins(
+  fontWeight: FontWeight.w300,
+  color: blackColor,
+);
+
+TextStyle darkPurpleTextStyle = GoogleFonts.poppins(
+  fontWeight: FontWeight.w600,
+  color: darkPurpleColor,
+);
