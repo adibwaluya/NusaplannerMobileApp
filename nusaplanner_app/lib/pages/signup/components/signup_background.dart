@@ -15,21 +15,27 @@ class SignupBackground extends StatelessWidget {
         children: <Widget>[
           Positioned(
             top: 0,
-            left: 0,
-            child: Image.asset("assets/shapes/eclipse_login.png",
-                width: size.width * 0.25),
-          ),
-          Positioned(
-            bottom: 0,
             right: 0,
-            child: Image.asset("assets/shapes/blue_rectangle_login.png",
+            child: Image.asset("assets/shapes/lightBlue_rectangle_signup.png",
                 width: size.width * 0.25),
           ),
           Positioned(
-            bottom: 0,
+            top: 0,
             right: 97,
-            child: Image.asset("assets/shapes/lightPurple_rectangle_login.png",
+            child: Image.asset("assets/shapes/blue_rectangle_signup.png",
                 width: size.width * 0.15),
+          ),
+          Positioned(
+            top: 111,
+            right: 0,
+            child: Image.asset("assets/shapes/darkBlue_rectangle_signup.png",
+                width: size.width * 0.17),
+          ),
+          Positioned(
+            left: 0,
+            bottom: 0,
+            child: Image.asset("assets/shapes/lightBlue_ellipse_signup.png",
+                width: size.width * 0.3),
           ),
           child,
         ],

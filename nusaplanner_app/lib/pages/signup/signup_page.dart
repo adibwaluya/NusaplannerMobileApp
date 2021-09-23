@@ -53,7 +53,7 @@ class SignupPage extends StatelessWidget {
 
     Widget emailInput() {
       return Container(
-        margin: EdgeInsets.only(top: 30),
+        margin: EdgeInsets.only(top: 20),
         child: Column(
           children: [
             Container(
@@ -236,7 +236,7 @@ class SignupPage extends StatelessWidget {
                           );
                         },
                         child: Text(
-                          'Sign In',
+                          'Sign Up',
                           style: whiteTextStyle.copyWith(fontSize: 16),
                         ),
                         style: ButtonStyle(
