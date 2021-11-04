@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nusaplanner_app/pages/onboarding/onboarding_one/onboarding_one_page.dart';
 import 'package:nusaplanner_app/pages/signup/components/signup_background.dart';
 import 'package:nusaplanner_app/widgets/bottom_navigation.dart';
 
@@ -231,7 +232,7 @@ class SignupPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) {
-                              return BottomNavigation();
+                              return OnboardingOnePage();
                             }),
                           );
                         },
