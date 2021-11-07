@@ -20,16 +20,16 @@ class _OnboardingFourPageState extends State<OnboardingFourPage> {
             child: ListView(
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 20, right: 25),
+          padding: const EdgeInsets.only(top: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
-              Image.asset(
-                'assets/images/Nusatutor_logo_blue.png',
-                width: 70,
-              ),
-              SizedBox(
-                height: 15,
+              Padding(
+                padding: const EdgeInsets.only(right: 25.0),
+                child: Image.asset(
+                  'assets/images/Nusatutor_logo_blue.png',
+                  width: 70,
+                ),
               ),
               Center(
                 child: Image.asset(
@@ -38,13 +38,26 @@ class _OnboardingFourPageState extends State<OnboardingFourPage> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: 5,
+              ),
+              Center(
+                child: Text(
+                  'When in doubt, ask!',
+                  style: blackSemiBoldTextStyle.copyWith(
+                    fontSize: 25,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(
+                height: 5,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: RichText(
                     text: TextSpan(
-                  style: blackRegularTextStyle.copyWith(height: 2),
+                  style:
+                      blackRegularTextStyle.copyWith(height: 2, fontSize: 14),
                   children: <TextSpan>[
                     TextSpan(
                         text:
