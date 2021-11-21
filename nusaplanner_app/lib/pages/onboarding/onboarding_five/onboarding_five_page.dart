@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:nusaplanner_app/auth/auth.dart';
 import 'package:nusaplanner_app/pages/onboarding/date_input/date_input_page.dart';
 import 'package:nusaplanner_app/pages/onboarding/onboarding_five/components/five_background.dart';
+import 'package:provider/provider.dart';
 
 import '../../../theme.dart';
 
@@ -12,6 +15,30 @@ class OnboardingFivePage extends StatefulWidget {
 }
 
 class _OnboardingFivePageState extends State<OnboardingFivePage> {
+  bool _isLoading = false;
+  Text value = Text('');
+  late var email;
+
+  final storage = FlutterSecureStorage();
+  //String? myEmail = await storage.read(key: "email");
+  void _updateSplashFive() async {
+    setState(() {
+      _isLoading = true;
+    });
+    Provider.of<Auth>(context, listen: false).updateSplashFive(
+        data: {'is_splash_five': 1, 'email': await storage.read(key: 'email')},
+        success: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return DateInputScreen();
+          }));
+        },
+        error: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return OnboardingFivePage();
+          }));
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,12 +107,8 @@ class _OnboardingFivePageState extends State<OnboardingFivePage> {
                       height: 40,
                       width: 100,
                       child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return DateInputScreen();
-                          }));
-                        },
+                        onPressed:
+                            _isLoading ? null : () => _updateSplashFive(),
                         child: Text('Next',
                             style: whiteTextStyle.copyWith(fontSize: 16)),
                         style: ButtonStyle(

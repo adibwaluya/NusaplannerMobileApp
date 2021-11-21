@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:nusaplanner_app/auth/auth.dart';
 import 'package:nusaplanner_app/pages/onboarding/onboarding_four/onboarding_four_page.dart';
 import 'package:nusaplanner_app/pages/onboarding/onboarding_three/components/three_background.dart';
+import 'package:provider/provider.dart';
 
 import '../../../theme.dart';
 
@@ -12,6 +15,29 @@ class OnboardingThreePage extends StatefulWidget {
 }
 
 class _OnboardingThreePageState extends State<OnboardingThreePage> {
+  bool _isLoading = false;
+  Text value = Text('');
+  late var email;
+
+  final storage = FlutterSecureStorage();
+  void _updateSplashThree() async {
+    setState(() {
+      _isLoading = true;
+    });
+    Provider.of<Auth>(context, listen: false).updateSplashThree(
+        data: {'is_splash_three': 1, 'email': await storage.read(key: 'email')},
+        success: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return OnboardingFourPage();
+          }));
+        },
+        error: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return OnboardingThreePage();
+          }));
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,12 +106,7 @@ class _OnboardingThreePageState extends State<OnboardingThreePage> {
                     height: 40,
                     width: 100,
                     child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return OnboardingFourPage();
-                        }));
-                      },
+                      onPressed: _isLoading ? null : () => _updateSplashThree(),
                       child: Text('Next',
                           style: whiteTextStyle.copyWith(fontSize: 16)),
                       style: ButtonStyle(

@@ -1,31 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:nusaplanner_app/auth/auth.dart';
+import 'package:nusaplanner_app/theme.dart';
 import 'package:nusaplanner_app/widgets/bottom_navigation.dart';
 import 'package:nusaplanner_app/widgets/date_picker_widget.dart';
 import 'package:provider/provider.dart';
 
-import '../../../theme.dart';
-
-class DateInputScreen extends StatefulWidget {
-  const DateInputScreen({Key? key}) : super(key: key);
+class UpdateDatePage extends StatefulWidget {
+  const UpdateDatePage({Key? key}) : super(key: key);
 
   @override
-  _DateInputScreenState createState() => _DateInputScreenState();
+  _UpdateDatePageState createState() => _UpdateDatePageState();
 }
 
-class _DateInputScreenState extends State<DateInputScreen> {
+class _UpdateDatePageState extends State<UpdateDatePage> {
   bool _isLoading = false;
   final storage = FlutterSecureStorage();
 
-  void _updateSplashSix() async {
+  void _updateDatePrep() async {
     setState(() {
       _isLoading = true;
     });
 
-    Provider.of<Auth>(context, listen: false).updateSplashSix(
+    Provider.of<Auth>(context, listen: false).updateDate(
         data: {
-          'is_splash_six': 1,
           'date_start': await storage.read(key: 'dateStart'),
           'date_end': await storage.read(key: 'dateEnd'),
           'email': await storage.read(key: 'email'),
@@ -38,7 +36,7 @@ class _DateInputScreenState extends State<DateInputScreen> {
         },
         error: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-            return DateInputScreen();
+            return UpdateDatePage();
           }));
         });
   }
@@ -102,7 +100,7 @@ class _DateInputScreenState extends State<DateInputScreen> {
                 height: 50,
                 width: 300,
                 child: ElevatedButton(
-                  onPressed: _isLoading ? null : () => _updateSplashSix(),
+                  onPressed: _isLoading ? null : () => _updateDatePrep(),
                   child: Text('Start Your Journey!',
                       style: whiteTextStyle.copyWith(fontSize: 16)),
                   style: ButtonStyle(

@@ -16,6 +16,7 @@ double spaceIconText = 21;
 double spaceListBoxLeft = 10;
 double spaceListBoxVertical = 18;
 double spaceTextIconOverview = 16;
+Color greenColor = const Color(0xff63BC55);
 
 TextStyle blackSemiBoldTextStyle = GoogleFonts.poppins(
   fontWeight: FontWeight.w600,

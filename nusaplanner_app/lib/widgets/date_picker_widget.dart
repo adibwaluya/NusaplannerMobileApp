@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nusaplanner_app/widgets/button_date_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DatePickerWidget extends StatefulWidget {
   const DatePickerWidget({Key? key}) : super(key: key);
@@ -15,6 +16,22 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
   DateTime? endDate;
   String dateStartString = "";
   String dateEndString = "";
+  String _dateEndString = "";
+
+  _loadDate() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _dateEndString = (prefs.getString('addDateEnd') ?? "");
+    });
+  }
+
+  _setDate(String date) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _dateEndString = date;
+    });
+    prefs.setString('addDateEnd', _dateEndString);
+  }
 
   String getStartText() {
     if (date == null) {
@@ -31,6 +48,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
       return 'Estimation of End Date';
     } else {
       dateEndString = DateFormat('dd/MM/yyyy').format(endDate!);
+
       // _setStoredEndDate(dateEndString);
       return dateEndString;
     }
@@ -67,6 +85,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
     setState(() {
       date = newDate;
       endDate = newEndDate;
+      _setDate(DateFormat('dd/MM/yyyy').format(endDate!));
     });
   }
 }

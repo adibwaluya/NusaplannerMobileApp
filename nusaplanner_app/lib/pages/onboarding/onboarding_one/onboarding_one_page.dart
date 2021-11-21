@@ -1,9 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:nusaplanner_app/auth/auth.dart';
 import 'package:nusaplanner_app/pages/Feed/feed_page.dart';
 import 'package:nusaplanner_app/pages/login/components/login_background.dart';
 import 'package:nusaplanner_app/pages/onboarding/onboarding_one/components/one_background.dart';
 import 'package:nusaplanner_app/pages/onboarding/onboarding_two/onboarding_two_page.dart';
+import 'package:provider/provider.dart';
 
 import '../../../theme.dart';
 
@@ -15,6 +18,29 @@ class OnboardingOnePage extends StatefulWidget {
 }
 
 class _OnboardingOnePageState extends State<OnboardingOnePage> {
+  bool _isLoading = false;
+  Text value = Text('');
+  late var email;
+  final storage = FlutterSecureStorage();
+
+  void _updateSplashOne() async {
+    setState(() {
+      _isLoading = true;
+    });
+    Provider.of<Auth>(context, listen: false).updateSplashOne(
+        data: {'is_splash_one': 1, 'email': await storage.read(key: 'email')},
+        success: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return OnboardingTwoPage();
+          }));
+        },
+        error: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return OnboardingOnePage();
+          }));
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,12 +78,7 @@ class _OnboardingOnePageState extends State<OnboardingOnePage> {
                     height: 50,
                     width: 180,
                     child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return OnboardingTwoPage();
-                        }));
-                      },
+                      onPressed: _isLoading ? null : () => _updateSplashOne(),
                       child: Text('Explore Now',
                           style: whiteTextStyle.copyWith(fontSize: 16)),
                       style: ButtonStyle(
