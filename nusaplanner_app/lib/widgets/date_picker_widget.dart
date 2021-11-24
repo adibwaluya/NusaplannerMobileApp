@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:intl/intl.dart';
+import 'package:nusaplanner_app/classes/user_sp.dart';
 import 'package:nusaplanner_app/widgets/button_date_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -11,7 +13,7 @@ class DatePickerWidget extends StatefulWidget {
 }
 
 class _DatePickerWidgetState extends State<DatePickerWidget> {
-  // final storage = FlutterSecureStorage();
+  final storage = FlutterSecureStorage();
   DateTime? date;
   DateTime? endDate;
   String dateStartString = "";
@@ -25,12 +27,20 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
     });
   }
 
-  _setDate(String date) async {
+  /* To be used soon! */
+  /* _setDate(String date) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       _dateEndString = date;
     });
-    prefs.setString('addDateEnd', _dateEndString);
+    await prefs.setString('addDateEnd', _dateEndString);
+  } */
+
+  _setUserDateEnd(String date) async {
+    setState(() {
+      _dateEndString = date;
+    });
+    await UserSimplePreferences.setDate(_dateEndString);
   }
 
   String getStartText() {
@@ -38,7 +48,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
       return 'Start of your study preparation';
     } else {
       dateStartString = DateFormat('dd/MM/yyyy').format(date!);
-      // _setStoredStartDate(dateStartString);
+      _setStoredStartDate(dateStartString);
       return dateStartString;
     }
   }
@@ -49,18 +59,18 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
     } else {
       dateEndString = DateFormat('dd/MM/yyyy').format(endDate!);
 
-      // _setStoredEndDate(dateEndString);
+      _setStoredEndDate(dateEndString);
       return dateEndString;
     }
   }
 
-  /* void _setStoredStartDate(String date) async {
-    await storage.write(key: 'startDate', value: date);
+  void _setStoredStartDate(String date) async {
+    await storage.write(key: 'dateStart', value: date);
   }
 
   void _setStoredEndDate(String date) async {
-    await storage.write(key: 'endDate', value: date);
-  } */
+    await storage.write(key: 'dateEnd', value: date);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +95,8 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
     setState(() {
       date = newDate;
       endDate = newEndDate;
-      _setDate(DateFormat('dd/MM/yyyy').format(endDate!));
+      // await _setDate(DateFormat('dd/MM/yyyy').format(endDate!));
+      _setUserDateEnd(DateFormat('dd/MM/yyyy').format(endDate!));
     });
   }
 }

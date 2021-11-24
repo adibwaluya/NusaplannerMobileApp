@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:nusaplanner_app/auth/auth.dart';
 import 'package:nusaplanner_app/classes/checkbox.dart';
+import 'package:nusaplanner_app/classes/user_sp.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -19,17 +20,39 @@ class _PlanPageState extends State<PlanPage> {
   bool? _checked = false;
   bool _isLoading = false;
   String dateEndString = "";
+  String userIdString = "";
+  int? userIdInt;
   var valueInt;
   var valueBool;
 
+  @override
+  void initState() {
+    super.initState();
+
+    // _loadDate();
+    dateEndString = UserSimplePreferences.getDate() ?? "";
+    // _loadUserId();
+    // _testLoadDate();
+  }
+
   final storage = FlutterSecureStorage();
 
+  // To be used asap
+  /* 
   _loadDate() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      dateEndString = (prefs.getString('addDateEnd') ?? '');
+      dateEndString =
+          (prefs.getString('userDateEnd') ?? ''); // Previously addDateEnd
     });
-  }
+  } */
+
+  /* _loadUserId() async {
+    userIdString = (await storage.read(key: 'id'))!;
+    setState(() {
+      userIdInt = int.parse(userIdString);
+    });
+  } */
 
   final firstTodolists = [
     CheckBoxState(
@@ -83,19 +106,12 @@ class _PlanPageState extends State<PlanPage> {
       _isLoading = true;
     });
     Provider.of<Auth>(context, listen: false).updateTodoList(
-        data: {'property': property, 'value': value, 'user_id': "1"},
+        data: {'property': property, 'value': value, 'user_id': userIdString},
         success: () {},
         error: () {});
   }
 
   @override
-  void initState() {
-    super.initState();
-
-    _loadDate();
-    // _testLoadDate();
-  }
-
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -165,6 +181,24 @@ class _PlanPageState extends State<PlanPage> {
                             style:
                                 blackSemiBoldTextStyle.copyWith(fontSize: 25),
                           ),
+                          Consumer<Auth>(
+                            builder: (context, auth, child) {
+                              if (auth.loggedIn) {
+                                // _loadUserId();
+                                return Text(
+                                  userIdString = auth.user.id.toString(),
+                                  style: blackSemiBoldTextStyle.copyWith(
+                                      fontSize: 25),
+                                );
+                              }
+                              return Text('No data');
+                            },
+                          ),
+                          /* Text(
+                            userIdString,
+                            style:
+                                blackSemiBoldTextStyle.copyWith(fontSize: 25),
+                          ), */
                           /* Consumer<Auth>(
                             builder: (context, auth, child) {
                               if (auth.loggedIn) {

@@ -4,6 +4,7 @@ import 'package:dio/dio.dart' as Dio;
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:nusaplanner_app/classes/user.dart';
+import 'package:nusaplanner_app/classes/user_sp.dart';
 import 'package:nusaplanner_app/utils/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,6 +19,7 @@ class Auth extends ChangeNotifier {
   bool authenticated = false;
   late User? authenticatedUser;
   late User? dateEnd; // To be updated!
+  String userIdString = "";
 
   get loggedIn {
     return authenticated;
@@ -38,17 +40,20 @@ class Auth extends ChangeNotifier {
           await dio().post('auth/login', data: json.encode(data));
 
       var token = json.decode(response.toString())['access_token'];
-      // var userId = json.decode(response.toString())['user']['id'];
+      var id = json.decode(response.toString())['user']['id'];
       var email = json.decode(response.toString())['user']['email'];
       var dateEnd = json.decode(response.toString())['user']['date_end'];
 
       this._setStoredToken(token);
-      // this._setStoredUserId(userId);
+      // this._setStoredUserId(id);
       this._setStoredEmail(email);
       this._setStoredDateEnd(dateEnd);
 
-      // _addUserId(userId);
-      _addDate(dateEnd);
+      await UserSimplePreferences.setDate(dateEnd);
+      print(id);
+      // await UserSimplePreferences.setUserId(id);
+      // _addDate(dateEnd);
+      // _addUserId(id);
       this.attempt(token: token);
 
       notifyListeners();
@@ -69,13 +74,15 @@ class Auth extends ChangeNotifier {
       var token = json.decode(response.toString())['access_token'];
       var email = json.decode(response.toString())['user']['email'];
       var dateEnd = json.decode(response.toString())['user']['date_end'];
-      // var userId = json.decode(response.toString())['user']['id'];
+      var id = json.decode(response.toString())['user']['id'];
       print(token);
       this._setStoredToken(token);
       this._setStoredEmail(email);
       this._setStoredDateEnd(dateEnd);
-      // this._setStoredUserId(userId);
-      _addDate(dateEnd);
+      // this._setStoredUserId(id);
+      await UserSimplePreferences.setDate(dateEnd);
+      // _addDate(dateEnd);
+      // _addUserId(id);
       this.attempt(token: token);
 
       notifyListeners();
@@ -258,14 +265,14 @@ class Auth extends ChangeNotifier {
     this.authenticated = false;
     this.authenticatedUser = null;
     await storage.delete(key: 'token');
-    await storage.delete(key: 'userId');
+
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.clear();
     //await storage.delete(key: 'dateEnd');
   }
 
   void _setStoredUserId(String id) async {
-    await storage.write(key: 'userId', value: id);
+    await storage.write(key: 'id', value: id);
   }
 
   void _setStoredToken(String token) async {
@@ -280,18 +287,19 @@ class Auth extends ChangeNotifier {
     await storage.write(key: 'dateEnd', value: dateEnd);
   }
 
-  _deleteDate() async {
+  /* _deleteDate() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.clear();
-  }
+  } */
 
   _addDate(String date) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('addDateEnd', date);
+    await prefs.setString('userDateEnd', date); // Previously addDateEnd
   }
 
   _addUserId(String id) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('addDateEnd', id);
+    var usedIdInt = int.parse(id);
+    await prefs.setInt('userId', usedIdInt); // Previously addUserId
   }
 }

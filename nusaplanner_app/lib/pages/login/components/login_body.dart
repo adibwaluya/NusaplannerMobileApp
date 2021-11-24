@@ -5,6 +5,7 @@ import 'package:nusaplanner_app/pages/login/login_page.dart';
 import 'package:nusaplanner_app/pages/signup/signup_page.dart';
 import 'package:nusaplanner_app/widgets/bottom_navigation.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../theme.dart';
 
@@ -20,6 +21,8 @@ class _LoginBodyState extends State<LoginBody> {
   final TextEditingController _passwordController = TextEditingController();
   //late final bool isSplashOne;
   bool _isLoading = false;
+  // String userIdString = "";
+  late int userIdInt;
 
   void displayDialog(context, title, text) => showDialog(
         context: context,
@@ -29,7 +32,21 @@ class _LoginBodyState extends State<LoginBody> {
         ),
       );
 
+  Future<int?> _loadUserId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      userIdInt = (prefs.getInt('addUserId') ?? 0);
+    });
+  }
+
   @override
+  void initState() {
+    super.initState();
+
+    _loadUserId();
+    // _testLoadDate();
+  }
+
   Widget build(BuildContext context) {
     Widget emailInput() {
       return Container(
