@@ -22,8 +22,22 @@ class _PlanPageState extends State<PlanPage> {
   String dateEndString = "";
   String userIdString = "";
   int? userIdInt;
-  var valueInt;
+  // var valueInt;
   var valueBool;
+
+  bool listLanguageOne(int a) => a == 0 ? false : true;
+  bool listLanguageTwo(int a) => a == 0 ? false : true;
+  bool listLanguageThree(int a) => a == 0 ? false : true;
+  bool listDocumentOne(int a) => a == 0 ? false : true;
+  bool listDocumentTwo(int a) => a == 0 ? false : true;
+  bool listDocumentThree(int a) => a == 0 ? false : true;
+  bool listBankOne(int a) => a == 0 ? false : true;
+  bool listVisaOne(int a) => a == 0 ? false : true;
+  bool listVisaTwo(int a) => a == 0 ? false : true;
+  bool listAnpOne(int a) => a == 0 ? false : true;
+  bool listAnpTwo(int a) => a == 0 ? false : true;
+  bool listDepOne(int a) => a == 0 ? false : true;
+  bool listDepTwo(int a) => a == 0 ? false : true;
 
   @override
   void initState() {
@@ -54,9 +68,10 @@ class _PlanPageState extends State<PlanPage> {
     });
   } */
 
-  final firstTodolists = [
+  /* final firstTodolists = [
     CheckBoxState(
         title: 'Register to a language course',
+        value: ,
         property: "planning_language_one"),
     CheckBoxState(
         title: 'Taking Exam to earn the language certificate',
@@ -99,7 +114,7 @@ class _PlanPageState extends State<PlanPage> {
         title: 'Buy Plane Ticket', property: "planning_departure_one"),
     CheckBoxState(
         title: 'Depart to Germany', property: "planning_departure_two")
-  ];
+  ]; */
 
   void apiCheckbox(property, value) async {
     setState(() {
@@ -194,40 +209,20 @@ class _PlanPageState extends State<PlanPage> {
                               return Text('No data');
                             },
                           ),
-                          /* Text(
-                            userIdString,
-                            style:
-                                blackSemiBoldTextStyle.copyWith(fontSize: 25),
-                          ), */
                           /* Consumer<Auth>(
                             builder: (context, auth, child) {
                               if (auth.loggedIn) {
+                                // _loadUserId();
                                 return Text(
-                                  auth.user.dateEnd,
+                                  auth.todolist.planning_language_one
+                                      .toString(),
                                   style: blackSemiBoldTextStyle.copyWith(
                                       fontSize: 25),
                                 );
                               }
-                              /* setState(() {
-                                this.dateEndString = dateEndString;
-                              }); */
                               return Text('No data');
                             },
                           ), */
-                          /* Consumer<Auth>(builder: (context, auth, child) {
-                            if (auth.loggedIn) {
-                              _getStoredEndDate();
-                              return Text(
-                                newDate,
-                                style: blackSemiBoldTextStyle.copyWith(
-                                    fontSize: 25),
-                              );
-                            } else if (!auth.loggedIn) {
-                              _getStoredEndDate();
-                              return Text(newDate);
-                            }
-                            return Text('No data');
-                          }), */
                           SizedBox(
                             height: 10,
                           ),
@@ -262,9 +257,91 @@ class _PlanPageState extends State<PlanPage> {
                                   ],
                                 ),
                                 children: [
-                                  ...firstTodolists
-                                      .map(buildSingleCheckbox)
-                                      .toList(),
+                                  Consumer<Auth>(
+                                    builder: (context, auth, child) {
+                                      if (auth.loggedIn) {
+                                        bool valIntToBool;
+                                        return CheckboxListTile(
+                                            title: Text(
+                                              'Register to a language course',
+                                              style: blackRegularTextStyle
+                                                  .copyWith(fontSize: 12),
+                                            ),
+                                            activeColor: greenColor,
+                                            value: valIntToBool =
+                                                listLanguageOne(auth.todolist
+                                                    .planning_language_one),
+                                            onChanged: (value) => setState(() {
+                                                  var valueInt;
+                                                  valIntToBool = value!;
+                                                  print(valIntToBool);
+                                                  valIntToBool
+                                                      ? valueInt = 1
+                                                      : valueInt = 0;
+                                                  apiCheckbox(
+                                                      "planning_language_one",
+                                                      valueInt);
+                                                }));
+                                      }
+                                      return Text('false');
+                                    },
+                                  ),
+                                  Consumer<Auth>(
+                                    builder: (context, auth, child) {
+                                      if (auth.loggedIn) {
+                                        var valIntToBool;
+                                        return CheckboxListTile(
+                                            title: Text(
+                                              'Taking Exam to earn the language certificate',
+                                              style: blackRegularTextStyle
+                                                  .copyWith(fontSize: 12),
+                                            ),
+                                            activeColor: greenColor,
+                                            value: valIntToBool =
+                                                listLanguageTwo(auth.todolist
+                                                    .planning_language_two),
+                                            onChanged: (value) => setState(() {
+                                                  var valueInt;
+                                                  valIntToBool = value!;
+                                                  valIntToBool
+                                                      ? valueInt = 1
+                                                      : valueInt = 0;
+                                                  apiCheckbox(
+                                                      "planning_language_two",
+                                                      valueInt);
+                                                }));
+                                      }
+                                      return Text('false');
+                                    },
+                                  ),
+                                  Consumer<Auth>(
+                                    builder: (context, auth, child) {
+                                      if (auth.loggedIn) {
+                                        var valIntToBool;
+                                        return CheckboxListTile(
+                                            title: Text(
+                                              'Earn the language certificate',
+                                              style: blackRegularTextStyle
+                                                  .copyWith(fontSize: 12),
+                                            ),
+                                            activeColor: greenColor,
+                                            value: valIntToBool =
+                                                listLanguageThree(auth.todolist
+                                                    .planning_language_three),
+                                            onChanged: (value) => setState(() {
+                                                  var valueInt;
+                                                  valIntToBool = value!;
+                                                  valIntToBool
+                                                      ? valueInt = 1
+                                                      : valueInt = 0;
+                                                  apiCheckbox(
+                                                      "planning_language_three",
+                                                      valueInt);
+                                                }));
+                                      }
+                                      return Text('false');
+                                    },
+                                  ),
                                 ],
                               ),
                             ),
@@ -303,9 +380,93 @@ class _PlanPageState extends State<PlanPage> {
                                   ],
                                 ),
                                 children: [
-                                  ...secondTodolists
+                                  /* ...secondTodolists
                                       .map(buildSingleCheckbox)
-                                      .toList(),
+                                      .toList(), */
+                                  Consumer<Auth>(
+                                    builder: (context, auth, child) {
+                                      if (auth.loggedIn) {
+                                        var valIntToBool;
+                                        return CheckboxListTile(
+                                            title: Text(
+                                              'Copy the necessary documents',
+                                              style: blackRegularTextStyle
+                                                  .copyWith(fontSize: 12),
+                                            ),
+                                            activeColor: greenColor,
+                                            value: valIntToBool =
+                                                listDocumentOne(auth.todolist
+                                                    .planning_document_one),
+                                            onChanged: (value) => setState(() {
+                                                  var valueInt;
+                                                  valIntToBool = value!;
+                                                  valIntToBool
+                                                      ? valueInt = 1
+                                                      : valueInt = 0;
+                                                  apiCheckbox(
+                                                      "planning_document_one",
+                                                      valueInt);
+                                                }));
+                                      }
+                                      return Text('false');
+                                    },
+                                  ),
+                                  Consumer<Auth>(
+                                    builder: (context, auth, child) {
+                                      if (auth.loggedIn) {
+                                        var valIntToBool;
+                                        return CheckboxListTile(
+                                            title: Text(
+                                              'Translate all the documents',
+                                              style: blackRegularTextStyle
+                                                  .copyWith(fontSize: 12),
+                                            ),
+                                            activeColor: greenColor,
+                                            value: valIntToBool =
+                                                listDocumentTwo(auth.todolist
+                                                    .planning_document_two),
+                                            onChanged: (value) => setState(() {
+                                                  var valueInt;
+                                                  valIntToBool = value!;
+                                                  valIntToBool
+                                                      ? valueInt = 1
+                                                      : valueInt = 0;
+                                                  apiCheckbox(
+                                                      "planning_document_two",
+                                                      valueInt);
+                                                }));
+                                      }
+                                      return Text('false');
+                                    },
+                                  ),
+                                  Consumer<Auth>(
+                                    builder: (context, auth, child) {
+                                      if (auth.loggedIn) {
+                                        var valIntToBool;
+                                        return CheckboxListTile(
+                                            title: Text(
+                                              'Certify the documents',
+                                              style: blackRegularTextStyle
+                                                  .copyWith(fontSize: 12),
+                                            ),
+                                            activeColor: greenColor,
+                                            value: valIntToBool =
+                                                listDocumentThree(auth.todolist
+                                                    .planning_document_three),
+                                            onChanged: (value) => setState(() {
+                                                  var valueInt;
+                                                  valIntToBool = value!;
+                                                  valIntToBool
+                                                      ? valueInt = 1
+                                                      : valueInt = 0;
+                                                  apiCheckbox(
+                                                      "planning_document_three",
+                                                      valueInt);
+                                                }));
+                                      }
+                                      return Text('false');
+                                    },
+                                  ),
                                 ],
                               ),
                             ),
@@ -344,9 +505,37 @@ class _PlanPageState extends State<PlanPage> {
                                   ],
                                 ),
                                 children: [
-                                  ...thirdTodolists
+                                  /* ...thirdTodolists
                                       .map(buildSingleCheckbox)
-                                      .toList(),
+                                      .toList(), */
+                                  Consumer<Auth>(
+                                    builder: (context, auth, child) {
+                                      if (auth.loggedIn) {
+                                        var valIntToBool;
+                                        return CheckboxListTile(
+                                            title: Text(
+                                              'Create your Bank Account',
+                                              style: blackRegularTextStyle
+                                                  .copyWith(fontSize: 12),
+                                            ),
+                                            activeColor: greenColor,
+                                            value: valIntToBool = listBankOne(
+                                                auth.todolist
+                                                    .planning_bankAccount_one),
+                                            onChanged: (value) => setState(() {
+                                                  var valueInt;
+                                                  valIntToBool = value!;
+                                                  valIntToBool
+                                                      ? valueInt = 1
+                                                      : valueInt = 0;
+                                                  apiCheckbox(
+                                                      "planning_bankAccount_one",
+                                                      valueInt);
+                                                }));
+                                      }
+                                      return Text('false');
+                                    },
+                                  ),
                                 ],
                               ),
                             ),
@@ -385,9 +574,65 @@ class _PlanPageState extends State<PlanPage> {
                                   ],
                                 ),
                                 children: [
-                                  ...fourthTodolists
+                                  /* ...fourthTodolists
                                       .map(buildSingleCheckbox)
-                                      .toList(),
+                                      .toList(), */
+                                  Consumer<Auth>(
+                                    builder: (context, auth, child) {
+                                      if (auth.loggedIn) {
+                                        var valIntToBool;
+                                        return CheckboxListTile(
+                                            title: Text(
+                                              'Apply for Visa',
+                                              style: blackRegularTextStyle
+                                                  .copyWith(fontSize: 12),
+                                            ),
+                                            activeColor: greenColor,
+                                            value: valIntToBool = listVisaOne(
+                                                auth.todolist
+                                                    .planning_visa_one),
+                                            onChanged: (value) => setState(() {
+                                                  var valueInt;
+                                                  valIntToBool = value!;
+                                                  valIntToBool
+                                                      ? valueInt = 1
+                                                      : valueInt = 0;
+                                                  apiCheckbox(
+                                                      "planning_visa_one",
+                                                      valueInt);
+                                                }));
+                                      }
+                                      return Text('false');
+                                    },
+                                  ),
+                                  Consumer<Auth>(
+                                    builder: (context, auth, child) {
+                                      if (auth.loggedIn) {
+                                        var valIntToBool;
+                                        return CheckboxListTile(
+                                            title: Text(
+                                              'Collect your Visa from the embassy',
+                                              style: blackRegularTextStyle
+                                                  .copyWith(fontSize: 12),
+                                            ),
+                                            activeColor: greenColor,
+                                            value: valIntToBool = listVisaTwo(
+                                                auth.todolist
+                                                    .planning_visa_two),
+                                            onChanged: (value) => setState(() {
+                                                  var valueInt;
+                                                  valIntToBool = value!;
+                                                  valIntToBool
+                                                      ? valueInt = 1
+                                                      : valueInt = 0;
+                                                  apiCheckbox(
+                                                      "planning_visa_two",
+                                                      valueInt);
+                                                }));
+                                      }
+                                      return Text('false');
+                                    },
+                                  ),
                                 ],
                               ),
                             ),
@@ -426,9 +671,63 @@ class _PlanPageState extends State<PlanPage> {
                                   ],
                                 ),
                                 children: [
-                                  ...fifthTodolists
+                                  /* ...fifthTodolists
                                       .map(buildSingleCheckbox)
-                                      .toList(),
+                                      .toList(), */
+                                  Consumer<Auth>(
+                                    builder: (context, auth, child) {
+                                      if (auth.loggedIn) {
+                                        var valIntToBool;
+                                        return CheckboxListTile(
+                                            title: Text(
+                                              'Apply for entrance examination (ANP)',
+                                              style: blackRegularTextStyle
+                                                  .copyWith(fontSize: 12),
+                                            ),
+                                            activeColor: greenColor,
+                                            value: valIntToBool = listAnpOne(
+                                                auth.todolist.planning_anp_one),
+                                            onChanged: (value) => setState(() {
+                                                  var valueInt;
+                                                  valIntToBool = value!;
+                                                  valIntToBool
+                                                      ? valueInt = 1
+                                                      : valueInt = 0;
+                                                  apiCheckbox(
+                                                      "planning_anp_one",
+                                                      valueInt);
+                                                }));
+                                      }
+                                      return Text('false');
+                                    },
+                                  ),
+                                  Consumer<Auth>(
+                                    builder: (context, auth, child) {
+                                      if (auth.loggedIn) {
+                                        var valIntToBool;
+                                        return CheckboxListTile(
+                                            title: Text(
+                                              'Receive the admission for the entrance examination (Zulassung)',
+                                              style: blackRegularTextStyle
+                                                  .copyWith(fontSize: 12),
+                                            ),
+                                            activeColor: greenColor,
+                                            value: valIntToBool = listAnpTwo(
+                                                auth.todolist.planning_anp_two),
+                                            onChanged: (value) => setState(() {
+                                                  var valueInt;
+                                                  valIntToBool = value!;
+                                                  valIntToBool
+                                                      ? valueInt = 1
+                                                      : valueInt = 0;
+                                                  apiCheckbox(
+                                                      "planning_anp_two",
+                                                      valueInt);
+                                                }));
+                                      }
+                                      return Text('false');
+                                    },
+                                  ),
                                 ],
                               ),
                             ),
@@ -467,9 +766,65 @@ class _PlanPageState extends State<PlanPage> {
                                   ],
                                 ),
                                 children: [
-                                  ...sixthTodolists
+                                  /* ...sixthTodolists
                                       .map(buildSingleCheckbox)
-                                      .toList(),
+                                      .toList(), */
+                                  Consumer<Auth>(
+                                    builder: (context, auth, child) {
+                                      if (auth.loggedIn) {
+                                        var valIntToBool;
+                                        return CheckboxListTile(
+                                            title: Text(
+                                              'Buy Plane Ticket',
+                                              style: blackRegularTextStyle
+                                                  .copyWith(fontSize: 12),
+                                            ),
+                                            activeColor: greenColor,
+                                            value: valIntToBool = listDepOne(
+                                                auth.todolist
+                                                    .planning_departure_one),
+                                            onChanged: (value) => setState(() {
+                                                  var valueInt;
+                                                  valIntToBool = value!;
+                                                  valIntToBool
+                                                      ? valueInt = 1
+                                                      : valueInt = 0;
+                                                  apiCheckbox(
+                                                      "planning_departure_one",
+                                                      valueInt);
+                                                }));
+                                      }
+                                      return Text('false');
+                                    },
+                                  ),
+                                  Consumer<Auth>(
+                                    builder: (context, auth, child) {
+                                      if (auth.loggedIn) {
+                                        var valIntToBool;
+                                        return CheckboxListTile(
+                                            title: Text(
+                                              'Depart to Germany',
+                                              style: blackRegularTextStyle
+                                                  .copyWith(fontSize: 12),
+                                            ),
+                                            activeColor: greenColor,
+                                            value: valIntToBool = listDepTwo(
+                                                auth.todolist
+                                                    .planning_departure_two),
+                                            onChanged: (value) => setState(() {
+                                                  var valueInt;
+                                                  valIntToBool = value!;
+                                                  valIntToBool
+                                                      ? valueInt = 1
+                                                      : valueInt = 0;
+                                                  apiCheckbox(
+                                                      "planning_departure_two",
+                                                      valueInt);
+                                                }));
+                                      }
+                                      return Text('false');
+                                    },
+                                  ),
                                 ],
                               ),
                             ),
@@ -490,7 +845,7 @@ class _PlanPageState extends State<PlanPage> {
     ));
   }
 
-  Widget buildSingleCheckbox(CheckBoxState checkbox) => CheckboxListTile(
+  /*  Widget buildSingleCheckbox(CheckBoxState checkbox) => CheckboxListTile(
         //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         controlAffinity: ListTileControlAffinity.trailing,
         activeColor: greenColor,
@@ -504,5 +859,5 @@ class _PlanPageState extends State<PlanPage> {
           checkbox.value ? valueInt = 1 : valueInt = 0;
           apiCheckbox(checkbox.property, valueInt);
         }),
-      );
+      ); */
 }

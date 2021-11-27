@@ -8,6 +8,7 @@ Dio dio() {
   // Previous ip-address: http://192.168.42.75:8000/api/
   dio.options.baseUrl = 'http://192.168.42.75:8000/api/';
 
+  // dio.interceptors.clear();
   dio.interceptors.add(InterceptorsWrapper(onRequest: (request, handler) async {
     request.headers['Accept'] = 'application/json';
     var token = await storage.read(key: 'token');

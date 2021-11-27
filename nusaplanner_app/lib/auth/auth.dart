@@ -3,10 +3,13 @@ import 'dart:convert';
 import 'package:dio/dio.dart' as Dio;
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:kommunicate_flutter/kommunicate_flutter.dart';
+import 'package:nusaplanner_app/classes/todolist.dart';
 import 'package:nusaplanner_app/classes/user.dart';
 import 'package:nusaplanner_app/classes/user_sp.dart';
 import 'package:nusaplanner_app/utils/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:kommunicate_flutter/kommunicate_flutter.dart';
 
 class Auth extends ChangeNotifier {
   final storage = new FlutterSecureStorage();
@@ -20,6 +23,7 @@ class Auth extends ChangeNotifier {
   late User? authenticatedUser;
   late User? dateEnd; // To be updated!
   String userIdString = "";
+  Todolist? createdTodoList;
 
   get loggedIn {
     return authenticated;
@@ -31,6 +35,10 @@ class Auth extends ChangeNotifier {
 
   get registered {
     return authenticated;
+  }
+
+  get todolist {
+    return createdTodoList;
   }
 
   Future signin(
@@ -55,6 +63,7 @@ class Auth extends ChangeNotifier {
       // _addDate(dateEnd);
       // _addUserId(id);
       this.attempt(token: token);
+      // this.attemptTodoList(token: token);
 
       notifyListeners();
 
@@ -72,19 +81,22 @@ class Auth extends ChangeNotifier {
           await dio().post('auth/register', data: json.encode(data));
 
       var token = json.decode(response.toString())['access_token'];
+      var id = json.decode(response.toString())['user']['id'];
       var email = json.decode(response.toString())['user']['email'];
       var dateEnd = json.decode(response.toString())['user']['date_end'];
-      var id = json.decode(response.toString())['user']['id'];
+
       print(token);
       this._setStoredToken(token);
       this._setStoredEmail(email);
       this._setStoredDateEnd(dateEnd);
+
       // this._setStoredUserId(id);
       await UserSimplePreferences.setDate(dateEnd);
+      print(id);
       // _addDate(dateEnd);
       // _addUserId(id);
       this.attempt(token: token);
-
+      // this.attemptTodoList(token: token);
       notifyListeners();
 
       success();
@@ -113,6 +125,51 @@ class Auth extends ChangeNotifier {
       this.authenticatedUser =
           User.fromJson(json.decode(response.toString())['data']);
       print(json.decode(response.toString())['data']);
+      notifyListeners();
+    } catch (e) {
+      _setUnauthenticated();
+    }
+  }
+
+  Future showTodoList(
+      {Map? data, required Function success, required Function error}) async {
+    try {
+      Dio.Response response =
+          await dio().post('auth/todo-lists', data: json.encode(data));
+
+      // this.createdTodoList =
+      //     Todolist.fromJson(json.decode(response.toString())['todolist']);
+      // var userId = json.decode(response.toString())['todolist']['user_id'];
+      // print(userId);
+      // this._setStoredUserId(userId);
+      var token = await storage.read(key: 'token');
+      print(token);
+      this.attemptTodoList(token: token);
+      notifyListeners();
+      success();
+    } catch (e) {
+      error();
+    }
+  }
+
+  void attemptTodoList({token = ''}) async {
+    if (token.toString().isNotEmpty) {
+      this.token = token;
+    }
+
+    // No preexisting token, just return. No attempt on authentication
+    if (this.token.toString().isEmpty) {
+      return;
+    }
+
+    try {
+      Dio.Response response = await dio().get(
+        'auth/get-todo-lists',
+      );
+
+      this.createdTodoList =
+          Todolist.fromJson(json.decode(response.toString())['todolist']);
+      // print(json.decode(response.toString())['data']);
       notifyListeners();
     } catch (e) {
       _setUnauthenticated();
@@ -256,7 +313,9 @@ class Auth extends ChangeNotifier {
     try {
       await dio().post('auth/logout');
       this._setUnauthenticated();
+      KommunicateFlutterPlugin.logout();
       notifyListeners();
+
       success();
     } catch (e) {}
   }
@@ -264,6 +323,7 @@ class Auth extends ChangeNotifier {
   void _setUnauthenticated() async {
     this.authenticated = false;
     this.authenticatedUser = null;
+    this.createdTodoList = null;
     await storage.delete(key: 'token');
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -271,8 +331,8 @@ class Auth extends ChangeNotifier {
     //await storage.delete(key: 'dateEnd');
   }
 
-  void _setStoredUserId(String id) async {
-    await storage.write(key: 'id', value: id);
+  void _setStoredUserId(String userid) async {
+    await storage.write(key: 'userId', value: userid);
   }
 
   void _setStoredToken(String token) async {

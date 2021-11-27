@@ -23,7 +23,15 @@ class _OnboardingOnePageState extends State<OnboardingOnePage> {
   late var email;
   final storage = FlutterSecureStorage();
 
-  void _updateSplashOne() async {
+  void displayDialog(context, title, text) => showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(title),
+          content: Text(text),
+        ),
+      );
+
+  /* void _updateSplashOne() async {
     setState(() {
       _isLoading = true;
     });
@@ -35,6 +43,43 @@ class _OnboardingOnePageState extends State<OnboardingOnePage> {
           }));
         },
         error: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return OnboardingOnePage();
+          }));
+        });
+  } */
+
+  void _createTodoList() async {
+    setState(() {
+      _isLoading = true;
+    });
+    Provider.of<Auth>(context, listen: false).showTodoList(
+        data: {
+          'planning_language_one': 0,
+          'planning_language_two': 0,
+          'planning_language_three': 0,
+          'planning_document_one': 0,
+          'planning_document_two': 0,
+          'planning_document_three': 0,
+          'planning_bankAccount_one': 0,
+          'planning_visa_one': 0,
+          'planning_visa_two': 0,
+          'planning_anp_one': 0,
+          'planning_anp_two': 0,
+          'planning_departure_one': 0,
+          'planning_departure_two': 0,
+          'user_id': await storage.read(key: 'id')
+        },
+        success: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return OnboardingTwoPage();
+          }));
+        },
+        error: () {
+          // displayDialog(context, 'Error Occured', 'Check your codes!');
+          // print(await storage.read(key: 'id'));
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text("Error. Cannot continue.")));
           Navigator.of(context).push(MaterialPageRoute(builder: (context) {
             return OnboardingOnePage();
           }));
@@ -78,7 +123,7 @@ class _OnboardingOnePageState extends State<OnboardingOnePage> {
                     height: 50,
                     width: 180,
                     child: ElevatedButton(
-                      onPressed: _isLoading ? null : () => _updateSplashOne(),
+                      onPressed: _isLoading ? null : () => _createTodoList(),
                       child: Text('Explore Now',
                           style: whiteTextStyle.copyWith(fontSize: 16)),
                       style: ButtonStyle(

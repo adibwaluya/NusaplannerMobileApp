@@ -8,7 +8,7 @@ import 'package:nusaplanner_app/pages/signup/signup_page.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await UserSimplePreferences.init();
   runApp(ChangeNotifierProvider(
@@ -36,6 +36,12 @@ class _MyAppState extends State<MyApp> {
     Provider.of<Auth>(context, listen: false).attempt(token: token);
   }
 
+  void _tryToShowTodoList() async {
+    var token = await storage.read(key: 'token');
+
+    Provider.of<Auth>(context, listen: false).attemptTodoList(token: token);
+  }
+
   /* _loadDate() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
@@ -53,6 +59,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     _tryToAuthenticate();
+    _tryToShowTodoList();
     super.initState();
 
     // _loadDate();

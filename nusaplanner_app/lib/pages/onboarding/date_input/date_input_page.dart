@@ -37,6 +37,9 @@ class _DateInputScreenState extends State<DateInputScreen> {
           }), (route) => false);
         },
         error: () {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(
+                  "Invalid input date. Please fill in the correct date!")));
           Navigator.of(context).push(MaterialPageRoute(builder: (context) {
             return DateInputScreen();
           }));
