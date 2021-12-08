@@ -15,4 +15,10 @@ class UserSimplePreferences {
       await _preferences?.setString('userId', id);
 
   static String getId() => _preferences?.getString('userId') ?? "";
+
+  static Future setTodolist(String data) async =>
+      await _preferences?.setString('userTodoListTest', data);
+
+  static String getTodolist() =>
+      _preferences?.getString('userTodoListTest') ?? "";
 }

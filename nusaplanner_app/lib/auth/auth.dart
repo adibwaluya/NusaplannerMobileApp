@@ -22,8 +22,22 @@ class Auth extends ChangeNotifier {
   bool authenticated = false;
   late User? authenticatedUser;
   late User? dateEnd; // To be updated!
-  String userIdString = "";
+  // String userIdString = "";
   Todolist? createdTodoList;
+
+  static var lanOne;
+  static var lanTwo;
+  static var lanThree;
+  var docOne;
+  var docTwo;
+  var docThree;
+  var baOne;
+  var visaOne;
+  var visaTwo;
+  var anpOne;
+  var anpTwo;
+  var depOne;
+  var depTwo;
 
   get loggedIn {
     return authenticated;
@@ -152,7 +166,7 @@ class Auth extends ChangeNotifier {
     }
   }
 
-  void attemptTodoList({token = ''}) async {
+  Future attemptTodoList({token = ''}) async {
     if (token.toString().isNotEmpty) {
       this.token = token;
     }
@@ -169,10 +183,105 @@ class Auth extends ChangeNotifier {
 
       this.createdTodoList =
           Todolist.fromJson(json.decode(response.toString())['todolist']);
-      // print(json.decode(response.toString())['data']);
+
+      /* await UserSimplePreferences.setTodolist(
+          json.decode(response.toString())['todolist']); */
+
+      /* Auth.lanOne = json.decode(response.toString())['todolist']['languageOne'];
+      Auth.lanTwo = json.decode(response.toString())['todolist']['languageTwo'];
+      Auth.lanThree =
+          json.decode(response.toString())['todolist']['languageThree'];
+      this.docOne = json.decode(response.toString())['todolist']['documentOne'];
+      this.docTwo = json.decode(response.toString())['todolist']['documentTwo'];
+      this.docThree =
+          json.decode(response.toString())['todolist']['documentThree'];
+      this.baOne = json.decode(response.toString())['todolist']['bankOne'];
+      this.visaOne = json.decode(response.toString())['todolist']['visaOne'];
+      this.visaTwo = json.decode(response.toString())['todolist']['visaTwo'];
+      this.anpOne = json.decode(response.toString())['todolist']['anpOne'];
+      this.anpTwo = json.decode(response.toString())['todolist']['anpTwo'];
+      this.depOne = json.decode(response.toString())['todolist']['depOne'];
+      this.depTwo = json.decode(response.toString())['todolist']['depTwo']; */
+
+      // print("Mastiin" + Auth.lanOne.toString());
+      // print(json.decode(response.toString())['todolist']);
+      print('API');
       notifyListeners();
     } catch (e) {
       _setUnauthenticated();
+    }
+  }
+
+  /* Future<List<Todolist>> fetchTodolist() async {
+    Dio.Response response = await dio().get(
+      'auth/get-todo-lists',
+    );
+    if (response.statusCode == 200) {
+      /* {
+    "todolist": {
+        "languageOne": 0,
+        "languageTwo": 0,
+        "languageThree": 0,
+        "documentOne": 0,
+        "documentTwo": 0,
+        "documentThree": 0,
+        "bankOne": 0,
+        "visaOne": 0,
+        "visaTwo": 0,
+        "anpOne": 0,
+        "anpTwo": 0,
+        "depOne": 0,
+        "depTwo": 0
+    }
+}*/
+      print(response.data['todolist']);
+      var parsed = json.decode(response.data);
+      // print("parsed: " + parsed);
+      List jsonResponse = parsed['todolist'] as List;
+      // print("List" + jsonResponse.toString());
+
+      return jsonResponse.map((job) => new Todolist.fromJson(job)).toList();
+    } else {
+      print('Error. Could not load data');
+      throw Exception('Failed to load data');
+    }
+  } */
+
+  Future<Todolist> fetchTodolist() async {
+    Dio.Response response = await dio().get(
+      'auth/get-todo-lists',
+    );
+    if (response.statusCode == 200) {
+      /* {
+    "todolist": {
+        "languageOne": 0,
+        "languageTwo": 0,
+        "languageThree": 0,
+        "documentOne": 0,
+        "documentTwo": 0,
+        "documentThree": 0,
+        "bankOne": 0,
+        "visaOne": 0,
+        "visaTwo": 0,
+        "anpOne": 0,
+        "anpTwo": 0,
+        "depOne": 0,
+        "depTwo": 0
+    }
+}*/
+
+      print(response.data['todolist']);
+      // var parsed = json.decode(response.data);
+      // print("parsed: " + parsed);
+      // List jsonResponse = parsed['todolist'] as List;
+      // print("List" + jsonResponse.toString());
+      Map apiResponse = response.data;
+
+      return new Todolist.fromJson(
+          json.decode(response.toString())['todolist']);
+    } else {
+      print('Error. Could not load data');
+      throw Exception('Failed to load data');
     }
   }
 
@@ -352,7 +461,7 @@ class Auth extends ChangeNotifier {
     await prefs.clear();
   } */
 
-  _addDate(String date) async {
+  /* _addDate(String date) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('userDateEnd', date); // Previously addDateEnd
   }
@@ -361,5 +470,5 @@ class Auth extends ChangeNotifier {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var usedIdInt = int.parse(id);
     await prefs.setInt('userId', usedIdInt); // Previously addUserId
-  }
+  } */
 }

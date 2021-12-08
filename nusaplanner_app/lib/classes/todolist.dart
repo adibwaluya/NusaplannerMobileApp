@@ -1,6 +1,6 @@
 class Todolist {
-  int id;
-  int userId;
+  /* int id;
+  int userId; */
   int planningLanguageOne;
   int planningLanguageTwo;
   int planningLanguageThree;
@@ -16,8 +16,8 @@ class Todolist {
   int planningDepartureTwo;
 
   Todolist(
-      {required this.id,
-      required this.userId,
+      {/* required this.id,
+      required this.userId, */
       required this.planningLanguageOne,
       required this.planningLanguageTwo,
       required this.planningLanguageThree,
@@ -34,8 +34,8 @@ class Todolist {
 
   factory Todolist.fromJson(Map<String, dynamic> json) {
     return Todolist(
-        id: json['id'],
-        userId: json['userId'],
+        /* id: json['id'],
+        userId: json['userId'], */
         planningLanguageOne: json['languageOne'],
         planningLanguageTwo: json['languageTwo'],
         planningLanguageThree: json['languageThree'],

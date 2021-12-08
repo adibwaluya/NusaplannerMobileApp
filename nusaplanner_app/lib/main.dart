@@ -60,6 +60,9 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     _tryToAuthenticate();
     _tryToShowTodoList();
+    /* Auth.lanOne.toString();
+    Auth.lanTwo.toString();
+    Auth.lanThree.toString(); */
     super.initState();
 
     // _loadDate();

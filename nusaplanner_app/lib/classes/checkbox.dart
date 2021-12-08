@@ -4,5 +4,5 @@ class CheckBoxState {
   final String property;
 
   CheckBoxState(
-      {required this.title, this.value = false, required this.property});
+      {required this.title, required this.value, required this.property});
 }
