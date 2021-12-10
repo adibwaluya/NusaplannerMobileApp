@@ -8,6 +8,7 @@ Color darkPurpleColor = Color(0xff2E157C);
 Color greyColor = Color(0xffEAEAEA);
 Color greyBorderColor = Color(0xffC4C4C4);
 Color whiteColor = Color(0xffFFFFFF);
+Color redColor = Color(0xffFF0000);
 Color blackColor = Color(0xff000000);
 
 double edge = 28;

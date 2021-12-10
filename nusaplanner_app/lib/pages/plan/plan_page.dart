@@ -32,26 +32,8 @@ class _PlanPageState extends State<PlanPage> {
   var valueBool;
   late var token;
   Todolist? createdTodoList;
-  // late final firstTodolists;
-  // late final secondTodolists;
-  // late final thirdTodolists;
-  // late final fourthTodolists;
-  // late final fifthTodolists;
-  // late final sixthTodolists;
 
   bool listLanguageOne(int a) => a == 0 ? false : true;
-  /* bool listLanguageTwo(int a) => a == 0 ? false : true;
-  bool listLanguageThree(int a) => a == 0 ? false : true;
-  bool listDocumentOne(int a) => a == 0 ? false : true;
-  bool listDocumentTwo(int a) => a == 0 ? false : true;
-  bool listDocumentThree(int a) => a == 0 ? false : true;
-  bool listBankOne(int a) => a == 0 ? false : true;
-  bool listVisaOne(int a) => a == 0 ? false : true;
-  bool listVisaTwo(int a) => a == 0 ? false : true;
-  bool listAnpOne(int a) => a == 0 ? false : true;
-  bool listAnpTwo(int a) => a == 0 ? false : true;
-  bool listDepOne(int a) => a == 0 ? false : true;
-  bool listDepTwo(int a) => a == 0 ? false : true; */
 
   var lanOne;
   var lanTwo;
@@ -68,15 +50,6 @@ class _PlanPageState extends State<PlanPage> {
   var depTwo;
   String testlanOne = "";
 
-  /* Future<String?> _loadData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      userTodoListTest =
-          (prefs.getString('userTodoListTest') ?? ''); // Previously addDateEnd
-      // print(userTodoListTest);
-    });
-  } */
-
   late Future testApi;
   late Future testApiTwo;
   late Future testApiThree;
@@ -87,109 +60,14 @@ class _PlanPageState extends State<PlanPage> {
   @override
   void initState() {
     _func = Auth().fetchTodolist();
-    // print(userTodoListTest);
-    // print("Ini " + Auth.lanOne.toString());
     super.initState();
-
-    /* testApi = Auth.lanOne;
-    testApiTwo = Auth.lanTwo;
-    testApiThree = Auth.lanThree; */
 
     userTodoListTest = UserSimplePreferences.getTodolist() ?? "";
     // print(userTodoListTest);
     dateEndString = UserSimplePreferences.getDate() ?? "";
-    /* firstTodolists = [
-      CheckBoxState(
-          title: 'Register to a language course',
-          value: Auth.lanOne.toString() == "1" ? true : false,
-          property: "planning_language_one"),
-      CheckBoxState(
-          title: 'Taking Exam to earn the language certificate',
-          value: Auth.lanTwo.toString() == "1" ? true : false,
-          property: "planning_language_two"),
-      CheckBoxState(
-          title: 'Earn the language certificate',
-          value: Auth.lanThree.toString() == "1" ? true : false,
-          property: "planning_language_three"),
-    ]; */
-    // print("Ini adalah " + Auth.lanOne.toString());
-    /* secondTodolists = [
-      CheckBoxState(
-          title: 'Copy the necessary documents',
-          value: docOne == "1" ? true : false,
-          property: "planning_document_one"),
-      CheckBoxState(
-          title: 'Translate all the documents',
-          value: docTwo == "1" ? true : false,
-          property: "planning_document_two"),
-      CheckBoxState(
-          title: 'Certify the documents',
-          value: docThree == "1" ? true : false,
-          property: "planning_document_three"),
-    ];
-    thirdTodolists = [
-      CheckBoxState(
-          title: 'Create your Bank Account',
-          value: baOne == "1" ? true : false,
-          property: "planning_bankAccount_one"),
-    ];
-    fourthTodolists = [
-      CheckBoxState(
-          title: 'Apply for Visa',
-          value: visaOne == "1" ? true : false,
-          property: "planning_visa_one"),
-      CheckBoxState(
-          title: 'Collect your Visa from the embassy',
-          value: visaTwo == "1" ? true : false,
-          property: "planning_visa_two"),
-    ];
-    fifthTodolists = [
-      CheckBoxState(
-          title: 'Apply for entrance examination (ANP)',
-          value: anpOne == "1" ? true : false,
-          property: "planning_anp_one"),
-      CheckBoxState(
-          title:
-              'Receive the admission for the entrance examination (Zulassung)',
-          value: anpTwo == "1" ? true : false,
-          property: "planning_anp_two")
-    ];
-    sixthTodolists = [
-      CheckBoxState(
-          title: 'Buy Plane Ticket',
-          value: depOne == "1" ? true : false,
-          property: "planning_departure_one"),
-      CheckBoxState(
-          title: 'Depart to Germany',
-          value: depTwo == "1" ? true : false,
-          property: "planning_departure_two")
-    ]; */
   }
 
   final storage = FlutterSecureStorage();
-
-  /* _loadUserId() async {
-    userIdString = (await storage.read(key: 'id'))!;
-    setState(() {
-      userIdInt = int.parse(userIdString);
-    });
-  } */
-
-  // To be used asap
-  /* final firstTodolists = [
-    CheckBoxState(
-        title: 'Register to a language course',
-        value: Auth.lanOne.toString() == "1" ? true : false,
-        property: "planning_language_one"),
-    CheckBoxState(
-        title: 'Taking Exam to earn the language certificate',
-        value: Auth.lanTwo.toString() == "1" ? true : false,
-        property: "planning_language_two"),
-    CheckBoxState(
-        title: 'Earn the language certificate',
-        value: Auth.lanThree.toString() == "1" ? true : false,
-        property: "planning_language_three"),
-  ]; */
 
   void _getTodolistApi() async {
     Provider.of<Auth>(context, listen: false)
@@ -219,6 +97,46 @@ class _PlanPageState extends State<PlanPage> {
       future: _func,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
+          var checkboxListLables = [
+            'Register to a language course',
+            'Taking Exam to earn the language certificate',
+            'Earn the language certificate'
+          ];
+          Map<String, bool> checkboxListValues = {};
+          /* List<Widget> _checkboxList() {
+            return checkboxListLables
+                .map(
+                  (label) => CheckboxListTile(
+                      title: Text(label),
+                      value: checkboxListValues[label] ?? false,
+                      onChanged: (newValue) {
+                        setState(() {
+                          if (checkboxListValues[label] == null) {
+                            checkboxListValues[label] = true;
+                          }
+                          checkboxListValues[label] = !checkboxListValues[label]!;
+                        });
+                      }),
+                )
+                .toList();
+          } */
+
+          Widget buildSingleCheckbox(CheckBoxState checkbox) =>
+              CheckboxListTile(
+                //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                controlAffinity: ListTileControlAffinity.trailing,
+                activeColor: greenColor,
+                value: checkbox.value,
+                title: Text(
+                  checkbox.title,
+                  style: blackRegularTextStyle.copyWith(fontSize: 12),
+                ),
+                onChanged: (value) => setState(() {
+                  checkbox.value = value!;
+                  checkbox.value ? valueInt = 1 : valueInt = 0;
+                  apiCheckbox(checkbox.property, valueInt);
+                }),
+              );
           /* Code*/
           // Todolist? data = snapshot.data;
           final firstTodolists = [
@@ -425,6 +343,11 @@ class _PlanPageState extends State<PlanPage> {
                                         ],
                                       ),
                                       children: [
+                                        ...firstTodolists
+                                            .map(buildSingleCheckbox)
+                                            .toList(),
+                                      ]
+                                      /* [
                                         /* ...firstTodolists
                                             .map((todolist) =>
                                                 buildSingleCheckbox(todolist))
@@ -433,6 +356,8 @@ class _PlanPageState extends State<PlanPage> {
                                         ...firstTodolists
                                             .map(buildSingleCheckbox)
                                             .toList(),
+
+                                            
                                         /* Consumer<Auth>(
                                       builder: (context, auth, child) {
                                         if (auth.loggedIn) {
@@ -518,7 +443,8 @@ class _PlanPageState extends State<PlanPage> {
                                         return Text('false');
                                       },
                                     ), */
-                                      ],
+                                      ] */
+                                      ,
                                     ),
                                   ),
                                 ),
@@ -1055,20 +981,4 @@ class _PlanPageState extends State<PlanPage> {
       },
     ));
   }
-
-  Widget buildSingleCheckbox(CheckBoxState checkbox) => CheckboxListTile(
-        //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        controlAffinity: ListTileControlAffinity.trailing,
-        activeColor: greenColor,
-        value: checkbox.value,
-        title: Text(
-          checkbox.title,
-          style: blackRegularTextStyle.copyWith(fontSize: 12),
-        ),
-        onChanged: (value) => setState(() {
-          checkbox.value = value!;
-          checkbox.value ? valueInt = 1 : valueInt = 0;
-          apiCheckbox(checkbox.property, valueInt);
-        }),
-      );
 }
