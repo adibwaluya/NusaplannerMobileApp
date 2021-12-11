@@ -12,6 +12,7 @@ Color redColor = Color(0xffFF0000);
 Color blackColor = Color(0xff000000);
 
 double edge = 28;
+double spaceThirty = 30;
 double spaceToHeader = 25;
 double spaceIconText = 21;
 double spaceListBoxLeft = 10;

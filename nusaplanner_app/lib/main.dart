@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:nusaplanner_app/auth/auth.dart';
 import 'package:nusaplanner_app/classes/user_sp.dart';
+import 'package:nusaplanner_app/pages/Feed/details/visa_detail.dart/visa_screen_one.dart';
 import 'package:nusaplanner_app/pages/Feed/feed_page.dart';
 import 'package:nusaplanner_app/pages/login/login_page.dart';
 import 'package:nusaplanner_app/pages/signup/signup_page.dart';
@@ -73,11 +74,10 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        /* routes: {
-        '/': (context) => LoginPage(),
-        '/feed-page': (context) => FeedPage(),
-        '/sign-up': (context) => SignupPage(),
-      }, */
+        routes: {
+          '/sign-up': (context) => SignupPage(),
+          '/visa-overview': (context) => VisaScreenOne(),
+        },
         home: LoginPage());
   }
 }

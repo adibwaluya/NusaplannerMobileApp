@@ -29,7 +29,7 @@ class _MyHeaderState extends State<MyHeader> {
       clipper: MyClipper(),
       child: Container(
         padding: EdgeInsets.only(left: 20, top: 45, right: 20),
-        height: 350,
+        height: 300,
         width: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -39,9 +39,6 @@ class _MyHeaderState extends State<MyHeader> {
               Color(0xFF3383CD),
               Color(0xFF11249F),
             ],
-          ),
-          image: DecorationImage(
-            image: AssetImage("assets/images/virus.png"),
           ),
         ),
         child: widget.iconleft
@@ -63,7 +60,7 @@ class _MyHeaderState extends State<MyHeader> {
                       children: <Widget>[
                         Positioned(
                           top: (widget.offset < 0) ? 0 : widget.offset,
-                          child: SvgPicture.asset(
+                          child: Image.asset(
                             widget.image,
                             width: 220,
                             fit: BoxFit.fitWidth,
@@ -72,7 +69,7 @@ class _MyHeaderState extends State<MyHeader> {
                         ),
                         Positioned(
                           top: 35 - widget.offset / 2,
-                          left: 230,
+                          left: 220,
                           child: Padding(
                             padding: const EdgeInsets.only(top: 10.0),
                             child: Text(
@@ -108,13 +105,13 @@ class _MyHeaderState extends State<MyHeader> {
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 10),
                   Expanded(
                     child: Stack(
                       children: <Widget>[
                         Positioned(
                           top: (widget.offset < 0) ? 0 : widget.offset,
-                          child: SvgPicture.asset(
+                          child: Image.asset(
                             widget.image,
                             width: 230,
                             fit: BoxFit.fitWidth,

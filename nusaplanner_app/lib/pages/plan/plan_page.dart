@@ -1,16 +1,10 @@
-import 'dart:convert';
-
-import 'package:dio/dio.dart' as Dio;
-
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:nusaplanner_app/auth/auth.dart';
 import 'package:nusaplanner_app/classes/checkbox.dart';
 import 'package:nusaplanner_app/classes/todolist.dart';
 import 'package:nusaplanner_app/classes/user_sp.dart';
-import 'package:nusaplanner_app/utils/dio.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../theme.dart';
 
@@ -34,6 +28,7 @@ class _PlanPageState extends State<PlanPage> {
   Todolist? createdTodoList;
 
   bool listLanguageOne(int a) => a == 0 ? false : true;
+  bool visibilityTest = false;
 
   var lanOne;
   var lanTwo;
@@ -275,21 +270,29 @@ class _PlanPageState extends State<PlanPage> {
                                   style: blackSemiBoldTextStyle.copyWith(
                                       fontSize: 25),
                                 ),
-                                Consumer<Auth>(
-                                  builder: (context, auth, child) {
-                                    if (auth.loggedIn) {
-                                      // _loadUserId();
-                                      return Text(
-                                        userIdString = auth.user.id.toString(),
-                                        style: blackSemiBoldTextStyle.copyWith(
-                                            fontSize: 25),
-                                      );
-                                    }
-                                    return Text('No data');
-                                  },
+                                Visibility(
+                                  visible: false,
+                                  child: Consumer<Auth>(
+                                    builder: (context, auth, child) {
+                                      if (auth.loggedIn) {
+                                        // _loadUserId();
+                                        return Text(
+                                          userIdString =
+                                              auth.user.id.toString(),
+                                          style: blackSemiBoldTextStyle
+                                              .copyWith(fontSize: 25),
+                                        );
+                                      }
+                                      return Text('No data');
+                                    },
+                                  ),
                                 ),
-                                Text((snapshot.data!.planningLanguageOne)
-                                    .toString()),
+                                Visibility(
+                                  visible: false,
+                                  child: Text(
+                                      (snapshot.data!.planningLanguageOne)
+                                          .toString()),
+                                ),
                                 /* Consumer<Auth>(
                                   builder: (context, auth, child) {
                                     if (auth.loggedIn) {

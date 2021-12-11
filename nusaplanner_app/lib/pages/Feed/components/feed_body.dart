@@ -7,6 +7,7 @@ import 'package:nusaplanner_app/classes/preparation.dart';
 import 'package:nusaplanner_app/classes/tool.dart';
 import 'package:nusaplanner_app/models/carousel_model.dart';
 import 'package:nusaplanner_app/pages/Feed/components/feed_background.dart';
+import 'package:nusaplanner_app/pages/Feed/details/visa_detail.dart/visa_screen_one.dart';
 import 'package:nusaplanner_app/pages/inbox/inbox_page.dart';
 import 'package:nusaplanner_app/pages/profile/update_date_page.dart';
 import 'package:nusaplanner_app/widgets/article_card.dart';
@@ -31,211 +32,265 @@ class FeedBody extends StatefulWidget {
 class _FeedBodyState extends State<FeedBody> {
   bool _isLoading = false;
 
+  void _loading() {
+    CircularProgressIndicator();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       bottom: false,
-      child: Padding(
-        padding: EdgeInsets.only(top: edge),
-        child: ListView(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: edge),
-              child: Text(
-                'Your Dashboard',
-                style: blackSemiBoldTextStyle.copyWith(
-                  fontSize: 24,
+      child: WillPopScope(
+        onWillPop: () async {
+          print('Back button pressed!');
+
+          return false;
+        },
+        child: Padding(
+          padding: EdgeInsets.only(top: edge),
+          child: ListView(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: edge),
+                child: Text(
+                  'Your Dashboard',
+                  style: blackSemiBoldTextStyle.copyWith(
+                    fontSize: 24,
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: edge),
-              child: Text(
-                'Prepare your study to Germany thoroughly!',
-                style: greyTextStyle.copyWith(
-                  fontSize: 16,
+              Padding(
+                padding: EdgeInsets.only(left: edge),
+                child: Text(
+                  'Prepare your study to Germany thoroughly!',
+                  style: greyTextStyle.copyWith(
+                    fontSize: 16,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: spaceToHeader,
-            ),
-            CarouselModel(),
-            SizedBox(
-              height: spaceToHeader,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: edge, top: edge),
-              child: Text(
-                'General Overview',
-                style: blackSemiBoldTextStyle.copyWith(
-                  fontSize: 24,
+              SizedBox(
+                height: spaceToHeader,
+              ),
+              CarouselModel(),
+              SizedBox(
+                height: spaceToHeader,
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: edge, top: edge),
+                child: Text(
+                  'General Overview',
+                  style: blackSemiBoldTextStyle.copyWith(
+                    fontSize: 24,
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: edge),
-              child: Text(
-                'Bachelor Study to Germany',
-                style: greyTextStyle.copyWith(
-                  fontSize: 16,
+              Padding(
+                padding: EdgeInsets.only(left: edge),
+                child: Text(
+                  'Bachelor Study to Germany',
+                  style: greyTextStyle.copyWith(
+                    fontSize: 16,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: spaceToHeader,
-            ),
-            Container(
-              child: Column(
-                children: [
-                  PreparationCard(
-                    Preparation(
-                      1,
-                      'Language Course',
-                      'assets/images/language.png',
-                      "3.5",
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  PreparationCard(
-                    Preparation(
-                      2,
-                      'List of Documents',
-                      'assets/images/documents.png',
-                      "1",
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  PreparationCard(
-                    Preparation(
-                      3,
-                      'Visa',
-                      'assets/images/visa.png',
-                      "1.5",
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  PreparationCard(
-                    Preparation(
-                      3,
-                      'Entrance Exam',
-                      'assets/images/exam.png',
-                      "1.5",
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  PreparationCard(
-                    Preparation(
-                      3,
-                      'Departure',
-                      'assets/images/departure.png',
-                      "1",
-                    ),
-                  ),
-                ],
+              SizedBox(
+                height: spaceToHeader,
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: edge, top: edge),
-              child: Text(
-                'Tools',
-                style: blackSemiBoldTextStyle.copyWith(
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: edge),
-              child: Text(
-                'Necessary instruments which can help you prepare your study',
-                style: greyTextStyle.copyWith(
-                  fontSize: 16,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: spaceToHeader,
-            ),
-            Container(
-              height: 160,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  SizedBox(
-                    width: edge,
-                  ),
-                  ElevatedButton(
-                    onPressed: () => Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return UpdateDatePage();
-                    })),
-                    child: ToolCard(
-                      Tool('Calendar', 'assets/images/calendar.png'),
-                    ),
-                    style: ButtonStyle(
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
+              Container(
+                child: Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        /* Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return UpdateDatePage(); */
+                        /*  Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return VisaScreenOne();
+                        })); */
+                      },
+                      child: PreparationCard(
+                        Preparation(
+                          1,
+                          'Language Course',
+                          'assets/images/language.png',
+                          "3.5",
                         ),
-                        foregroundColor:
-                            MaterialStateProperty.all<Color>(whiteColor),
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            Color(0xffF6F7F8))),
-                  ),
-                  SizedBox(
-                    width: 50,
-                  ),
-                  Consumer<Auth>(
-                    builder: (context, auth, child) {
-                      if (auth.loggedIn) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5),
-                          child: ElevatedButton(
-                            onPressed: _isLoading
-                                ? null
-                                : () => Navigator.of(context).push(
-                                        MaterialPageRoute(builder: (context) {
-                                      return LaunchChat();
-                                    })),
-                            child: ToolCard(
-                              Tool('Live Chat', 'assets/images/chat.png'),
-                            ),
-                            style: ButtonStyle(
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                ),
-                                foregroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        whiteColor),
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        Color(0xffF6F7F8))),
-                          ),
-                        );
-                      }
-                      return Text('No data');
-                    },
-                  ),
-                ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    PreparationCard(
+                      Preparation(
+                        2,
+                        'List of Documents',
+                        'assets/images/documents.png',
+                        "1",
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return VisaScreenOne();
+                        }));
+                      },
+                      child: PreparationCard(
+                        Preparation(
+                          3,
+                          'Visa',
+                          'assets/images/visa.png',
+                          "1.5",
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    PreparationCard(
+                      Preparation(
+                        3,
+                        'Entrance Exam',
+                        'assets/images/exam.png',
+                        "1.5",
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    PreparationCard(
+                      Preparation(
+                        3,
+                        'Departure',
+                        'assets/images/departure.png',
+                        "1",
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            /*  SizedBox(
-              height: spaceToHeader,
-            ), */
-          ],
+              Padding(
+                padding: EdgeInsets.only(left: edge, top: edge),
+                child: Text(
+                  'Tools',
+                  style: blackSemiBoldTextStyle.copyWith(
+                    fontSize: 24,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: edge),
+                child: Text(
+                  'Necessary instruments which can help you prepare your study',
+                  style: greyTextStyle.copyWith(
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: spaceToHeader,
+              ),
+              Container(
+                height: 160,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    SizedBox(
+                      width: edge,
+                    ),
+                    ElevatedButton(
+                      onPressed: () => Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return UpdateDatePage();
+                      })),
+                      child: ToolCard(
+                        Tool('Calendar', 'assets/images/calendar.png'),
+                      ),
+                      style: ButtonStyle(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                          foregroundColor:
+                              MaterialStateProperty.all<Color>(whiteColor),
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Color(0xffF6F7F8))),
+                    ),
+                    SizedBox(
+                      width: 50,
+                    ),
+                    Consumer<Auth>(
+                      builder: (context, auth, child) {
+                        if (auth.loggedIn) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 5),
+                            child: ElevatedButton(
+                              onPressed: /* _isLoading
+                                  ? null
+                                  :  */
+                                  () async /* {
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (context) {
+                                  return LaunchChat();
+                                }));
+                              } */
+                                  {
+                                dynamic user = {
+                                  'userId':
+                                      '${auth.user.id}', //Replace it with the userId of the logged in user
+                                };
+                                dynamic conversationObject = {
+                                  'appId':
+                                      '34ff17301367d14868f0dff1390c0b832', // The [APP_ID](https://dashboard.kommunicate.io/settings/install) obtained from Kommunicate dashboard.
+                                  'kmUser': jsonEncode(user)
+                                };
+
+                                KommunicateFlutterPlugin.buildConversation(
+                                        conversationObject)
+                                    .then((clientConversationId) {
+                                  print("Conversation builder success : " +
+                                      clientConversationId.toString());
+                                }).catchError((error) {
+                                  print("Conversation builder error : " +
+                                      error.toString());
+                                });
+                              },
+                              child: ToolCard(
+                                Tool('Live Chat', 'assets/images/chat.png'),
+                              ),
+                              style: ButtonStyle(
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                  ),
+                                  foregroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          whiteColor),
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Color(0xffF6F7F8))),
+                            ),
+                          );
+                        }
+                        return Text('No data');
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              /*  SizedBox(
+                height: spaceToHeader,
+              ), */
+            ],
+          ),
         ),
       ),
     );

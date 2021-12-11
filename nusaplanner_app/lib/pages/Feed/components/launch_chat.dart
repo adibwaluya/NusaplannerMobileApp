@@ -18,20 +18,12 @@ class LaunchChat extends StatefulWidget {
 
 class _LaunchChatState extends State<LaunchChat> {
   @override
-  void initState() {
-    super.initState();
-    /* Future.delayed(Duration(seconds: 5), () {
-      CircularProgressIndicator();
-    }); */
-  }
-
-  @override
   Widget build(BuildContext context) {
     bool _isLoading = false;
 
     Future _launcChat() async {
-      await new Future.delayed(const Duration(seconds: 6), () {});
-      return CircularProgressIndicator(); /* Consumer<Auth>(
+      await new Future.delayed(const Duration(seconds: 3), () {});
+      return Consumer<Auth>(
         builder: (context, auth, child) {
           if (auth.loggedIn) {
             dynamic user = {
@@ -54,7 +46,7 @@ class _LaunchChatState extends State<LaunchChat> {
           }
           return Text('Almost there...');
         },
-      ); */
+      );
     }
 
     return Scaffold(
@@ -62,9 +54,17 @@ class _LaunchChatState extends State<LaunchChat> {
           child: FutureBuilder(
         future: _launcChat(),
         builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return new Center(
+              child: new CircularProgressIndicator(),
+            );
+          }
           if (snapshot.hasData) {
             return Consumer<Auth>(
               builder: (context, auth, child) {
+                setState(() {
+                  _isLoading = true;
+                });
                 if (auth.loggedIn) {
                   dynamic user = {
                     'userId':

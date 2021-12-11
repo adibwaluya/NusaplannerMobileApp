@@ -48,10 +48,7 @@ class _UpdateDatePageState extends State<UpdateDatePage> {
       _isLoading = true;
     });
 
-    Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) {
-      return BottomNavigation();
-    }), (route) => false);
+    Navigator.of(context).pop();
   }
 
   @override
