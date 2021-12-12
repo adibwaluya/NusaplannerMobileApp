@@ -7,7 +7,7 @@ import 'package:nusaplanner_app/classes/preparation.dart';
 import 'package:nusaplanner_app/classes/tool.dart';
 import 'package:nusaplanner_app/models/carousel_model.dart';
 import 'package:nusaplanner_app/pages/Feed/components/feed_background.dart';
-import 'package:nusaplanner_app/pages/Feed/details/visa_detail.dart/visa_screen_one.dart';
+import 'package:nusaplanner_app/pages/Feed/details/visa_detail/visa_screen_one.dart';
 import 'package:nusaplanner_app/pages/inbox/inbox_page.dart';
 import 'package:nusaplanner_app/pages/profile/update_date_page.dart';
 import 'package:nusaplanner_app/widgets/article_card.dart';

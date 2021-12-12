@@ -1,17 +1,18 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:nusaplanner_app/pages/Feed/details/visa_detail.dart/visa_screen_four.dart';
-import 'package:nusaplanner_app/pages/Feed/details/visa_detail.dart/visa_screen_one.dart';
-import 'package:nusaplanner_app/utils/pdf_api.dart';
-import 'package:nusaplanner_app/utils/pdf_viewer_page.dart';
+import 'package:nusaplanner_app/pages/Feed/details/visa_detail/visa_screen_six.dart';
 import 'package:nusaplanner_app/widgets/my_header.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../theme.dart';
 
-class VisaScreenThree extends StatelessWidget {
-  const VisaScreenThree({Key? key}) : super(key: key);
+class VisaScreenFive extends StatefulWidget {
+  const VisaScreenFive({Key? key}) : super(key: key);
 
+  @override
+  State<VisaScreenFive> createState() => _VisaScreenFiveState();
+}
+
+class _VisaScreenFiveState extends State<VisaScreenFive> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,14 +23,14 @@ class VisaScreenThree extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-                image: "assets/images/visa_three.png",
-                textTop: "Preparing\nAdditional",
-                textBottom: "Documents",
+                image: "assets/images/visa_five.png",
+                textTop: "Visa Application",
+                textBottom: "Process",
                 offset: 0,
                 iconleft: true),
             Center(
               child: Text(
-                '2. Bank account',
+                '4. Process...',
                 style: blackSemiBoldTextStyle.copyWith(fontSize: spaceToHeader),
               ),
             ),
@@ -42,14 +43,14 @@ class VisaScreenThree extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    'You need to set up the blocked account (Sperrkontos) so that your living expenses in Germany can be covered.',
+                    'So, you have all of previously mentioned documents, the primary documents on the first section, and copies of each of them? Nice! It is time to visit the embassy.',
                     style: blackLightTextStyle.copyWith(fontSize: 16),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Text(
-                    'You need to prepare the necessary documents for this:',
+                    'Now, we will walk you through the core process of the study preparation. These are the important steps you need to schedule:',
                     style: blackLightTextStyle.copyWith(fontSize: 16),
                   ),
                   SizedBox(
@@ -64,54 +65,144 @@ class VisaScreenThree extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'a. Curriculum Vitae (CV)',
+                    'a. Make an appointment ASAP!',
                     style: blackRegularTextStyle.copyWith(fontSize: 18),
                   ),
                   SizedBox(
                     height: 5,
                   ),
                   Text(
-                    '2 copies of table-form Curriculum Vitae are necessary.',
-                    style: blackLightTextStyle.copyWith(fontSize: 14),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    'b. Receipt Confirmation (Geldeingabebestätigung)',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    'You need the original confirmation of receipt of payment and 1 copy of it.',
-                    style: blackLightTextStyle.copyWith(fontSize: 14),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    'c. Others',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    'For more information regarding the frozen account (sperrkonto):',
+                    'Firstly, you need to fill in the form from the link below and print out 2 exemplars of it:',
                     style: blackLightTextStyle.copyWith(fontSize: 14),
                   ),
                   GestureDetector(
                     onTap: () async {
-                      final path = 'assets/documents/sperrkonto.pdf';
-                      final file = await PDFApi.loadAsset(path);
-                      openPDF(context, file);
+                      final url =
+                          'https://service2.diplo.de/rktermin/extern/choose_realmList.do?locationCode=jaka&request_locale=en';
+
+                      openBrowserURLs(url: url, inApp: true);
                     },
                     child: Text(
-                      'frozenaccount.pdf',
+                      'Formular URL',
                       style: redTextStyle.copyWith(fontSize: 14),
                     ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'Q&A can be seen on website below:',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      final url =
+                          'https://jakarta.diplo.de/id-de/service/-/1687542';
+
+                      openBrowserURLs(url: url, inApp: true);
+                    },
+                    child: Text(
+                      'Q&A URL',
+                      style: redTextStyle.copyWith(fontSize: 14),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'b. Complete all of the necessary documents',
+                    style: blackRegularTextStyle.copyWith(fontSize: 18),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'Make sure to complete all the previously mentioned documents. Put all of these documents into 1 folder. Lost documents or evidence may result in rejection of the application.',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'c. What to do on the appointment day...',
+                    style: blackRegularTextStyle.copyWith(fontSize: 18),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'On the day of the appointment, show the Confirmation of the Appointment sent by the system in front of the entrance.',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'd. The fee... the money...',
+                    style: blackRegularTextStyle.copyWith(fontSize: 18),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'For the fee, you can see the table below:',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Table(
+                    border: TableBorder.all(color: blackColor),
+                    children: [
+                      TableRow(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Text('Adult (from 18 years old)',
+                              style: blackSemiBoldTextStyle.copyWith(
+                                  fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            '€ 70, -',
+                            style: blackLightTextStyle.copyWith(fontSize: 12),
+                          ),
+                        ),
+                      ]),
+                      TableRow(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Text('Minors (under 18)',
+                              style: blackSemiBoldTextStyle.copyWith(
+                                  fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('€ 37,50 -',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                      ]),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'The fee will be paid in Rupiah cash at the embassy rate.',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    'e. Documents examination',
+                    style: blackRegularTextStyle.copyWith(fontSize: 18),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'Documents are firstly reviewed at the counter. Unnecessary originals and passports will be returned. Incomplete applications must be rejected. Copies of documents that have been sent to the Embassy by post, fax, or email must also be presented at the counter.',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
                   ),
                   SizedBox(
                     height: 20,
@@ -151,6 +242,8 @@ class VisaScreenThree extends StatelessWidget {
                     onPressed: () {
                       Navigator.pop(context);
                       Navigator.pop(context);
+                      Navigator.pop(context);
+                      Navigator.pop(context);
                       /* Navigator.of(context).pushAndRemoveUntil(
                           MaterialPageRoute(
                               builder: (context) => VisaScreenOne()),
@@ -176,7 +269,7 @@ class VisaScreenThree extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                        return VisaScreenFour();
+                        return VisaScreenSix();
                       }));
                     },
                     child: Text(
@@ -207,7 +300,9 @@ class VisaScreenThree extends StatelessWidget {
     );
   }
 
-  void openPDF(BuildContext context, File file) => Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => PDFViewerPage(file: file)),
-      );
+  Future openBrowserURLs({required String url, bool inApp = false}) async {
+    if (await canLaunch(url)) {
+      await launch(url, forceWebView: true, enableJavaScript: true);
+    }
+  }
 }

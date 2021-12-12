@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:nusaplanner_app/pages/Feed/details/visa_detail.dart/visa_screen_three.dart';
+import 'package:nusaplanner_app/pages/Feed/details/visa_detail/visa_screen_three.dart';
 import 'package:nusaplanner_app/utils/pdf_api.dart';
 import 'package:nusaplanner_app/utils/pdf_viewer_page.dart';
 import 'package:nusaplanner_app/widgets/my_header.dart';

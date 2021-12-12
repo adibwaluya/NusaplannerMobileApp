@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nusaplanner_app/pages/Feed/details/visa_detail.dart/visa_screen_eight.dart';
-import 'package:nusaplanner_app/pages/Feed/details/visa_detail.dart/visa_screen_one.dart';
+import 'package:nusaplanner_app/pages/Feed/details/visa_detail/visa_screen_eight.dart';
+import 'package:nusaplanner_app/pages/Feed/details/visa_detail/visa_screen_one.dart';
 import 'package:nusaplanner_app/widgets/my_header.dart';
 
 import '../../../../theme.dart';

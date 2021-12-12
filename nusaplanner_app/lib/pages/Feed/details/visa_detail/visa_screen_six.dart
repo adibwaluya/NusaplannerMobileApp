@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:nusaplanner_app/pages/Feed/details/visa_detail.dart/visa_screen_two.dart';
-import 'package:nusaplanner_app/theme.dart';
+import 'package:nusaplanner_app/pages/Feed/details/visa_detail/visa_screen_seven.dart';
 import 'package:nusaplanner_app/widgets/my_header.dart';
 
-class VisaScreenOne extends StatelessWidget {
-  const VisaScreenOne({Key? key}) : super(key: key);
+import '../../../../theme.dart';
+
+class VisaScreenSix extends StatelessWidget {
+  const VisaScreenSix({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +17,15 @@ class VisaScreenOne extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-                image: "assets/images/visa_one.png",
-                textTop: "Visa Preparation",
-                textBottom: "Overview",
+                image: "assets/images/visa_five.png",
+                textTop: "Waiting",
+                textBottom: "Time",
                 offset: 0,
                 iconleft: true),
             Center(
               child: Text(
-                'Overview',
-                style: blackSemiBoldTextStyle.copyWith(fontSize: spaceThirty),
+                '5. The Waiting Process',
+                style: blackSemiBoldTextStyle.copyWith(fontSize: spaceToHeader),
               ),
             ),
             SizedBox(
@@ -36,70 +37,18 @@ class VisaScreenOne extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    'Preparing the necessary documents for the visa may be very confusing. Nusaplanner lists 6 important steps you have to know regarding visa preparation:',
+                    'Now, you basically just need to pray and hope all goes well. You may wait for around 6 weeks to 3 months. If you are asked for any additional document, then the process could also take longer.',
                     style: blackLightTextStyle.copyWith(fontSize: 16),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Text(
-                    'PS: For the complete list of the documents without the steps, kindly check the List of Documents section instead.',
+                    'PS: Make sure your phone number, which you wrote on your personal information, is always active!',
                     style: blackSemiBoldTextStyle.copyWith(fontSize: 16),
                   ),
                   SizedBox(
                     height: 20,
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '1. Visa Application File Preparation',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    '2. Additional File Preparation',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    '3. Preparing Documents for Study',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    '4. Visa Application Process',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                    '5. During the process...',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    '6. Pick up your passport!',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    '7. Visa Application got rejected?',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
                   )
                 ],
               ),
@@ -117,8 +66,36 @@ class VisaScreenOne extends StatelessWidget {
                       Navigator.of(context).pop();
                     },
                     child: Text(
-                      "Return",
+                      "Back",
                       style: whiteTextStyle.copyWith(fontSize: 16),
+                    ),
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(whiteColor),
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(darkPurpleColor),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                      /* Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                              builder: (context) => VisaScreenOne()),
+                          (route) => false); */
+                    },
+                    child: Text(
+                      "Visa Overview",
+                      style: whiteTextStyle.copyWith(fontSize: 14),
                     ),
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -136,11 +113,11 @@ class VisaScreenOne extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                        return VisaScreenTwo();
+                        return VisaScreenSeven();
                       }));
                     },
                     child: Text(
-                      "Start",
+                      "Next",
                       style: whiteTextStyle.copyWith(fontSize: 16),
                     ),
                     style: ButtonStyle(

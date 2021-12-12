@@ -1,11 +1,16 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:nusaplanner_app/pages/Feed/details/visa_detail.dart/visa_screen_seven.dart';
+import 'package:nusaplanner_app/pages/Feed/details/visa_detail/visa_screen_four.dart';
+import 'package:nusaplanner_app/pages/Feed/details/visa_detail/visa_screen_one.dart';
+import 'package:nusaplanner_app/utils/pdf_api.dart';
+import 'package:nusaplanner_app/utils/pdf_viewer_page.dart';
 import 'package:nusaplanner_app/widgets/my_header.dart';
 
 import '../../../../theme.dart';
 
-class VisaScreenSix extends StatelessWidget {
-  const VisaScreenSix({Key? key}) : super(key: key);
+class VisaScreenThree extends StatelessWidget {
+  const VisaScreenThree({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +22,14 @@ class VisaScreenSix extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-                image: "assets/images/visa_five.png",
-                textTop: "Waiting",
-                textBottom: "Time",
+                image: "assets/images/visa_three.png",
+                textTop: "Preparing\nAdditional",
+                textBottom: "Documents",
                 offset: 0,
                 iconleft: true),
             Center(
               child: Text(
-                '5. The Waiting Process',
+                '2. Bank account',
                 style: blackSemiBoldTextStyle.copyWith(fontSize: spaceToHeader),
               ),
             ),
@@ -37,19 +42,80 @@ class VisaScreenSix extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    'Now, you basically just need to pray and hope all goes well. You may wait for around 6 weeks to 3 months. If you are asked for any additional document, then the process could also take longer.',
+                    'You need to set up the blocked account (Sperrkontos) so that your living expenses in Germany can be covered.',
                     style: blackLightTextStyle.copyWith(fontSize: 16),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Text(
-                    'PS: Make sure your phone number, which you wrote on your personal information, is always active!',
-                    style: blackSemiBoldTextStyle.copyWith(fontSize: 16),
+                    'You need to prepare the necessary documents for this:',
+                    style: blackLightTextStyle.copyWith(fontSize: 16),
                   ),
                   SizedBox(
                     height: 20,
                   )
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'a. Curriculum Vitae (CV)',
+                    style: blackRegularTextStyle.copyWith(fontSize: 18),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    '2 copies of table-form Curriculum Vitae are necessary.',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'b. Receipt Confirmation (Geldeingabebestätigung)',
+                    style: blackRegularTextStyle.copyWith(fontSize: 18),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'You need the original confirmation of receipt of payment and 1 copy of it.',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'c. Others',
+                    style: blackRegularTextStyle.copyWith(fontSize: 18),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'For more information regarding the frozen account (sperrkonto):',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      final path = 'assets/documents/sperrkonto.pdf';
+                      final file = await PDFApi.loadAsset(path);
+                      openPDF(context, file);
+                    },
+                    child: Text(
+                      'frozenaccount.pdf',
+                      style: redTextStyle.copyWith(fontSize: 14),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                 ],
               ),
             ),
@@ -85,9 +151,6 @@ class VisaScreenSix extends StatelessWidget {
                     onPressed: () {
                       Navigator.pop(context);
                       Navigator.pop(context);
-                      Navigator.pop(context);
-                      Navigator.pop(context);
-                      Navigator.pop(context);
                       /* Navigator.of(context).pushAndRemoveUntil(
                           MaterialPageRoute(
                               builder: (context) => VisaScreenOne()),
@@ -113,7 +176,7 @@ class VisaScreenSix extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                        return VisaScreenSeven();
+                        return VisaScreenFour();
                       }));
                     },
                     child: Text(
@@ -143,4 +206,8 @@ class VisaScreenSix extends StatelessWidget {
       ),
     );
   }
+
+  void openPDF(BuildContext context, File file) => Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => PDFViewerPage(file: file)),
+      );
 }
