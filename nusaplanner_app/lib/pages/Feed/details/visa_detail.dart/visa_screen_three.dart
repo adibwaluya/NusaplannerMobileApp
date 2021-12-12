@@ -23,7 +23,7 @@ class VisaScreenThree extends StatelessWidget {
           children: [
             MyHeader(
                 image: "assets/images/visa_three.png",
-                textTop: "Preparing Additional",
+                textTop: "Preparing\nAdditional",
                 textBottom: "Documents",
                 offset: 0,
                 iconleft: true),

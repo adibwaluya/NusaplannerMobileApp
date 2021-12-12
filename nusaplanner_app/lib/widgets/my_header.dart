@@ -69,7 +69,7 @@ class _MyHeaderState extends State<MyHeader> {
                         ),
                         Positioned(
                           top: 35 - widget.offset / 2,
-                          left: 220,
+                          left: 200,
                           child: Padding(
                             padding: const EdgeInsets.only(top: 10.0),
                             child: Text(

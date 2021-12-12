@@ -19,7 +19,7 @@ class VisaScreenFour extends StatelessWidget {
             MyHeader(
                 image: "assets/images/visa_four.png",
                 textTop: "Documents for",
-                textBottom: "Student Applicant\nVisa",
+                textBottom: "Student\nApplicant Visa",
                 offset: 0,
                 iconleft: true),
             Center(
@@ -63,6 +63,140 @@ class VisaScreenFour extends StatelessWidget {
                     style: blackRegularTextStyle.copyWith(fontSize: 18),
                   ),
                   SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'Below are the required documents for the applicants with the status "Student":',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
+                  ),
+                  SizedBox(height: 5),
+                  Table(
+                    border: TableBorder.all(color: blackColor),
+                    children: [
+                      TableRow(children: [
+                        Text(''),
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Text(
+                              'Letter of Admission (Zulassungsbescheid) of a College or Studienkolleg',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            '2 Copies',
+                            style: blackLightTextStyle.copyWith(fontSize: 12),
+                          ),
+                        ),
+                      ]),
+                      TableRow(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('OR',
+                              style: blackSemiBoldTextStyle.copyWith(
+                                  fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Text(
+                              'Reservation of an Academy Place (Studienplatzvormerkung)',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('2 Copies',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                      ]),
+                      TableRow(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('OR',
+                              style: blackSemiBoldTextStyle.copyWith(
+                                  fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Text('Conditional Approval letter',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('2 Copies',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                      ]),
+                      TableRow(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('OR',
+                              style: blackSemiBoldTextStyle.copyWith(
+                                  fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Text(
+                              'Confirmation Letter from the College or Studienkolleg',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('2 Copies',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                      ]),
+                      TableRow(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('OR',
+                              style: blackSemiBoldTextStyle.copyWith(
+                                  fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Text(
+                              'Application Confirmation from the Institution (Bewerbebestätigung)',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('2 Copies',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                      ]),
+                      TableRow(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('OR',
+                              style: blackSemiBoldTextStyle.copyWith(
+                                  fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Text(
+                              'The positive Final Communication (Endgultige Mitteilung) from UniAssist',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('2 Copies',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                      ]),
+                    ],
+                  ),
+                  SizedBox(
                     height: 20,
                   ),
                   Text(
@@ -70,11 +204,176 @@ class VisaScreenFour extends StatelessWidget {
                     style: blackRegularTextStyle.copyWith(fontSize: 18),
                   ),
                   SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'The study applicants who do not posses the required documents above:',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
+                  ),
+                  SizedBox(height: 5),
+                  Table(
+                    border: TableBorder.all(color: blackColor),
+                    children: [
+                      TableRow(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Text(
+                              'Diploma / STTB (high school graduation certificate), legalized photocopy from school',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('1 legalized copy',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            '1 copy',
+                            style: blackLightTextStyle.copyWith(fontSize: 12),
+                          ),
+                        ),
+                      ]),
+                      TableRow(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Text(
+                              'SKHUN / NEM (certificate from high school graduation exam), legalized photocopy from school',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('2 copies',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                      ]),
+                      TableRow(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                              '3rd grade high school report card, legalized photocopy from school',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Text('1 legalized copy',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('1 copy',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                      ]),
+                      TableRow(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                              'Self-written motivation letter by the applicant, which contains study plan (reason of choosing certain major). Best written in German.',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Text('Original copy',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('1 copy',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                      ]),
+                      TableRow(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                              'Proof of Correspondence with College / Studienkolleg or UniAssist',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Text('',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('2 copies',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                      ]),
+                    ],
+                  ),
+                  SizedBox(
                     height: 20,
                   ),
                   Text(
-                    'c. Others',
+                    'c. German Language Certificate',
                     style: blackRegularTextStyle.copyWith(fontSize: 18),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'For study applicants who cannot show confirmation of acceptance from a college or Studienkolleg, German Language Proficiency is very important as one of the evidences to show the seriousness of studying in Germany.',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Table(
+                    border: TableBorder.all(color: blackColor),
+                    children: [
+                      TableRow(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Text(
+                              'German Language Proficiency Certificate B1',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'Original + 1 copy',
+                            style: blackLightTextStyle.copyWith(fontSize: 12),
+                          ),
+                        ),
+                      ]),
+                      TableRow(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Text(
+                              'If you have not possessed a B1 certificate yet, you must bring the form of Registration for an Advances Language Course in Germany',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('2 copies',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                      ]),
+                    ],
                   ),
                   SizedBox(
                     height: 20,
@@ -95,7 +394,7 @@ class VisaScreenFour extends StatelessWidget {
                       Navigator.of(context).pop();
                     },
                     child: Text(
-                      "Return",
+                      "Back",
                       style: whiteTextStyle.copyWith(fontSize: 16),
                     ),
                     style: ButtonStyle(
@@ -123,7 +422,7 @@ class VisaScreenFour extends StatelessWidget {
                     },
                     child: Text(
                       "Visa Overview",
-                      style: whiteTextStyle.copyWith(fontSize: 16),
+                      style: whiteTextStyle.copyWith(fontSize: 14),
                     ),
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -145,7 +444,7 @@ class VisaScreenFour extends StatelessWidget {
                       }));
                     },
                     child: Text(
-                      "Continue",
+                      "Next",
                       style: whiteTextStyle.copyWith(fontSize: 16),
                     ),
                     style: ButtonStyle(

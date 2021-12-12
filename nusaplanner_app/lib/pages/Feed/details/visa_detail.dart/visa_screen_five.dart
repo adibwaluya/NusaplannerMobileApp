@@ -107,7 +107,7 @@ class VisaScreenFive extends StatelessWidget {
                       Navigator.of(context).pop();
                     },
                     child: Text(
-                      "Return",
+                      "Back",
                       style: whiteTextStyle.copyWith(fontSize: 16),
                     ),
                     style: ButtonStyle(
@@ -135,7 +135,7 @@ class VisaScreenFive extends StatelessWidget {
                     },
                     child: Text(
                       "Visa Overview",
-                      style: whiteTextStyle.copyWith(fontSize: 16),
+                      style: whiteTextStyle.copyWith(fontSize: 14),
                     ),
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -157,7 +157,7 @@ class VisaScreenFive extends StatelessWidget {
                       }));
                     },
                     child: Text(
-                      "Continue",
+                      "Next",
                       style: whiteTextStyle.copyWith(fontSize: 16),
                     ),
                     style: ButtonStyle(
