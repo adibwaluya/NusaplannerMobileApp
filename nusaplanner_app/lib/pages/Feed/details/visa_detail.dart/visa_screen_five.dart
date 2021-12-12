@@ -63,11 +63,40 @@ class VisaScreenFive extends StatelessWidget {
                     style: blackRegularTextStyle.copyWith(fontSize: 18),
                   ),
                   SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'Firstly, you need to fill in the form from the link below and print out 2 exemplars of it:',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
+                  ),
+                  Text(
+                    'Formular URL',
+                    style: redTextStyle.copyWith(fontSize: 14),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'Q&A can be seen on website below:',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
+                  ),
+                  Text(
+                    'Q&A URL',
+                    style: redTextStyle.copyWith(fontSize: 14),
+                  ),
+                  SizedBox(
                     height: 20,
                   ),
                   Text(
                     'b. Complete all of the necessary documents',
                     style: blackRegularTextStyle.copyWith(fontSize: 18),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'Make sure to complete all the previously mentioned documents. Put all of these documents into 1 folder. Lost documents or evidence may result in rejection of the application.',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
                   ),
                   SizedBox(
                     height: 20,
@@ -77,16 +106,81 @@ class VisaScreenFive extends StatelessWidget {
                     style: blackRegularTextStyle.copyWith(fontSize: 18),
                   ),
                   SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'On the day of the appointment, show the Confirmation of the Appointment sent by the system in front of the entrance.',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
+                  ),
+                  SizedBox(
                     height: 20,
                   ),
                   Text(
                     'd. The fee... the money...',
                     style: blackRegularTextStyle.copyWith(fontSize: 18),
                   ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'For the fee, you can see the table below:',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Table(
+                    border: TableBorder.all(color: blackColor),
+                    children: [
+                      TableRow(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Text('Adult (from 18 years old)',
+                              style: blackSemiBoldTextStyle.copyWith(
+                                  fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            '€ 70, -',
+                            style: blackLightTextStyle.copyWith(fontSize: 12),
+                          ),
+                        ),
+                      ]),
+                      TableRow(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Text('Minors (under 18)',
+                              style: blackSemiBoldTextStyle.copyWith(
+                                  fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('€ 37,50 -',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                      ]),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'The fee will be paid in Rupiah cash at the embassy rate.',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
+                  ),
                   SizedBox(height: 20),
                   Text(
                     'e. Documents examination',
                     style: blackRegularTextStyle.copyWith(fontSize: 18),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'Documents are firstly reviewed at the counter. Unnecessary originals and passports will be returned. Incomplete applications must be rejected. Copies of documents that have been sent to the Embassy by post, fax, or email must also be presented at the counter.',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
                   ),
                   SizedBox(
                     height: 20,
