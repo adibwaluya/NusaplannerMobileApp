@@ -2,25 +2,17 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:nusaplanner_app/auth/auth.dart';
-import 'package:nusaplanner_app/classes/overview.dart';
 import 'package:nusaplanner_app/classes/preparation.dart';
 import 'package:nusaplanner_app/classes/tool.dart';
 import 'package:nusaplanner_app/models/carousel_model.dart';
-import 'package:nusaplanner_app/pages/Feed/components/feed_background.dart';
 import 'package:nusaplanner_app/pages/Feed/details/visa_detail/visa_screen_one.dart';
-import 'package:nusaplanner_app/pages/inbox/inbox_page.dart';
 import 'package:nusaplanner_app/pages/profile/update_date_page.dart';
-import 'package:nusaplanner_app/widgets/article_card.dart';
-import 'package:nusaplanner_app/widgets/course_card.dart';
-import 'package:nusaplanner_app/widgets/overview_card.dart';
 import 'package:nusaplanner_app/widgets/prep_card.dart';
 import 'package:nusaplanner_app/widgets/tool_card.dart';
 import 'package:kommunicate_flutter/kommunicate_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../../theme.dart';
-import 'launch_chat.dart';
-import 'loading_calendar.dart';
 
 class FeedBody extends StatefulWidget {
   const FeedBody({Key? key}) : super(key: key);

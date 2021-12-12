@@ -23,11 +23,14 @@ class _VisaScreenFiveState extends State<VisaScreenFive> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-                image: "assets/images/visa_five.png",
-                textTop: "Visa Application",
-                textBottom: "Process",
-                offset: 0,
-                iconleft: true),
+              image: "assets/images/visa_five.png",
+              textTop: "Visa Application",
+              textBottom: "Process",
+              offset: 0,
+              iconleft: true,
+              colorValueOne: 0xFF3383CD,
+              colorValueTwo: 0xFF11249F,
+            ),
             Center(
               child: Text(
                 '4. Process...',

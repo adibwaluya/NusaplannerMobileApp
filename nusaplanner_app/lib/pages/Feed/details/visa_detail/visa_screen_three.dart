@@ -22,11 +22,14 @@ class VisaScreenThree extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-                image: "assets/images/visa_three.png",
-                textTop: "Preparing\nAdditional",
-                textBottom: "Documents",
-                offset: 0,
-                iconleft: true),
+              image: "assets/images/visa_three.png",
+              textTop: "Preparing\nAdditional",
+              textBottom: "Documents",
+              offset: 0,
+              iconleft: true,
+              colorValueOne: 0xFF3383CD,
+              colorValueTwo: 0xFF11249F,
+            ),
             Center(
               child: Text(
                 '2. Bank account',

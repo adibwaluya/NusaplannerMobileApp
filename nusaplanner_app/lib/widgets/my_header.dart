@@ -9,13 +9,17 @@ class MyHeader extends StatefulWidget {
   final String textBottom;
   final double offset;
   final bool iconleft;
+  final int colorValueOne;
+  final int colorValueTwo;
   const MyHeader(
       {Key? key,
       required this.image,
       required this.textTop,
       required this.textBottom,
       required this.offset,
-      required this.iconleft})
+      required this.iconleft,
+      required this.colorValueOne,
+      required this.colorValueTwo})
       : super(key: key);
 
   @override
@@ -36,8 +40,8 @@ class _MyHeaderState extends State<MyHeader> {
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             colors: [
-              Color(0xFF3383CD),
-              Color(0xFF11249F),
+              Color(widget.colorValueOne),
+              Color(widget.colorValueTwo),
             ],
           ),
         ),

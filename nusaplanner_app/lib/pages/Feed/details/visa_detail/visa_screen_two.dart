@@ -27,11 +27,14 @@ class _VisaScreenTwoState extends State<VisaScreenTwo> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-                image: "assets/images/visa_two.png",
-                textTop: "Visa Application",
-                textBottom: "File Preparation",
-                offset: 0,
-                iconleft: true),
+              image: "assets/images/visa_two.png",
+              textTop: "Visa Application",
+              textBottom: "File Preparation",
+              offset: 0,
+              iconleft: true,
+              colorValueOne: 0xFF3383CD,
+              colorValueTwo: 0xFF11249F,
+            ),
             Center(
               child: Text(
                 '1. Application Preparation',
