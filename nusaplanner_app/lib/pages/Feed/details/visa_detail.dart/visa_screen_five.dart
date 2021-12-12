@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:nusaplanner_app/pages/Feed/details/visa_detail.dart/visa_screen_six.dart';
 import 'package:nusaplanner_app/widgets/my_header.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../theme.dart';
 
-class VisaScreenFive extends StatelessWidget {
+class VisaScreenFive extends StatefulWidget {
   const VisaScreenFive({Key? key}) : super(key: key);
 
+  @override
+  State<VisaScreenFive> createState() => _VisaScreenFiveState();
+}
+
+class _VisaScreenFiveState extends State<VisaScreenFive> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,9 +75,17 @@ class VisaScreenFive extends StatelessWidget {
                     'Firstly, you need to fill in the form from the link below and print out 2 exemplars of it:',
                     style: blackLightTextStyle.copyWith(fontSize: 14),
                   ),
-                  Text(
-                    'Formular URL',
-                    style: redTextStyle.copyWith(fontSize: 14),
+                  GestureDetector(
+                    onTap: () async {
+                      final url =
+                          'https://service2.diplo.de/rktermin/extern/choose_realmList.do?locationCode=jaka&request_locale=en';
+
+                      openBrowserURLs(url: url, inApp: true);
+                    },
+                    child: Text(
+                      'Formular URL',
+                      style: redTextStyle.copyWith(fontSize: 14),
+                    ),
                   ),
                   SizedBox(
                     height: 5,
@@ -80,9 +94,17 @@ class VisaScreenFive extends StatelessWidget {
                     'Q&A can be seen on website below:',
                     style: blackLightTextStyle.copyWith(fontSize: 14),
                   ),
-                  Text(
-                    'Q&A URL',
-                    style: redTextStyle.copyWith(fontSize: 14),
+                  GestureDetector(
+                    onTap: () async {
+                      final url =
+                          'https://jakarta.diplo.de/id-de/service/-/1687542';
+
+                      openBrowserURLs(url: url, inApp: true);
+                    },
+                    child: Text(
+                      'Q&A URL',
+                      style: redTextStyle.copyWith(fontSize: 14),
+                    ),
                   ),
                   SizedBox(
                     height: 20,
@@ -276,5 +298,11 @@ class VisaScreenFive extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future openBrowserURLs({required String url, bool inApp = false}) async {
+    if (await canLaunch(url)) {
+      await launch(url, forceWebView: true, enableJavaScript: true);
+    }
   }
 }
