@@ -38,65 +38,73 @@ class VisaScreenSeven extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    'Firstly, you need to prepare for the required steps and documents below to fulfill the Visa Application Preparation. These are the main documents you need.',
+                    'Now your visa is just granted! You still have to collect your passport back. As soon as your visa application is decided, you can collect your passport.',
                     style: blackLightTextStyle.copyWith(fontSize: 16),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 20,
                   ),
                   Text(
-                    'PS: For the complete list of the documents without the steps, kindly check the List of Documents section instead.',
-                    style: blackSemiBoldTextStyle.copyWith(fontSize: 16),
+                    'When applying for a national visa, you will be notified by email or telephone as soon as the visa can be issued.',
+                    style: blackLightTextStyle.copyWith(fontSize: 16),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'Please submit your passport at the following time (table below). The visa will be issued the same day and you can bring your passport with you again.',
+                    style: blackLightTextStyle.copyWith(fontSize: 16),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Table(
+                    border: TableBorder.all(color: blackColor),
+                    children: [
+                      TableRow(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Text(
+                              'Passport submission and proof of collection',
+                              style:
+                                  blackMediumTextStyle.copyWith(fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'Monday - Friday, 07:30 - 10:00 WIB',
+                            style: blackLightTextStyle.copyWith(fontSize: 12),
+                          ),
+                        ),
+                      ]),
+                      TableRow(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Text('Picking up Visa',
+                              style: blackSemiBoldTextStyle.copyWith(
+                                  fontSize: 12)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('Monday - Friday, 11:00 - 12:00 WIB',
+                              style:
+                                  blackLightTextStyle.copyWith(fontSize: 12)),
+                        ),
+                      ]),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'Basically, you hand over your own passport. If this is not possible, you can hire a representative to do this. To achieve it, please draw up a written power of attorney and present it to your representative.',
+                    style: blackLightTextStyle.copyWith(fontSize: 16),
                   ),
                   SizedBox(
                     height: 20,
                   )
                 ],
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'a. Visa Application Form',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    'b. Declaration of Consent',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    'c. Biometric Passport Photo',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    'd. Health Insurance Policy',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                    'e. Additional Documents (under 18)',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 20,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -108,7 +116,7 @@ class VisaScreenSeven extends StatelessWidget {
                       Navigator.of(context).pop();
                     },
                     child: Text(
-                      "Return",
+                      "Back",
                       style: whiteTextStyle.copyWith(fontSize: 16),
                     ),
                     style: ButtonStyle(
@@ -138,7 +146,7 @@ class VisaScreenSeven extends StatelessWidget {
                     },
                     child: Text(
                       "Visa Overview",
-                      style: whiteTextStyle.copyWith(fontSize: 16),
+                      style: whiteTextStyle.copyWith(fontSize: 14),
                     ),
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -160,7 +168,7 @@ class VisaScreenSeven extends StatelessWidget {
                       }));
                     },
                     child: Text(
-                      "Continue",
+                      "Next",
                       style: whiteTextStyle.copyWith(fontSize: 16),
                     ),
                     style: ButtonStyle(

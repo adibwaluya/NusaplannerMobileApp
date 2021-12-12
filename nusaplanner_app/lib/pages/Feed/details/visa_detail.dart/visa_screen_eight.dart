@@ -17,8 +17,8 @@ class VisaScreenEight extends StatelessWidget {
         children: [
           MyHeader(
               image: "assets/images/visa_seven.png",
-              textTop: "Visa",
-              textBottom: "Rejection",
+              textTop: "",
+              textBottom: "Visa Rejection",
               offset: 0,
               iconleft: true),
           Center(
@@ -62,6 +62,27 @@ class VisaScreenEight extends StatelessWidget {
                   style: blackRegularTextStyle.copyWith(fontSize: 18),
                 ),
                 SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  'If the Embassy comes to the conclusion, that an additional interview could help, the Embassy sends you a written invitation to an interview.',
+                  style: blackLightTextStyle.copyWith(fontSize: 14),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  'If the Embassy can in the course of the discussion follow your reasoning, you will receive a visa.',
+                  style: blackLightTextStyle.copyWith(fontSize: 14),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  'If the Embassy cannot follow your reasoning, you will consequently receive a written notice by post, against which you can file a court case against the Federal Republic of Germany with the Administrative Court in Berlin within one month of receipt of the notice',
+                  style: blackLightTextStyle.copyWith(fontSize: 14),
+                ),
+                SizedBox(
                   height: 20,
                 ),
                 Text(
@@ -69,23 +90,18 @@ class VisaScreenEight extends StatelessWidget {
                   style: blackRegularTextStyle.copyWith(fontSize: 18),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 5,
                 ),
                 Text(
-                  'c. Biometric Passport Photo',
-                  style: blackRegularTextStyle.copyWith(fontSize: 18),
+                  'If the Embassy is of the opinion, that the decision does not require an additional discussion with you as the applicant, then you will receive a detailed written notice by post, against which you can file a court case against the Federal Republic of Germany with the Administrative Court in Berlin within one month of receipt of the notice.',
+                  style: blackLightTextStyle.copyWith(fontSize: 14),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 5,
                 ),
                 Text(
-                  'd. Health Insurance Policy',
-                  style: blackRegularTextStyle.copyWith(fontSize: 18),
-                ),
-                SizedBox(height: 20),
-                Text(
-                  'e. Additional Documents (under 18)',
-                  style: blackRegularTextStyle.copyWith(fontSize: 18),
+                  'Please wait in any case until you have received the notice. You can, alternatively, submit a new application and should hereby respond especially to the reasons for the rejection of your previous application and try to clear these up through the submission of the appropriate documents.',
+                  style: blackLightTextStyle.copyWith(fontSize: 14),
                 ),
                 SizedBox(
                   height: 20,
