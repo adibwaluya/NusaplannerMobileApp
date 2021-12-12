@@ -5,6 +5,7 @@ import 'package:nusaplanner_app/pages/Feed/details/visa_detail.dart/visa_screen_
 import 'package:nusaplanner_app/utils/pdf_api.dart';
 import 'package:nusaplanner_app/utils/pdf_viewer_page.dart';
 import 'package:nusaplanner_app/widgets/my_header.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../theme.dart';
 
@@ -71,9 +72,17 @@ class _VisaScreenTwoState extends State<VisaScreenTwo> {
                     'Firstly, you need to have 2 copies of Long-term Form:',
                     style: blackLightTextStyle.copyWith(fontSize: 14),
                   ),
-                  Text(
-                    'Long-Term Stay Form',
-                    style: redTextStyle.copyWith(fontSize: 14),
+                  GestureDetector(
+                    onTap: () async {
+                      final url =
+                          'https://videx-national.diplo.de/videx/visum-erfassung/#/videx-langfristiger-aufenthalt';
+
+                      openBrowserURLs(url: url, inApp: true);
+                    },
+                    child: Text(
+                      'Long-Term Stay Form',
+                      style: redTextStyle.copyWith(fontSize: 14),
+                    ),
                   ),
                   SizedBox(
                     height: 5,
@@ -325,4 +334,10 @@ class _VisaScreenTwoState extends State<VisaScreenTwo> {
   void openPDF(BuildContext context, File file) => Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => PDFViewerPage(file: file)),
       );
+
+  Future openBrowserURLs({required String url, bool inApp = false}) async {
+    if (await canLaunch(url)) {
+      await launch(url, forceWebView: true, enableJavaScript: true);
+    }
+  }
 }

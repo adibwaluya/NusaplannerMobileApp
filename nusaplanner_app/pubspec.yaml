@@ -50,6 +50,9 @@ dependencies:
   # path
   file_picker: ^4.2.7
 
+  # url launcher
+  url_launcher: ^6.0.17
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

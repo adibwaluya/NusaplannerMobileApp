@@ -65,3 +65,9 @@ TextStyle redTextStyle = GoogleFonts.poppins(
   decoration: TextDecoration.underline,
   color: redColor,
 );
+
+TextStyle blackRegularUnderlineTextStyle = GoogleFonts.poppins(
+  fontWeight: FontWeight.w400,
+  color: blackColor,
+  decoration: TextDecoration.underline,
+);
