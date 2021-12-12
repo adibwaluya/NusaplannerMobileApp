@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:nusaplanner_app/pages/Feed/details/visa_detail.dart/visa_screen_four.dart';
 import 'package:nusaplanner_app/pages/Feed/details/visa_detail.dart/visa_screen_one.dart';
+import 'package:nusaplanner_app/utils/pdf_api.dart';
+import 'package:nusaplanner_app/utils/pdf_viewer_page.dart';
 import 'package:nusaplanner_app/widgets/my_header.dart';
 
 import '../../../../theme.dart';
@@ -64,6 +68,13 @@ class VisaScreenThree extends StatelessWidget {
                     style: blackRegularTextStyle.copyWith(fontSize: 18),
                   ),
                   SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    '2 copies of table-form Curriculum Vitae are necessary.',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
+                  ),
+                  SizedBox(
                     height: 20,
                   ),
                   Text(
@@ -71,11 +82,36 @@ class VisaScreenThree extends StatelessWidget {
                     style: blackRegularTextStyle.copyWith(fontSize: 18),
                   ),
                   SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'You need the original confirmation of receipt of payment and 1 copy of it.',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
+                  ),
+                  SizedBox(
                     height: 20,
                   ),
                   Text(
                     'c. Others',
                     style: blackRegularTextStyle.copyWith(fontSize: 18),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'For more information regarding the frozen account (sperrkonto):',
+                    style: blackLightTextStyle.copyWith(fontSize: 14),
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      final path = 'assets/documents/sperrkonto.pdf';
+                      final file = await PDFApi.loadAsset(path);
+                      openPDF(context, file);
+                    },
+                    child: Text(
+                      'frozenaccount.pdf',
+                      style: redTextStyle.copyWith(fontSize: 14),
+                    ),
                   ),
                   SizedBox(
                     height: 20,
@@ -96,7 +132,7 @@ class VisaScreenThree extends StatelessWidget {
                       Navigator.of(context).pop();
                     },
                     child: Text(
-                      "Return",
+                      "Back",
                       style: whiteTextStyle.copyWith(fontSize: 16),
                     ),
                     style: ButtonStyle(
@@ -122,7 +158,7 @@ class VisaScreenThree extends StatelessWidget {
                     },
                     child: Text(
                       "Visa Overview",
-                      style: whiteTextStyle.copyWith(fontSize: 16),
+                      style: whiteTextStyle.copyWith(fontSize: 14),
                     ),
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -144,7 +180,7 @@ class VisaScreenThree extends StatelessWidget {
                       }));
                     },
                     child: Text(
-                      "Continue",
+                      "Next",
                       style: whiteTextStyle.copyWith(fontSize: 16),
                     ),
                     style: ButtonStyle(
@@ -170,4 +206,8 @@ class VisaScreenThree extends StatelessWidget {
       ),
     );
   }
+
+  void openPDF(BuildContext context, File file) => Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => PDFViewerPage(file: file)),
+      );
 }

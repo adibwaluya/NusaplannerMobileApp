@@ -272,7 +272,7 @@ class _VisaScreenTwoState extends State<VisaScreenTwo> {
                       Navigator.of(context).pop();
                     },
                     child: Text(
-                      "Return",
+                      "Back",
                       style: whiteTextStyle.copyWith(fontSize: 16),
                     ),
                     style: ButtonStyle(
@@ -295,7 +295,7 @@ class _VisaScreenTwoState extends State<VisaScreenTwo> {
                       }));
                     },
                     child: Text(
-                      "Continue",
+                      "Next",
                       style: whiteTextStyle.copyWith(fontSize: 16),
                     ),
                     style: ButtonStyle(
