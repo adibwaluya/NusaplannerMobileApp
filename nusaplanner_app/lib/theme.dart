@@ -59,3 +59,9 @@ TextStyle darkPurpleTextStyle = GoogleFonts.poppins(
   fontWeight: FontWeight.w600,
   color: darkPurpleColor,
 );
+
+TextStyle redTextStyle = GoogleFonts.poppins(
+  fontWeight: FontWeight.w500,
+  decoration: TextDecoration.underline,
+  color: redColor,
+);
