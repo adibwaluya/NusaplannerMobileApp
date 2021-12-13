@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:nusaplanner_app/pages/Feed/details/departure_detail/departure_screen_one.dart';
+import 'package:nusaplanner_app/pages/Feed/details/departure_detail/departure_screen_six.dart';
 import 'package:nusaplanner_app/widgets/my_header.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../theme.dart';
 
-class DepartureOverviewScreen extends StatelessWidget {
-  const DepartureOverviewScreen({Key? key}) : super(key: key);
+class DepartureScreenFive extends StatelessWidget {
+  const DepartureScreenFive({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,18 +18,18 @@ class DepartureOverviewScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-              image: "assets/images/departure_overview.png",
-              textTop: "Departure",
-              textBottom: "Overview",
+              image: "assets/images/departure_five.png",
+              textTop: "Cheaper",
+              textBottom: "Ticket Price",
               offset: 0,
               iconleft: true,
-              colorValueOne: 0xff4361EE,
-              colorValueTwo: 0xffCAE6FF,
+              colorValueOne: 0xFF3383CD,
+              colorValueTwo: 0xFF11249F,
             ),
             Center(
               child: Text(
-                'Overview',
-                style: blackSemiBoldTextStyle.copyWith(fontSize: spaceThirty),
+                '5. Compare the Prices',
+                style: blackSemiBoldTextStyle.copyWith(fontSize: spaceToHeader),
               ),
             ),
             SizedBox(
@@ -40,72 +41,36 @@ class DepartureOverviewScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    'Considering the distance between Indonesia and Germany, the timing when you want to book a plane is one of the most important steps.',
+                    'Before buying the ticket, it is necessary to check and compare the ticket prices from different websites or ticket prices of different airlines.',
                     style: blackLightTextStyle.copyWith(fontSize: 16),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Text(
-                    'Below are important steps you need to now before your departure:',
+                    'If it is not possible to fly during Low Season (January, March, May, June, November), then visit the website below to compare the airline ticket prices:',
                     style: blackLightTextStyle.copyWith(fontSize: 16),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '1. Review all of the documents',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    '2. Time to book your plane ticket',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    '3. Choose an airline',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    '4. Where do you want to land?',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                    '5. Which website for cheaper airline ticket?',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    '6. Choosing the departure time',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
+                  GestureDetector(
+                    onTap: () async {
+                      final url =
+                          'https://www.skyscanner.co.id/?_ga=2.36664544.1112131387.1639350895-804092600.1639350895&currency=IDR&locale=id-ID&market=ID&previousCultureSource=GEO_LOCATION&redirectedFrom=www.skyscanner.net';
+
+                      openBrowserURLs(url: url, inApp: true);
+                    },
+                    child: Text(
+                      'Skyscanner Official Website',
+                      style: redTextStyle.copyWith(fontSize: 16),
+                    ),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                 ],
               ),
-            ),
-            SizedBox(
-              height: 20,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -117,8 +82,36 @@ class DepartureOverviewScreen extends StatelessWidget {
                       Navigator.of(context).pop();
                     },
                     child: Text(
-                      "Return",
+                      "Back",
                       style: whiteTextStyle.copyWith(fontSize: 16),
+                    ),
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(whiteColor),
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(darkPurpleColor),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                      /* Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                              builder: (context) => VisaScreenOne()),
+                          (route) => false); */
+                    },
+                    child: Text(
+                      "Fly Overview",
+                      style: whiteTextStyle.copyWith(fontSize: 14),
                     ),
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -136,11 +129,11 @@ class DepartureOverviewScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                        return DepartureScreenOne();
+                        return DepartureScreenSix();
                       }));
                     },
                     child: Text(
-                      "Start",
+                      "Next",
                       style: whiteTextStyle.copyWith(fontSize: 16),
                     ),
                     style: ButtonStyle(
@@ -165,5 +158,11 @@ class DepartureOverviewScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future openBrowserURLs({required String url, bool inApp = false}) async {
+    if (await canLaunch(url)) {
+      await launch(url, forceWebView: true, enableJavaScript: true);
+    }
   }
 }

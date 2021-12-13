@@ -17,7 +17,7 @@ class VisaScreenSix extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-              image: "assets/images/visa_five.png",
+              image: "assets/images/visa_eight.png",
               textTop: "Waiting",
               textBottom: "Time",
               offset: 0,

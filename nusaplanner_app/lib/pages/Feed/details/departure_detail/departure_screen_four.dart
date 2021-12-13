@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:nusaplanner_app/pages/Feed/details/departure_detail/departure_screen_one.dart';
+import 'package:nusaplanner_app/pages/Feed/details/departure_detail/departure_screen_five.dart';
 import 'package:nusaplanner_app/widgets/my_header.dart';
 
 import '../../../../theme.dart';
 
-class DepartureOverviewScreen extends StatelessWidget {
-  const DepartureOverviewScreen({Key? key}) : super(key: key);
+class DepartureScreenFour extends StatelessWidget {
+  const DepartureScreenFour({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,18 +17,18 @@ class DepartureOverviewScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-              image: "assets/images/departure_overview.png",
-              textTop: "Departure",
-              textBottom: "Overview",
+              image: "assets/images/departure_four.png",
+              textTop: "Deciding",
+              textBottom: "the Arrival",
               offset: 0,
               iconleft: true,
-              colorValueOne: 0xff4361EE,
-              colorValueTwo: 0xffCAE6FF,
+              colorValueOne: 0xFF3383CD,
+              colorValueTwo: 0xFF11249F,
             ),
             Center(
               child: Text(
-                'Overview',
-                style: blackSemiBoldTextStyle.copyWith(fontSize: spaceThirty),
+                '4. Where to land?',
+                style: blackSemiBoldTextStyle.copyWith(fontSize: spaceToHeader),
               ),
             ),
             SizedBox(
@@ -40,18 +40,11 @@ class DepartureOverviewScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    'Considering the distance between Indonesia and Germany, the timing when you want to book a plane is one of the most important steps.',
+                    'Not all cities in Germany have airports. If any, not all serve long-distance flight. Almost all long-haul aircraft will land at 5 major airports in Germany:',
                     style: blackLightTextStyle.copyWith(fontSize: 16),
                   ),
                   SizedBox(
                     height: 10,
-                  ),
-                  Text(
-                    'Below are important steps you need to now before your departure:',
-                    style: blackLightTextStyle.copyWith(fontSize: 16),
-                  ),
-                  SizedBox(
-                    height: 20,
                   ),
                 ],
               ),
@@ -62,40 +55,33 @@ class DepartureOverviewScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '1. Review all of the documents',
+                    '1. Berlin Brandenburg Airport (Berlin)',
                     style: blackRegularTextStyle.copyWith(fontSize: 18),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   Text(
-                    '2. Time to book your plane ticket',
+                    '2. Franz Josef Strauss Airport (Munich)',
                     style: blackRegularTextStyle.copyWith(fontSize: 18),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   Text(
-                    '3. Choose an airline',
+                    '3. Frankfurt am Main Airport (Frankfurt)',
                     style: blackRegularTextStyle.copyWith(fontSize: 18),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   Text(
-                    '4. Where do you want to land?',
+                    '4. Düsseldorf Airport (Düsseldorf)',
                     style: blackRegularTextStyle.copyWith(fontSize: 18),
                   ),
                   SizedBox(height: 20),
                   Text(
-                    '5. Which website for cheaper airline ticket?',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    '6. Choosing the departure time',
+                    '5. Hamburg Airport (Hamburg)',
                     style: blackRegularTextStyle.copyWith(fontSize: 18),
                   ),
                   SizedBox(
@@ -117,8 +103,36 @@ class DepartureOverviewScreen extends StatelessWidget {
                       Navigator.of(context).pop();
                     },
                     child: Text(
-                      "Return",
+                      "Back",
                       style: whiteTextStyle.copyWith(fontSize: 16),
+                    ),
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(whiteColor),
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(darkPurpleColor),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+
+                      /* Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                              builder: (context) => VisaScreenOne()),
+                          (route) => false); */
+                    },
+                    child: Text(
+                      "Fly Overview",
+                      style: whiteTextStyle.copyWith(fontSize: 14),
                     ),
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -136,11 +150,11 @@ class DepartureOverviewScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                        return DepartureScreenOne();
+                        return DepartureScreenFive();
                       }));
                     },
                     child: Text(
-                      "Start",
+                      "Next",
                       style: whiteTextStyle.copyWith(fontSize: 16),
                     ),
                     style: ButtonStyle(

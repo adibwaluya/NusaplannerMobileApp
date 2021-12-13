@@ -26,6 +26,7 @@ class _PlanPageState extends State<PlanPage> {
   var valueBool;
   late var token;
   Todolist? createdTodoList;
+  bool selected = false;
 
   bool listLanguageOne(int a) => a == 0 ? false : true;
   bool visibilityTest = false;
@@ -64,16 +65,6 @@ class _PlanPageState extends State<PlanPage> {
 
   final storage = FlutterSecureStorage();
 
-  void _getTodolistApi() async {
-    Provider.of<Auth>(context, listen: false)
-        .attemptTodoList(token: await storage.read(key: 'token'));
-  }
-
-  /* Future<List<Todolist>>? _fetchTodolist() async {
-    return Provider.of<Auth>(context, listen: false)
-        .fetchTodolist(token: await storage.read(key: 'token'));
-  } */
-
   void apiCheckbox(property, value) async {
     setState(() {
       _isLoading = true;
@@ -98,23 +89,6 @@ class _PlanPageState extends State<PlanPage> {
             'Earn the language certificate'
           ];
           Map<String, bool> checkboxListValues = {};
-          /* List<Widget> _checkboxList() {
-            return checkboxListLables
-                .map(
-                  (label) => CheckboxListTile(
-                      title: Text(label),
-                      value: checkboxListValues[label] ?? false,
-                      onChanged: (newValue) {
-                        setState(() {
-                          if (checkboxListValues[label] == null) {
-                            checkboxListValues[label] = true;
-                          }
-                          checkboxListValues[label] = !checkboxListValues[label]!;
-                        });
-                      }),
-                )
-                .toList();
-          } */
 
           Widget buildSingleCheckbox(CheckBoxState checkbox) =>
               CheckboxListTile(
@@ -127,13 +101,13 @@ class _PlanPageState extends State<PlanPage> {
                   style: blackRegularTextStyle.copyWith(fontSize: 12),
                 ),
                 onChanged: (value) => setState(() {
-                  checkbox.value = value!;
-                  checkbox.value ? valueInt = 1 : valueInt = 0;
+                  /* checkbox.value = value!; */
+                  this.selected = !this.selected;
+                  this.selected ? valueInt = 1 : valueInt = 0;
                   apiCheckbox(checkbox.property, valueInt);
                 }),
               );
-          /* Code*/
-          // Todolist? data = snapshot.data;
+
           final firstTodolists = [
             CheckBoxState(
                 title: 'Register to a language course',
@@ -271,7 +245,7 @@ class _PlanPageState extends State<PlanPage> {
                                       fontSize: 25),
                                 ),
                                 Visibility(
-                                  visible: false,
+                                  visible: true,
                                   child: Consumer<Auth>(
                                     builder: (context, auth, child) {
                                       if (auth.loggedIn) {
@@ -279,8 +253,8 @@ class _PlanPageState extends State<PlanPage> {
                                         return Text(
                                           userIdString =
                                               auth.user.id.toString(),
-                                          style: blackSemiBoldTextStyle
-                                              .copyWith(fontSize: 25),
+                                          style: whiteTextStyle.copyWith(
+                                              fontSize: 25),
                                         );
                                       }
                                       return Text('No data');
@@ -346,9 +320,37 @@ class _PlanPageState extends State<PlanPage> {
                                         ],
                                       ),
                                       children: [
-                                        ...firstTodolists
+                                        /* ...firstTodolists
                                             .map(buildSingleCheckbox)
-                                            .toList(),
+                                            .toList(), */
+                                        StatefulBuilder(
+                                          builder: (context, setState) {
+                                            return CheckboxListTile(
+                                              controlAffinity:
+                                                  ListTileControlAffinity
+                                                      .trailing,
+                                              activeColor: greenColor,
+                                              value: snapshot.data!
+                                                      .planningLanguageOne ==
+                                                  1,
+                                              title: Text(
+                                                'Register to a language course',
+                                                style: blackRegularTextStyle
+                                                    .copyWith(fontSize: 12),
+                                              ),
+                                              onChanged: (value) =>
+                                                  setState(() {
+                                                this.selected = !this.selected;
+                                                this.selected
+                                                    ? valueInt = 1
+                                                    : valueInt = 0;
+                                                apiCheckbox(
+                                                    'planning_language_one',
+                                                    valueInt);
+                                              }),
+                                            );
+                                          },
+                                        )
                                       ]
                                       /* [
                                         /* ...firstTodolists
