@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:nusaplanner_app/pages/Feed/details/language_detail/language_screen_one.dart';
+import 'package:nusaplanner_app/pages/Feed/details/exam_detail/exam_screen_one.dart';
 import 'package:nusaplanner_app/widgets/my_header.dart';
 
 import '../../../../theme.dart';
 
-class LanguageOverviewScreen extends StatelessWidget {
-  const LanguageOverviewScreen({Key? key}) : super(key: key);
+class ExamOverview extends StatelessWidget {
+  const ExamOverview({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +18,12 @@ class LanguageOverviewScreen extends StatelessWidget {
           children: [
             MyHeader(
               image: "assets/images/visa_one.png",
-              textTop: "Language\nCourse",
+              textTop: "Preparatory\nClass\n(Studienkolleg)",
               textBottom: "Overview",
               offset: 0,
               iconleft: true,
-              colorValueOne: 0xFF116530,
-              colorValueTwo: 0xFFA3EBB1,
+              colorValueOne: 0xFF51087E,
+              colorValueTwo: 0xFFD7A1F9,
             ),
             Center(
               child: Text(
@@ -41,36 +41,102 @@ class LanguageOverviewScreen extends StatelessWidget {
                 children: [
                   Text.rich(
                     TextSpan(
-                        text:
-                            'Before starting the application process, there are several preparations that you have to do first. As the saying goes; ',
+                        text: 'To start your studies in Germany, you need a ',
                         style: blackLightTextStyle.copyWith(fontSize: 16),
                         children: [
                           TextSpan(
-                            text: 'preparation is the key to success.',
+                              text: 'Hochschulzugangs-berechtigung (HZB) ',
+                              style:
+                                  blackSemiBoldTextStyle.copyWith(fontSize: 16),
+                              children: [
+                                TextSpan(children: [
+                                  TextSpan(
+                                    text:
+                                        'or university entrance qualification in Germany.',
+                                    style: blackLightTextStyle.copyWith(
+                                        fontSize: 16),
+                                  ),
+                                ])
+                              ]),
+                        ]),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text.rich(
+                    TextSpan(
+                        text:
+                            'Therefore, high school graduation diploma or equivalent* from Indonesia National Education System (*hereinafter are called high school graduates) are not included in the HZB or ',
+                        style: blackLightTextStyle.copyWith(fontSize: 16),
+                        children: [
+                          TextSpan(
+                            text:
+                                'are not equivalent to German high school graduation (Abitur).',
                             style:
                                 blackSemiBoldTextStyle.copyWith(fontSize: 16),
-                          ),
+                          )
+                        ]),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text.rich(
+                    TextSpan(
+                        text:
+                            'To receive the equal diploma, high school graduates must pass the German university entrance qualification examination for prospective international students called the ',
+                        style: blackLightTextStyle.copyWith(fontSize: 16),
+                        children: [
+                          TextSpan(
+                            text: 'Feststellungsprüfung.',
+                            style:
+                                blackSemiBoldTextStyle.copyWith(fontSize: 16),
+                          )
+                        ]),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text.rich(
+                    TextSpan(
+                        text:
+                            'But firstly, you must take the preparatory class called ',
+                        style: blackLightTextStyle.copyWith(fontSize: 16),
+                        children: [
+                          TextSpan(
+                              text: 'Studienkolleg',
+                              style:
+                                  blackSemiBoldTextStyle.copyWith(fontSize: 16),
+                              children: [
+                                TextSpan(
+                                  text:
+                                      ', where you will study in one class for a particular field according to the major that you will choose at German universities.',
+                                  style: blackLightTextStyle.copyWith(
+                                      fontSize: 16),
+                                )
+                              ])
+                        ]),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text.rich(
+                    TextSpan(
+                        text:
+                            'The average study duration at the Studienkolleg is ',
+                        style: blackLightTextStyle.copyWith(fontSize: 16),
+                        children: [
+                          TextSpan(
+                            text: 'two semesters or one year.',
+                            style:
+                                blackSemiBoldTextStyle.copyWith(fontSize: 16),
+                          )
                         ]),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Text(
-                    'One of the most important preparation step is the language you are going to use during your study. Currently, most of the undergraduate and postgraduate programs use German language.',
-                    style: blackLightTextStyle.copyWith(fontSize: 16),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'In addition, German language is frequently used for daily interactions. Therefore, a German language certificate is necessary.',
-                    style: blackLightTextStyle.copyWith(fontSize: 16),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'In this section, you will see a glimpse of German language preparation in Indonesia. The following topics will be discussed:',
+                    'In order to be accepted at the Studienkolleg, following steps will be discussed:',
                     style: blackLightTextStyle.copyWith(fontSize: 16),
                   ),
                   SizedBox(
@@ -85,21 +151,28 @@ class LanguageOverviewScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '1. Where should I apply for a language course',
+                    '1. Prepare the documents',
                     style: blackRegularTextStyle.copyWith(fontSize: 18),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   Text(
-                    '2. Which certificate is required?',
+                    '2. Type of Studienkollegs',
                     style: blackRegularTextStyle.copyWith(fontSize: 18),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   Text(
-                    '3. Information regarding Dates and Enrolment',
+                    '3. Choosing the course for Studienkolleg',
+                    style: blackRegularTextStyle.copyWith(fontSize: 18),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    '4. What is Aufnahmeprüfung?',
                     style: blackRegularTextStyle.copyWith(fontSize: 18),
                   ),
                 ],
@@ -137,7 +210,7 @@ class LanguageOverviewScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                        return LanguageScreenOne();
+                        return ExamScreenOne();
                       }));
                     },
                     child: Text(
