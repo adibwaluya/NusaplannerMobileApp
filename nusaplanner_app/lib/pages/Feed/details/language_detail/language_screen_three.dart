@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:nusaplanner_app/pages/Feed/details/language_detail/language_screen_one.dart';
 import 'package:nusaplanner_app/widgets/my_header.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../theme.dart';
 
-class LanguageOverviewScreen extends StatelessWidget {
-  const LanguageOverviewScreen({Key? key}) : super(key: key);
+class LanguageScreenThree extends StatelessWidget {
+  const LanguageScreenThree({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,18 +17,18 @@ class LanguageOverviewScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-              image: "assets/images/visa_one.png",
-              textTop: "Language Course",
-              textBottom: "Overview",
+              image: "assets/images/departure_three.png",
+              textTop: "Dates and",
+              textBottom: "Enrollment",
               offset: 0,
               iconleft: true,
-              colorValueOne: 0xFF116530,
-              colorValueTwo: 0xFFA3EBB1,
+              colorValueOne: 0xFF3383CD,
+              colorValueTwo: 0xFF11249F,
             ),
             Center(
               child: Text(
-                'Overview',
-                style: blackSemiBoldTextStyle.copyWith(fontSize: spaceThirty),
+                '3. Important Dates',
+                style: blackSemiBoldTextStyle.copyWith(fontSize: spaceToHeader),
               ),
             ),
             SizedBox(
@@ -39,43 +39,35 @@ class LanguageOverviewScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text.rich(
-                    TextSpan(
-                        text:
-                            'Before starting the application process, there are several preparations that you have to do first. As the saying goes; ',
-                        style: blackLightTextStyle.copyWith(fontSize: 16),
-                        children: [
-                          TextSpan(
-                            text: 'preparation is the key to success.',
-                            style:
-                                blackSemiBoldTextStyle.copyWith(fontSize: 16),
-                          ),
-                        ]),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
                   Text(
-                    'One of the most important preparation step is the language you are going to use during your study. Currently, most of the undergraduate and postgraduate programs use German language.',
+                    'Timing and schedule are two important keys! Don’t forget to always check out the Examination dates. More information:',
                     style: blackLightTextStyle.copyWith(fontSize: 16),
                   ),
                   SizedBox(
                     height: 10,
                   ),
-                  Text(
-                    'In addition, German language is frequently used for daily interactions. Therefore, a German language certificate is necessary.',
-                    style: blackLightTextStyle.copyWith(fontSize: 16),
+                  GestureDetector(
+                    onTap: () async {
+                      final url =
+                          'https://www.goethe.de/ins/id/en/sta/jak/prf/ber.html';
+
+                      openBrowserURLs(url: url, inApp: false);
+                    },
+                    child: Text(
+                      'Dates and Enrollment',
+                      style: redTextStyle.copyWith(fontSize: 16),
+                    ),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Text(
-                    'In this section, you will see a glimpse of German language preparation in Indonesia. The following topics will be discussed:',
+                    'Track your schedule easier using list-making application such as:',
                     style: blackLightTextStyle.copyWith(fontSize: 16),
                   ),
                   SizedBox(
                     height: 20,
-                  ),
+                  )
                 ],
               ),
             ),
@@ -84,23 +76,30 @@ class LanguageOverviewScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    '1. Where should I apply for a language course',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
+                  GestureDetector(
+                    onTap: () async {
+                      final url = 'https://trello.com/en';
+
+                      openBrowserURLs(url: url, inApp: true);
+                    },
+                    child: Text(
+                      '- Trello',
+                      style: redTextStyle.copyWith(fontSize: 14),
+                    ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 5,
                   ),
-                  Text(
-                    '2. Which certificate is required?',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    '3. Information regarding Dates and Enrolment',
-                    style: blackRegularTextStyle.copyWith(fontSize: 18),
+                  GestureDetector(
+                    onTap: () async {
+                      final url = 'https://www.notion.so/';
+
+                      openBrowserURLs(url: url, inApp: false);
+                    },
+                    child: Text(
+                      '- Notion',
+                      style: redTextStyle.copyWith(fontSize: 14),
+                    ),
                   ),
                 ],
               ),
@@ -118,7 +117,7 @@ class LanguageOverviewScreen extends StatelessWidget {
                       Navigator.of(context).pop();
                     },
                     child: Text(
-                      "Return",
+                      "Back",
                       style: whiteTextStyle.copyWith(fontSize: 16),
                     ),
                     style: ButtonStyle(
@@ -135,14 +134,17 @@ class LanguageOverviewScreen extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return LanguageScreenOne();
-                      }));
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                      /* Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                              builder: (context) => VisaScreenOne()),
+                          (route) => false); */
                     },
                     child: Text(
-                      "Start",
-                      style: whiteTextStyle.copyWith(fontSize: 16),
+                      "Course Overview",
+                      style: whiteTextStyle.copyWith(fontSize: 14),
                     ),
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -166,5 +168,11 @@ class LanguageOverviewScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future openBrowserURLs({required String url, bool inApp = false}) async {
+    if (await canLaunch(url)) {
+      await launch(url, forceWebView: inApp, enableJavaScript: inApp);
+    }
   }
 }

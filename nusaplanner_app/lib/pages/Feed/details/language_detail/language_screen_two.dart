@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:nusaplanner_app/pages/Feed/details/departure_detail/departure_screen_four.dart';
-import 'package:nusaplanner_app/pages/Feed/details/visa_detail/visa_screen_three.dart';
+import 'package:nusaplanner_app/pages/Feed/details/language_detail/language_screen_three.dart';
 import 'package:nusaplanner_app/widgets/my_header.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../theme.dart';
 
-class DepartureScreenThree extends StatefulWidget {
-  const DepartureScreenThree({Key? key}) : super(key: key);
+class LanguageScreenTwo extends StatelessWidget {
+  const LanguageScreenTwo({Key? key}) : super(key: key);
 
-  @override
-  State<DepartureScreenThree> createState() => _DepartureScreenThreeState();
-}
-
-class _DepartureScreenThreeState extends State<DepartureScreenThree> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,9 +18,9 @@ class _DepartureScreenThreeState extends State<DepartureScreenThree> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-              image: "assets/images/departure_three.png",
-              textTop: "Choosing",
-              textBottom: "an Airline",
+              image: "assets/images/departure_two.png",
+              textTop: "Language",
+              textBottom: "Level",
               offset: 0,
               iconleft: true,
               colorValueOne: 0xFF3383CD,
@@ -34,7 +28,7 @@ class _DepartureScreenThreeState extends State<DepartureScreenThree> {
             ),
             Center(
               child: Text(
-                '3. Which airline?',
+                '2. Which level?',
                 style: blackSemiBoldTextStyle.copyWith(fontSize: spaceToHeader),
               ),
             ),
@@ -46,20 +40,45 @@ class _DepartureScreenThreeState extends State<DepartureScreenThree> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    'This part is considered important, because you are going to spend 12+ hours on the plane and also several hours of transit.',
-                    style: blackLightTextStyle.copyWith(fontSize: 16),
+                  Text.rich(
+                    TextSpan(
+                        text:
+                            'Indonesian citizens who want to pursue undergraduate program in Germany must firstly attend a preparatory college/course called ',
+                        style: blackLightTextStyle.copyWith(fontSize: 16),
+                        children: [
+                          TextSpan(
+                            text: 'Studienkolleg',
+                            style:
+                                blackSemiBoldTextStyle.copyWith(fontSize: 16),
+                          ),
+                        ]),
                   ),
                   SizedBox(
                     height: 10,
                   ),
-                  Text(
-                    'The airlines that are most in demand are middle eastern airlines due to the its offered price, which is quite cheap for flights with five-star rate. The list of the airlines are written below:',
-                    style: blackLightTextStyle.copyWith(fontSize: 16),
+                  Text.rich(
+                    TextSpan(
+                        text: 'Europe has a standard called the ',
+                        style: blackLightTextStyle.copyWith(fontSize: 16),
+                        children: [
+                          TextSpan(
+                              text:
+                                  'Common European Framework of Reference for Languages ​​(CEFR) ',
+                              style:
+                                  blackSemiBoldTextStyle.copyWith(fontSize: 16),
+                              children: [
+                                TextSpan(
+                                  text:
+                                      'to measure a person’s language competence.',
+                                  style: blackLightTextStyle.copyWith(
+                                      fontSize: 16),
+                                )
+                              ]),
+                        ]),
                   ),
                   SizedBox(
                     height: 20,
-                  )
+                  ),
                 ],
               ),
             ),
@@ -68,80 +87,37 @@ class _DepartureScreenThreeState extends State<DepartureScreenThree> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  GestureDetector(
-                    onTap: () async {
-                      final url =
-                          'https://www.qatarairways.com/en-de/homepage.html';
-
-                      openBrowserURLs(url: url, inApp: true);
-                    },
-                    child: Text(
-                      '- Qatar Airways',
-                      style: redTextStyle.copyWith(fontSize: 14),
-                    ),
+                  Text(
+                    'In the CEFR standard, there are six levels:',
+                    style: blackLightTextStyle.copyWith(fontSize: 16),
                   ),
                   SizedBox(
                     height: 5,
-                  ),
-                  GestureDetector(
-                    onTap: () async {
-                      final url = 'https://www.etihad.com/en-us/';
-
-                      openBrowserURLs(url: url, inApp: true);
-                    },
-                    child: Text(
-                      '- Etihad',
-                      style: redTextStyle.copyWith(fontSize: 14),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  GestureDetector(
-                    onTap: () async {
-                      final url = 'https://www.emirates.com/de/german/';
-
-                      openBrowserURLs(url: url, inApp: true);
-                    },
-                    child: Text(
-                      '- Emirates',
-                      style: redTextStyle.copyWith(fontSize: 14),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
                   ),
                   Text(
-                    'The other favorite airlines are worth mentioning as well:',
-                    style: blackLightTextStyle.copyWith(fontSize: 16),
+                    '1. A1-A2 (basic competence)',
+                    style: blackMediumTextStyle.copyWith(fontSize: 16),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    '2. B1-B2 (intermediate competence)',
+                    style: blackMediumTextStyle.copyWith(fontSize: 16),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    '3. C1-C2 (advanced competence)',
+                    style: blackMediumTextStyle.copyWith(fontSize: 16),
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  GestureDetector(
-                    onTap: () async {
-                      final url = 'https://www.turkishairlines.com/';
-
-                      openBrowserURLs(url: url, inApp: false);
-                    },
-                    child: Text(
-                      '- Turkish Airlines',
-                      style: redTextStyle.copyWith(fontSize: 14),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  GestureDetector(
-                    onTap: () async {
-                      final url = 'https://www.koreanair.com/us/en';
-
-                      openBrowserURLs(url: url, inApp: true);
-                    },
-                    child: Text(
-                      '- Korean Air',
-                      style: redTextStyle.copyWith(fontSize: 14),
-                    ),
+                  Text(
+                    'For further information regarding CEFR:',
+                    style: blackLightTextStyle.copyWith(fontSize: 16),
                   ),
                   SizedBox(
                     height: 5,
@@ -149,21 +125,52 @@ class _DepartureScreenThreeState extends State<DepartureScreenThree> {
                   GestureDetector(
                     onTap: () async {
                       final url =
-                          'https://www.singaporeair.com/en_UK/de/home#/book/bookflight';
+                          'https://www.coe.int/en/web/common-european-framework-reference-languages/?';
 
                       openBrowserURLs(url: url, inApp: true);
                     },
                     child: Text(
-                      '- Singapore Airlines',
-                      style: redTextStyle.copyWith(fontSize: 14),
+                      'Common European Framework of Reference for Languages (CEFR)',
+                      style: redTextStyle.copyWith(fontSize: 16),
                     ),
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    'These are the suggested airlines. For the purchasing, we leave it to you.',
-                    style: blackLightTextStyle.copyWith(fontSize: 16),
+                  Text.rich(
+                    TextSpan(
+                        text:
+                            'In order to apply for a student visa at the German Embassy and enroll in language schools and Studienkolleg in Germany, one has to posses ',
+                        style: blackLightTextStyle.copyWith(fontSize: 16),
+                        children: [
+                          TextSpan(
+                            text: 'a level B1 German language certificate.',
+                            style:
+                                blackSemiBoldTextStyle.copyWith(fontSize: 16),
+                          ),
+                        ]),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text.rich(
+                    TextSpan(
+                        text:
+                            'Although it is highly recommended that the applicant has ',
+                        style: blackLightTextStyle.copyWith(fontSize: 16),
+                        children: [
+                          TextSpan(
+                              text: 'a level B2 German language certificate ',
+                              style:
+                                  blackSemiBoldTextStyle.copyWith(fontSize: 16),
+                              children: [
+                                TextSpan(
+                                  text: 'to expand study opportunities.',
+                                  style: blackLightTextStyle.copyWith(
+                                      fontSize: 16),
+                                )
+                              ]),
+                        ]),
                   ),
                 ],
               ),
@@ -200,14 +207,13 @@ class _DepartureScreenThreeState extends State<DepartureScreenThree> {
                     onPressed: () {
                       Navigator.pop(context);
                       Navigator.pop(context);
-                      Navigator.pop(context);
                       /* Navigator.of(context).pushAndRemoveUntil(
                           MaterialPageRoute(
                               builder: (context) => VisaScreenOne()),
                           (route) => false); */
                     },
                     child: Text(
-                      "Fly Overview",
+                      "Course Overview",
                       style: whiteTextStyle.copyWith(fontSize: 14),
                     ),
                     style: ButtonStyle(
@@ -226,7 +232,7 @@ class _DepartureScreenThreeState extends State<DepartureScreenThree> {
                     onPressed: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                        return DepartureScreenFour();
+                        return LanguageScreenThree();
                       }));
                     },
                     child: Text(

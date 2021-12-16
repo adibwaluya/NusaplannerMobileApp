@@ -6,6 +6,7 @@ import 'package:nusaplanner_app/classes/preparation.dart';
 import 'package:nusaplanner_app/classes/tool.dart';
 import 'package:nusaplanner_app/models/carousel_model.dart';
 import 'package:nusaplanner_app/pages/Feed/details/departure_detail/departure_screen_overview.dart';
+import 'package:nusaplanner_app/pages/Feed/details/language_detail/language_overview.dart';
 import 'package:nusaplanner_app/pages/Feed/details/visa_detail/visa_screen_one.dart';
 import 'package:nusaplanner_app/pages/profile/update_date_page.dart';
 import 'package:nusaplanner_app/widgets/prep_card.dart';
@@ -102,12 +103,20 @@ class _FeedBodyState extends State<FeedBody> {
                           return VisaScreenOne();
                         })); */
                       },
-                      child: PreparationCard(
-                        Preparation(
-                          1,
-                          'Language Course',
-                          'assets/images/language.png',
-                          "3.5",
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) {
+                            return LanguageOverviewScreen();
+                          }));
+                        },
+                        child: PreparationCard(
+                          Preparation(
+                            1,
+                            'Language Course',
+                            'assets/images/language.png',
+                            "3.5",
+                          ),
                         ),
                       ),
                     ),
