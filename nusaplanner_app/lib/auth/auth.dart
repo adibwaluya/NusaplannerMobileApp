@@ -277,8 +277,8 @@ class Auth extends ChangeNotifier {
       // print("List" + jsonResponse.toString());
       Map apiResponse = response.data;
 
-      return new Todolist.fromJson(
-          json.decode(response.toString())['todolist']);
+      return this.createdTodoList =
+          new Todolist.fromJson(json.decode(response.toString())['todolist']);
     } else {
       print('Error. Could not load data');
       throw Exception('Failed to load data');

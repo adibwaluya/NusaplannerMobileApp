@@ -19,9 +19,10 @@ class _ProfilePageState extends State<ProfilePage> {
     return SafeArea(
       child: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text('This is Profile page. If you want to sign out, '),
-            GestureDetector(
+            /* GestureDetector(
               onTap: () {
                 // (route) => false);
                 Provider.of<Auth>(context, listen: false).signOut(success: () {
@@ -36,16 +37,19 @@ class _ProfilePageState extends State<ProfilePage> {
                 'Sign Out',
                 style: darkPurpleTextStyle.copyWith(fontSize: 12),
               ),
-            ),
+            ), */
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) {
-                  return UpdateDatePage();
-                }));
+                Provider.of<Auth>(context, listen: false).signOut(success: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("You have been signed out!")));
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                      (route) => false);
+                });
               },
               child: Text(
-                'Change Date',
+                'Sign Out',
                 style: TextStyle(fontSize: 15, color: Colors.white),
               ),
             ),
