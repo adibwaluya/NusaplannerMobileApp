@@ -6,6 +6,7 @@ import 'package:nusaplanner_app/classes/preparation.dart';
 import 'package:nusaplanner_app/classes/tool.dart';
 import 'package:nusaplanner_app/models/carousel_model.dart';
 import 'package:nusaplanner_app/pages/Feed/details/departure_detail/departure_screen_overview.dart';
+import 'package:nusaplanner_app/pages/Feed/details/document_detail/document_overview.dart';
 import 'package:nusaplanner_app/pages/Feed/details/exam_detail/exam_overview.dart';
 import 'package:nusaplanner_app/pages/Feed/details/language_detail/language_overview.dart';
 import 'package:nusaplanner_app/pages/Feed/details/visa_detail/visa_screen_one.dart';
@@ -124,12 +125,20 @@ class _FeedBodyState extends State<FeedBody> {
                     SizedBox(
                       height: 30,
                     ),
-                    PreparationCard(
-                      Preparation(
-                        2,
-                        'List of Documents',
-                        'assets/images/documents.png',
-                        "1",
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return DocumentOverviewScreen();
+                        }));
+                      },
+                      child: PreparationCard(
+                        Preparation(
+                          2,
+                          'List of Documents',
+                          'assets/images/documents.png',
+                          "1",
+                        ),
                       ),
                     ),
                     SizedBox(
