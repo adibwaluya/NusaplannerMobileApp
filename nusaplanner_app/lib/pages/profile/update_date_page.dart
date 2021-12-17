@@ -128,7 +128,7 @@ class _UpdateDatePageState extends State<UpdateDatePage> {
                           child: ElevatedButton(
                             onPressed:
                                 _isLoading ? null : () => _updateDatePrep(),
-                            child: Text('Start Your Journey!',
+                            child: Text('Update your Date!',
                                 style: whiteTextStyle.copyWith(fontSize: 16)),
                             style: ButtonStyle(
                               shape: MaterialStateProperty.all<

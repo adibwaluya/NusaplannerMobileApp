@@ -229,7 +229,7 @@ class _PlanPageState extends State<PlanPage> {
                                   height: 5,
                                 ),
                                 Text(
-                                  'Step-By-Step mempersiapkan Studi ke Jerman tepat waktu dengan time management',
+                                  'Prepare your study step by step by following the default todolist below. It is formulated as simple as possible for your own convenient use.',
                                   style: blackRegularTextStyle.copyWith(
                                       fontSize: 16),
                                 ),
@@ -262,7 +262,7 @@ class _PlanPageState extends State<PlanPage> {
                                           userIdString =
                                               auth.user.id.toString(),
                                           style: whiteTextStyle.copyWith(
-                                              fontSize: 25),
+                                              fontSize: 1),
                                         );
                                       }
                                       return Center(

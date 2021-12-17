@@ -77,7 +77,7 @@ class _LoginBodyState extends State<LoginBody> {
                     controller: _emailController,
                     style: blackRegularTextStyle,
                     decoration: InputDecoration.collapsed(
-                      hintText: 'Email Kamu',
+                      hintText: 'Your Email',
                       hintStyle: hintTextStyle.copyWith(
                         fontSize: 15,
                       ),
@@ -177,7 +177,7 @@ class _LoginBodyState extends State<LoginBody> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Belum mempunyai Akun? ',
+              'Don’t have an account yet? ',
               style: greyTextStyle.copyWith(fontSize: 12),
             ),
             GestureDetector(

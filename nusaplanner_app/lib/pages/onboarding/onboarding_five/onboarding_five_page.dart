@@ -89,13 +89,11 @@ class _OnboardingFivePageState extends State<OnboardingFivePage> {
                         TextSpan(
                             text: 'Profile Page, ',
                             style: blackSemiBoldTextStyle),
+                        TextSpan(text: 'currently only contains the '),
                         TextSpan(
-                            text:
-                                'you can see your own Profile. You can also change your '),
-                        TextSpan(
-                            text: 'start and end date ',
+                            text: 'sign out button ',
                             style: blackSemiBoldTextStyle),
-                        TextSpan(text: 'of your study preparation.'),
+                        TextSpan(text: 'if you want to log out.'),
                       ],
                     )),
                   ),

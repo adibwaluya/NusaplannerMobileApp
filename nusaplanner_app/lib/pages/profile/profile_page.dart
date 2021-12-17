@@ -21,7 +21,10 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('This is Profile page. If you want to sign out, '),
+            Text(
+              'This is Profile page. If you want to sign out.\nIn future development, this page will\ncontain more information. ',
+              style: blackRegularTextStyle.copyWith(fontSize: 14),
+            ),
             /* GestureDetector(
               onTap: () {
                 // (route) => false);
@@ -51,6 +54,16 @@ class _ProfilePageState extends State<ProfilePage> {
               child: Text(
                 'Sign Out',
                 style: TextStyle(fontSize: 15, color: Colors.white),
+              ),
+              style: ButtonStyle(
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                foregroundColor: MaterialStateProperty.all<Color>(whiteColor),
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(darkPurpleColor),
               ),
             ),
           ],
