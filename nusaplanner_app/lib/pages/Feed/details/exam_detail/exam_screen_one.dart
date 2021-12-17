@@ -23,8 +23,8 @@ class ExamScreenOne extends StatelessWidget {
               textBottom: "Documents",
               offset: 0,
               iconleft: true,
-              colorValueOne: 0xFF116530,
-              colorValueTwo: 0xFFA3EBB1,
+              colorValueOne: 0xFF51087E,
+              colorValueTwo: 0xFFD7A1F9,
             ),
             Center(
               child: Text(

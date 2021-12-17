@@ -23,8 +23,8 @@ class DepartureScreenFive extends StatelessWidget {
               textBottom: "Ticket Price",
               offset: 0,
               iconleft: true,
-              colorValueOne: 0xFF3383CD,
-              colorValueTwo: 0xFF11249F,
+              colorValueOne: 0xff4361EE,
+              colorValueTwo: 0xffCAE6FF,
             ),
             Center(
               child: Text(

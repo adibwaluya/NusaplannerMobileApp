@@ -23,8 +23,8 @@ class LanguageScreenTwo extends StatelessWidget {
               textBottom: "Level",
               offset: 0,
               iconleft: true,
-              colorValueOne: 0xFF3383CD,
-              colorValueTwo: 0xFF11249F,
+              colorValueOne: 0xFF116530,
+              colorValueTwo: 0xFFA3EBB1,
             ),
             Center(
               child: Text(

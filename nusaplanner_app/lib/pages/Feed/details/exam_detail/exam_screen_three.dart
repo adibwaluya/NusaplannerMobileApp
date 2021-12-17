@@ -23,8 +23,8 @@ class ExamScreenThree extends StatelessWidget {
               textBottom: "Courses",
               offset: 0,
               iconleft: true,
-              colorValueOne: 0xFF3383CD,
-              colorValueTwo: 0xFF11249F,
+              colorValueOne: 0xFF51087E,
+              colorValueTwo: 0xFFD7A1F9,
             ),
             Center(
               child: Text(
