@@ -18,9 +18,9 @@ class ExamScreenThree extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-              image: "assets/images/departure_three.png",
+              image: "assets/images/exam_three.png",
               textTop: "Studienkolleg",
-              textBottom: "Courses",
+              textBottom: "",
               offset: 0,
               iconleft: true,
               colorValueOne: 0xFF51087E,

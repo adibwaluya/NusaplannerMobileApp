@@ -18,7 +18,7 @@ class ExamScreenTwo extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-              image: "assets/images/departure_two.png",
+              image: "assets/images/exam_two.png",
               textTop: "Studienkolleg",
               textBottom: "Types",
               offset: 0,

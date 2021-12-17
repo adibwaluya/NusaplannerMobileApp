@@ -18,7 +18,7 @@ class ExamScreenOne extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-              image: "assets/images/departure_one.png",
+              image: "assets/images/exam_one.png",
               textTop: "Necessary",
               textBottom: "Documents",
               offset: 0,

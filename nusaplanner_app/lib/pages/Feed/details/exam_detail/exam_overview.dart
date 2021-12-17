@@ -17,7 +17,7 @@ class ExamOverview extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-              image: "assets/images/visa_one.png",
+              image: "assets/images/exam_overview.png",
               textTop: "Preparatory\nClass\n(Studienkolleg)",
               textBottom: "Overview",
               offset: 0,

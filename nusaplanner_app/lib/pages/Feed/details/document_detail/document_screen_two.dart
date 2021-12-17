@@ -22,7 +22,7 @@ class DocumentScreenTwo extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-              image: "assets/images/departure_two.png",
+              image: "assets/images/document_two.png",
               textTop: "Visa and\nBank",
               textBottom: "Documents",
               offset: 0,

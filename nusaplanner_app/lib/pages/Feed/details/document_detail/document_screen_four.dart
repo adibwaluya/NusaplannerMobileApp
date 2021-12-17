@@ -16,7 +16,7 @@ class DocumentScreenFour extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-              image: "assets/images/departure_four.png",
+              image: "assets/images/document_four.png",
               textTop: "Departure",
               textBottom: "Documents",
               offset: 0,

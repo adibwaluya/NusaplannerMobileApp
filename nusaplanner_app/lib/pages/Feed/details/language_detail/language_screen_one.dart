@@ -18,9 +18,9 @@ class LanguageScreenOne extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-              image: "assets/images/departure_one.png",
+              image: "assets/images/language_one.png",
               textTop: "Information on",
-              textBottom: "Goethe-Institutes",
+              textBottom: "Goethe-\nInstitutes",
               offset: 0,
               iconleft: true,
               colorValueOne: 0xFF116530,

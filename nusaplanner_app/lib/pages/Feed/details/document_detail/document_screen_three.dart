@@ -18,7 +18,7 @@ class DocumentScreenThree extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-              image: "assets/images/departure_three.png",
+              image: "assets/images/document_three.png",
               textTop: "Entrance Exam",
               textBottom: "Documents",
               offset: 0,

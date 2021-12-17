@@ -17,7 +17,7 @@ class LanguageOverviewScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-              image: "assets/images/visa_one.png",
+              image: "assets/images/language_overview.png",
               textTop: "Language\nCourse",
               textBottom: "Overview",
               offset: 0,

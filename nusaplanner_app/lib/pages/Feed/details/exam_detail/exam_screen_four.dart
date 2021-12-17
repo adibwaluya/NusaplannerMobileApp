@@ -16,7 +16,7 @@ class ExamScreenFour extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-              image: "assets/images/departure_four.png",
+              image: "assets/images/exam_four.png",
               textTop: "Aufnahme-\nprüfung",
               textBottom: "(ANP)",
               offset: 0,
@@ -133,7 +133,7 @@ class ExamScreenFour extends StatelessWidget {
                           (route) => false); */
                     },
                     child: Text(
-                      "Fly Overview",
+                      "Course Overview",
                       style: whiteTextStyle.copyWith(fontSize: 14),
                     ),
                     style: ButtonStyle(

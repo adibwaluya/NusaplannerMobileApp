@@ -17,7 +17,7 @@ class LanguageScreenThree extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-              image: "assets/images/departure_three.png",
+              image: "assets/images/language_three.png",
               textTop: "Dates and",
               textBottom: "Enrollment",
               offset: 0,

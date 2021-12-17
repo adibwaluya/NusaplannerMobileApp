@@ -18,7 +18,7 @@ class LanguageScreenTwo extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             MyHeader(
-              image: "assets/images/departure_two.png",
+              image: "assets/images/language_two.png",
               textTop: "Language",
               textBottom: "Level",
               offset: 0,
