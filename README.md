@@ -9,11 +9,13 @@ Nusaplanner App is an Android app developed using Flutter SDK. It serves as a pl
 # What is in this repository?
 
 
-In `../nusaplanner_app/lib/` you can see the source code of the app. 
+In `../nusaplanner_app/lib/` you can see the Flutter source code of the app. 
 
 In `../apk_files/` you can download the .APK data. After downloading and installing it, you can test and check how the app is functioning.
 
 In `../videos/` you can see the overview on how to use the app and all app's functionalities.
+
+In `../fakeapione/` you can see the Laravel source code (written in PHP). 
 
 ------------
 ## Below are the implemented tech stacks for developing of the system:
