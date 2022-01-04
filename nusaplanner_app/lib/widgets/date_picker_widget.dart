@@ -27,16 +27,8 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
     });
   }
 
-  /* To be used soon! */
-  /* _setDate(String date) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _dateEndString = date;
-    });
-    await prefs.setString('addDateEnd', _dateEndString);
-  } */
-
   _setUserDateEnd(String date) async {
+    /* Save end date locally with SharedPreferences */
     setState(() {
       _dateEndString = date;
     });
@@ -95,7 +87,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
     setState(() {
       date = newDate;
       endDate = newEndDate;
-      // await _setDate(DateFormat('dd/MM/yyyy').format(endDate!));
+
       _setUserDateEnd(DateFormat('dd/MM/yyyy').format(endDate!));
     });
   }

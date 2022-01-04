@@ -5,6 +5,7 @@ import 'package:nusaplanner_app/classes/checkbox.dart';
 import 'package:nusaplanner_app/classes/todolist.dart';
 import 'package:nusaplanner_app/classes/user_sp.dart';
 import 'package:nusaplanner_app/pages/Feed/components/loading_calendar.dart';
+import 'package:nusaplanner_app/widgets/bottom_navigation.dart';
 import 'package:provider/provider.dart';
 
 import '../../theme.dart';
@@ -57,11 +58,12 @@ class _PlanPageState extends State<PlanPage> {
   @override
   void initState() {
     _func = Auth().fetchTodolist();
-    // _getTodolistApi();
+
     super.initState();
 
     userTodoListTest = UserSimplePreferences.getTodolist() ?? "";
-    // print(userTodoListTest);
+
+    // Get end date from local storage
     dateEndString = UserSimplePreferences.getDate() ?? "";
   }
 
@@ -116,73 +118,6 @@ class _PlanPageState extends State<PlanPage> {
                 }),
               );
 
-          /* final firstTodolists = [
-            CheckBoxState(
-                title: 'Register to a language course',
-                value: snapshot.data!.planningLanguageOne == 1 ? true : false,
-                property: "planning_language_one"),
-            CheckBoxState(
-                title: 'Taking Exam to earn the language certificate',
-                value: snapshot.data!.planningLanguageTwo == 1 ? true : false,
-                property: "planning_language_two"),
-            CheckBoxState(
-                title: 'Earn the language certificate',
-                value: snapshot.data!.planningLanguageThree == 1 ? true : false,
-                property: "planning_language_three"),
-          ];
-          final secondTodolists = [
-            CheckBoxState(
-                title: 'Copy the necessary documents',
-                value: snapshot.data!.planningDocumentOne == 1 ? true : false,
-                property: "planning_document_one"),
-            CheckBoxState(
-                title: 'Translate all the documents',
-                value: snapshot.data!.planningDocumentTwo == 1 ? true : false,
-                property: "planning_document_two"),
-            CheckBoxState(
-                title: 'Certify the documents',
-                value: snapshot.data!.planningDocumentThree == 1 ? true : false,
-                property: "planning_document_three"),
-          ];
-          final thirdTodolists = [
-            CheckBoxState(
-                title: 'Create your Bank Account',
-                value:
-                    snapshot.data!.planningBankAccountOne == 1 ? true : false,
-                property: "planning_bankAccount_one"),
-          ];
-          final fourthTodolists = [
-            CheckBoxState(
-                title: 'Apply for Visa',
-                value: snapshot.data!.planningVisaOne == 1 ? true : false,
-                property: "planning_visa_one"),
-            CheckBoxState(
-                title: 'Collect your Visa from the embassy',
-                value: snapshot.data!.planningVisaTwo == 1 ? true : false,
-                property: "planning_visa_two"),
-          ];
-          final fifthTodolists = [
-            CheckBoxState(
-                title: 'Apply for entrance examination (ANP)',
-                value: snapshot.data!.planningAnpOne == 1 ? true : false,
-                property: "planning_anp_one"),
-            CheckBoxState(
-                title:
-                    'Receive the admission for the entrance examination (Zulassung)',
-                value: snapshot.data!.planningAnpTwo == 1 ? true : false,
-                property: "planning_anp_two")
-          ];
-          final sixthTodolists = [
-            CheckBoxState(
-                title: 'Buy Plane Ticket',
-                value: snapshot.data!.planningDepartureOne == 1 ? true : false,
-                property: "planning_departure_one"),
-            CheckBoxState(
-                title: 'Depart to Germany',
-                value: snapshot.data!.planningDepartureTwo == 1 ? true : false,
-                property: "planning_departure_two")
-          ]; */
-          // test = print(data!.map((todolist) => todolist.planningLanguageOne));
           return SingleChildScrollView(
             child: Container(
               width: double.infinity,
@@ -271,30 +206,6 @@ class _PlanPageState extends State<PlanPage> {
                                     },
                                   ),
                                 ),
-                                /* Visibility(
-                                    visible: false,
-                                    child: Text(
-                                        (snapshot.data!.planningLanguageOne)
-                                            .toString()),
-                                  ), */
-                                /* Consumer<Auth>(
-                                    builder: (context, auth, child) {
-                                      if (auth.loggedIn) {
-                                        // _loadUserId();
-                                        return Text(
-                                          /* (data!
-                                              .map((todolist) =>
-                                                  todolist.planningLanguageOne)
-                                              .toString()) */
-                                          auth.todolist.planning_language_one
-                                              .toString(),
-                                          style: blackSemiBoldTextStyle.copyWith(
-                                              fontSize: 25),
-                                        );
-                                      }
-                                      return Text('No data');
-                                    },
-                                  ), */
                                 SizedBox(
                                   height: 10,
                                 ),
@@ -330,9 +241,6 @@ class _PlanPageState extends State<PlanPage> {
                                         ],
                                       ),
                                       children: [
-                                        /* ...firstTodolists
-                                              .map(buildSingleCheckbox)
-                                              .toList(), */
                                         Consumer<Auth>(
                                           builder: (context, auth, child) {
                                             if (auth.loggedIn) {
@@ -348,12 +256,7 @@ class _PlanPageState extends State<PlanPage> {
                                                             .planningLanguageOne ==
                                                         1
                                                     ? true
-                                                    : false /* snapshot.data!
-                                                              .planningLanguageOne ==
-                                                          1
-                                                      ? true
-                                                      : false */
-                                                ,
+                                                    : false,
                                                 title: Text(
                                                   'Register to a language course',
                                                   style: blackRegularTextStyle
@@ -363,8 +266,6 @@ class _PlanPageState extends State<PlanPage> {
                                                     setState(() {
                                                   selectedLanOne =
                                                       !selectedLanOne;
-                                                  /* this.selected =
-                                                        !this.selected; */
                                                   selectedLanOne
                                                       ? valueIntOne = 1
                                                       : valueIntOne = 0;
@@ -402,12 +303,7 @@ class _PlanPageState extends State<PlanPage> {
                                                             .planningLanguageTwo ==
                                                         1
                                                     ? true
-                                                    : false /* snapshot.data!
-                                                              .planningLanguageOne ==
-                                                          1
-                                                      ? true
-                                                      : false */
-                                                ,
+                                                    : false,
                                                 title: Text(
                                                   'Taking Exam to earn the language certificate',
                                                   style: blackRegularTextStyle
@@ -455,12 +351,7 @@ class _PlanPageState extends State<PlanPage> {
                                                             .planningLanguageThree ==
                                                         1
                                                     ? true
-                                                    : false /* snapshot.data!
-                                                              .planningLanguageOne ==
-                                                          1
-                                                      ? true
-                                                      : false */
-                                                ,
+                                                    : false,
                                                 title: Text(
                                                   'Earn the language certificate',
                                                   style: blackRegularTextStyle
@@ -493,19 +384,7 @@ class _PlanPageState extends State<PlanPage> {
                                             return Text('No data');
                                           },
                                         )
-                                      ]
-                                      /* [
-                                          /* ...firstTodolists
-                                              .map((todolist) =>
-                                                  buildSingleCheckbox(todolist))
-                                              .toList(), */
-                  
-                                          ...firstTodolists
-                                              .map(buildSingleCheckbox)
-                                              .toList(),
-                                            */
-
-                                      ,
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -559,12 +438,7 @@ class _PlanPageState extends State<PlanPage> {
                                                             .planningDocumentOne ==
                                                         1
                                                     ? true
-                                                    : false /* snapshot.data!
-                                                              .planningLanguageOne ==
-                                                          1
-                                                      ? true
-                                                      : false */
-                                                ,
+                                                    : false,
                                                 title: Text(
                                                   'Copy the necessary documents',
                                                   style: blackRegularTextStyle
@@ -613,12 +487,7 @@ class _PlanPageState extends State<PlanPage> {
                                                             .planningDocumentTwo ==
                                                         1
                                                     ? true
-                                                    : false /* snapshot.data!
-                                                              .planningLanguageOne ==
-                                                          1
-                                                      ? true
-                                                      : false */
-                                                ,
+                                                    : false,
                                                 title: Text(
                                                   'Translate all the documents',
                                                   style: blackRegularTextStyle
@@ -666,12 +535,7 @@ class _PlanPageState extends State<PlanPage> {
                                                             .planningDocumentThree ==
                                                         1
                                                     ? true
-                                                    : false /* snapshot.data!
-                                                              .planningLanguageOne ==
-                                                          1
-                                                      ? true
-                                                      : false */
-                                                ,
+                                                    : false,
                                                 title: Text(
                                                   'Certify the documents',
                                                   style: blackRegularTextStyle
@@ -758,12 +622,7 @@ class _PlanPageState extends State<PlanPage> {
                                                             .planningBankAccountOne ==
                                                         1
                                                     ? true
-                                                    : false /* snapshot.data!
-                                                              .planningLanguageOne ==
-                                                          1
-                                                      ? true
-                                                      : false */
-                                                ,
+                                                    : false,
                                                 title: Text(
                                                   'Create your Bank Account',
                                                   style: blackRegularTextStyle
@@ -773,8 +632,6 @@ class _PlanPageState extends State<PlanPage> {
                                                     setState(() {
                                                   selectedLanOne =
                                                       !selectedLanOne;
-                                                  /* this.selected =
-                                                        !this.selected; */
                                                   selectedLanOne
                                                       ? valueIntOne = 1
                                                       : valueIntOne = 0;
@@ -797,38 +654,6 @@ class _PlanPageState extends State<PlanPage> {
                                             return Text('No data');
                                           },
                                         ),
-
-                                        /* ...thirdTodolists
-                                              .map(buildSingleCheckbox)
-                                              .toList(), */
-                                        /* Consumer<Auth>(
-                                        builder: (context, auth, child) {
-                                          if (auth.loggedIn) {
-                                            var valIntToBool;
-                                            return CheckboxListTile(
-                                                title: Text(
-                                                  'Create your Bank Account',
-                                                  style: blackRegularTextStyle
-                                                      .copyWith(fontSize: 12),
-                                                ),
-                                                activeColor: greenColor,
-                                                value: valIntToBool = listBankOne(
-                                                    auth.todolist
-                                                        .planningBankAccountOne),
-                                                onChanged: (value) => setState(() {
-                                                      var valueInt;
-                                                      valIntToBool = value!;
-                                                      valIntToBool
-                                                          ? valueInt = 1
-                                                          : valueInt = 0;
-                                                      apiCheckbox(
-                                                          "planning_bankAccount_one",
-                                                          valueInt);
-                                                    }));
-                                          }
-                                          return Text('false');
-                                        },
-                                      ), */
                                       ],
                                     ),
                                   ),
@@ -882,12 +707,7 @@ class _PlanPageState extends State<PlanPage> {
                                                             .planningVisaOne ==
                                                         1
                                                     ? true
-                                                    : false /* snapshot.data!
-                                                              .planningLanguageOne ==
-                                                          1
-                                                      ? true
-                                                      : false */
-                                                ,
+                                                    : false,
                                                 title: Text(
                                                   'Apply for Visa',
                                                   style: blackRegularTextStyle
@@ -897,8 +717,6 @@ class _PlanPageState extends State<PlanPage> {
                                                     setState(() {
                                                   selectedLanOne =
                                                       !selectedLanOne;
-                                                  /* this.selected =
-                                                        !this.selected; */
                                                   selectedLanOne
                                                       ? valueIntOne = 1
                                                       : valueIntOne = 0;
@@ -936,12 +754,7 @@ class _PlanPageState extends State<PlanPage> {
                                                             .planningVisaTwo ==
                                                         1
                                                     ? true
-                                                    : false /* snapshot.data!
-                                                              .planningLanguageOne ==
-                                                          1
-                                                      ? true
-                                                      : false */
-                                                ,
+                                                    : false,
                                                 title: Text(
                                                   'Collect your Visa from the embassy',
                                                   style: blackRegularTextStyle
@@ -974,64 +787,6 @@ class _PlanPageState extends State<PlanPage> {
                                             return Text('No data');
                                           },
                                         ),
-                                        /* ...fourthTodol
-                                          ists
-                                              .map(buildSingleCheckbox)
-                                              .toList(), */
-                                        /* Consumer<Auth>(
-                                        builder: (context, auth, child) {
-                                          if (auth.loggedIn) {
-                                            var valIntToBool;
-                                            return CheckboxListTile(
-                                                title: Text(
-                                                  'Apply for Visa',
-                                                  style: blackRegularTextStyle
-                                                      .copyWith(fontSize: 12),
-                                                ),
-                                                activeColor: greenColor,
-                                                value: valIntToBool = listVisaOne(
-                                                    auth.todolist.planningVisaOne),
-                                                onChanged: (value) => setState(() {
-                                                      var valueInt;
-                                                      valIntToBool = value!;
-                                                      valIntToBool
-                                                          ? valueInt = 1
-                                                          : valueInt = 0;
-                                                      apiCheckbox(
-                                                          "planning_visa_one",
-                                                          valueInt);
-                                                    }));
-                                          }
-                                          return Text('false');
-                                        },
-                                      ),
-                                      Consumer<Auth>(
-                                        builder: (context, auth, child) {
-                                          if (auth.loggedIn) {
-                                            var valIntToBool;
-                                            return CheckboxListTile(
-                                                title: Text(
-                                                  'Collect your Visa from the embassy',
-                                                  style: blackRegularTextStyle
-                                                      .copyWith(fontSize: 12),
-                                                ),
-                                                activeColor: greenColor,
-                                                value: valIntToBool = listVisaTwo(
-                                                    auth.todolist.planningVisaTwo),
-                                                onChanged: (value) => setState(() {
-                                                      var valueInt;
-                                                      valIntToBool = value!;
-                                                      valIntToBool
-                                                          ? valueInt = 1
-                                                          : valueInt = 0;
-                                                      apiCheckbox(
-                                                          "planning_visa_two",
-                                                          valueInt);
-                                                    }));
-                                          }
-                                          return Text('false');
-                                        },
-                                      ), */
                                       ],
                                     ),
                                   ),
@@ -1086,12 +841,7 @@ class _PlanPageState extends State<PlanPage> {
                                                             .planningAnpOne ==
                                                         1
                                                     ? true
-                                                    : false /* snapshot.data!
-                                                              .planningLanguageOne ==
-                                                          1
-                                                      ? true
-                                                      : false */
-                                                ,
+                                                    : false,
                                                 title: Text(
                                                   'Apply for entrance examination (ANP)',
                                                   style: blackRegularTextStyle
@@ -1101,8 +851,6 @@ class _PlanPageState extends State<PlanPage> {
                                                     setState(() {
                                                   selectedLanOne =
                                                       !selectedLanOne;
-                                                  /* this.selected =
-                                                        !this.selected; */
                                                   selectedLanOne
                                                       ? valueIntOne = 1
                                                       : valueIntOne = 0;
@@ -1139,12 +887,7 @@ class _PlanPageState extends State<PlanPage> {
                                                             .planningAnpTwo ==
                                                         1
                                                     ? true
-                                                    : false /* snapshot.data!
-                                                              .planningLanguageOne ==
-                                                          1
-                                                      ? true
-                                                      : false */
-                                                ,
+                                                    : false,
                                                 title: Text(
                                                   'Receive the admission for the entrance examination (Zulassung)',
                                                   style: blackRegularTextStyle
@@ -1177,63 +920,6 @@ class _PlanPageState extends State<PlanPage> {
                                             return Text('No data');
                                           },
                                         ),
-                                        /* ...fifthTodolists
-                                              .map(buildSingleCheckbox)
-                                              .toList(), */
-                                        /* Consumer<Auth>(
-                                        builder: (context, auth, child) {
-                                          if (auth.loggedIn) {
-                                            var valIntToBool;
-                                            return CheckboxListTile(
-                                                title: Text(
-                                                  'Apply for entrance examination (ANP)',
-                                                  style: blackRegularTextStyle
-                                                      .copyWith(fontSize: 12),
-                                                ),
-                                                activeColor: greenColor,
-                                                value: valIntToBool = listAnpOne(
-                                                    auth.todolist.planningAnpOne),
-                                                onChanged: (value) => setState(() {
-                                                      var valueInt;
-                                                      valIntToBool = value!;
-                                                      valIntToBool
-                                                          ? valueInt = 1
-                                                          : valueInt = 0;
-                                                      apiCheckbox(
-                                                          "planning_anp_one",
-                                                          valueInt);
-                                                    }));
-                                          }
-                                          return Text('false');
-                                        },
-                                      ),
-                                      Consumer<Auth>(
-                                        builder: (context, auth, child) {
-                                          if (auth.loggedIn) {
-                                            var valIntToBool;
-                                            return CheckboxListTile(
-                                                title: Text(
-                                                  'Receive the admission for the entrance examination (Zulassung)',
-                                                  style: blackRegularTextStyle
-                                                      .copyWith(fontSize: 12),
-                                                ),
-                                                activeColor: greenColor,
-                                                value: valIntToBool = listAnpTwo(
-                                                    auth.todolist.planningAnpTwo),
-                                                onChanged: (value) => setState(() {
-                                                      var valueInt;
-                                                      valIntToBool = value!;
-                                                      valIntToBool
-                                                          ? valueInt = 1
-                                                          : valueInt = 0;
-                                                      apiCheckbox(
-                                                          "planning_anp_two",
-                                                          valueInt);
-                                                    }));
-                                          }
-                                          return Text('false');
-                                        },
-                                      ), */
                                       ],
                                     ),
                                   ),
@@ -1288,12 +974,7 @@ class _PlanPageState extends State<PlanPage> {
                                                             .planningDepartureOne ==
                                                         1
                                                     ? true
-                                                    : false /* snapshot.data!
-                                                              .planningLanguageOne ==
-                                                          1
-                                                      ? true
-                                                      : false */
-                                                ,
+                                                    : false,
                                                 title: Text(
                                                   'Buy Plane Ticket',
                                                   style: blackRegularTextStyle
@@ -1303,8 +984,6 @@ class _PlanPageState extends State<PlanPage> {
                                                     setState(() {
                                                   selectedLanOne =
                                                       !selectedLanOne;
-                                                  /* this.selected =
-                                                        !this.selected; */
                                                   selectedLanOne
                                                       ? valueIntOne = 1
                                                       : valueIntOne = 0;
@@ -1342,12 +1021,7 @@ class _PlanPageState extends State<PlanPage> {
                                                             .planningDepartureTwo ==
                                                         1
                                                     ? true
-                                                    : false /* snapshot.data!
-                                                              .planningLanguageOne ==
-                                                          1
-                                                      ? true
-                                                      : false */
-                                                ,
+                                                    : false,
                                                 title: Text(
                                                   'Depart to Germany',
                                                   style: blackRegularTextStyle
@@ -1380,65 +1054,6 @@ class _PlanPageState extends State<PlanPage> {
                                             return Text('No data');
                                           },
                                         ),
-                                        /* ...sixthTodolists
-                                              .map(buildSingleCheckbox)
-                                              .toList(), */
-                                        /* Consumer<Auth>(
-                                        builder: (context, auth, child) {
-                                          if (auth.loggedIn) {
-                                            var valIntToBool;
-                                            return CheckboxListTile(
-                                                title: Text(
-                                                  'Buy Plane Ticket',
-                                                  style: blackRegularTextStyle
-                                                      .copyWith(fontSize: 12),
-                                                ),
-                                                activeColor: greenColor,
-                                                value: valIntToBool = listDepOne(
-                                                    auth.todolist
-                                                        .planningDepartureOne),
-                                                onChanged: (value) => setState(() {
-                                                      var valueInt;
-                                                      valIntToBool = value!;
-                                                      valIntToBool
-                                                          ? valueInt = 1
-                                                          : valueInt = 0;
-                                                      apiCheckbox(
-                                                          "planning_departure_one",
-                                                          valueInt);
-                                                    }));
-                                          }
-                                          return Text('false');
-                                        },
-                                      ),
-                                      Consumer<Auth>(
-                                        builder: (context, auth, child) {
-                                          if (auth.loggedIn) {
-                                            var valIntToBool;
-                                            return CheckboxListTile(
-                                                title: Text(
-                                                  'Depart to Germany',
-                                                  style: blackRegularTextStyle
-                                                      .copyWith(fontSize: 12),
-                                                ),
-                                                activeColor: greenColor,
-                                                value: valIntToBool = listDepTwo(
-                                                    auth.todolist
-                                                        .planningDepartureTwo),
-                                                onChanged: (value) => setState(() {
-                                                      var valueInt;
-                                                      valIntToBool = value!;
-                                                      valIntToBool
-                                                          ? valueInt = 1
-                                                          : valueInt = 0;
-                                                      apiCheckbox(
-                                                          "planning_departure_two",
-                                                          valueInt);
-                                                    }));
-                                          }
-                                          return Text('false');
-                                        },
-                                      ), */
                                       ],
                                     ),
                                   ),
@@ -1464,13 +1079,16 @@ class _PlanPageState extends State<PlanPage> {
               'An Error Occured!',
               textAlign: TextAlign.center,
             ),
-            content: Text("${snapshot.error}"),
+            content: Text("Please check your internet connection!"),
             actions: <Widget>[
               TextButton(
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (context) {
+                      return BottomNavigation();
+                    }), (route) => false);
                   },
-                  child: Text('Go Back'))
+                  child: Text('Refresh'))
             ],
           );
         }

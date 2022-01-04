@@ -59,6 +59,7 @@ class Auth extends ChangeNotifier {
       {Map? data, required Function success, required Function error}) async {
     try {
       Dio.Response response =
+          // previously auth/login
           await dio().post('auth/login', data: json.encode(data));
 
       var token = json.decode(response.toString())['access_token'];

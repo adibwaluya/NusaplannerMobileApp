@@ -259,16 +259,8 @@ class _FeedBodyState extends State<FeedBody> {
                           return Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 5),
                             child: ElevatedButton(
-                              onPressed: /* _isLoading
-                                  ? null
-                                  :  */
-                                  () async /* {
-                                Navigator.of(context)
-                                    .push(MaterialPageRoute(builder: (context) {
-                                  return LaunchChat();
-                                }));
-                              } */
-                                  {
+                              onPressed: () async {
+                                /* Launch Kommunicate chat */
                                 dynamic user = {
                                   'userId':
                                       '${auth.user.id}', //Replace it with the userId of the logged in user

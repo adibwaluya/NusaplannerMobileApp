@@ -55,6 +55,7 @@ class _InboxPageState extends State<InboxPage> {
                           onPressed: _isLoading
                               ? null
                               : () async {
+                                  /* Launch Kommunicate chat */
                                   dynamic user = {
                                     'userId':
                                         '${auth.user.id}', //Replace it with the userId of the logged in user
