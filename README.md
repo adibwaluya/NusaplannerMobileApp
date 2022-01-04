@@ -1,6 +1,6 @@
 # Nusaplanner Android Mobile App
 
-This is MonoRepo for Nusaplanner Mobile App, an app to organize the study preparation for indonesia students.
+This is MonoRepo for Nusaplanner Mobile App, an app to organize the study preparation for indonesian students.
 
 # About Nusaplanner App
 
